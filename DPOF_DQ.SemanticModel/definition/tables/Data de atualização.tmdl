@@ -1,0 +1,23 @@
+table 'Data de atualização'
+	lineageTag: 18454c97-1281-4cf4-9897-f45f762a20d6
+
+	column 'Data de atualização'
+		dataType: string
+		lineageTag: 8c2321a4-bb11-4bcf-afc2-09bf99edcf0b
+		summarizeBy: none
+		sourceColumn: Data de atualização
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Data de atualização' = m
+		mode: import
+		source =
+				let
+				    Fonte = DateTime.ToText(#datetime(Date.Year(DateTime.FixedLocalNow()), Date.Month(DateTime.FixedLocalNow()), Date.Day(DateTime.FixedLocalNow()),Time.Hour(DateTime.FixedLocalNow()), Time.Minute(DateTime.FixedLocalNow()), Time.Second(DateTime.FixedLocalNow())))
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Text
+

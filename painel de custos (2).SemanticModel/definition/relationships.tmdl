@@ -1,0 +1,69 @@
+relationship 313cca9d-279a-497a-b046-06562201f446
+	crossFilteringBehavior: bothDirections
+	fromColumn: CUSTOS_COMPLETO.ITEM_CUSTO
+	toColumn: NATUREZA_CUSTO.ITEM_DE_CUSTO
+
+relationship 571dba1c-2efb-441e-bfbd-abf451340cec
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ATRIBUTOS_PESSOAL.DATA
+	toColumn: LocalDateTable_3b2905ed-7bc0-4381-906e-0df4a07b79c2.Date
+
+relationship 44190315-4e39-40d0-8d2b-9a0ee4bbcc0a
+	crossFilteringBehavior: bothDirections
+	fromColumn: ATRIBUTOS_PESSOAL.SK_ATRIBUTOS
+	toColumn: ID_DATA_ATRB.SK_ATRIBUTOS
+
+relationship dfc8c59d-2713-4cda-9dbf-9e5189e3cd8f
+	crossFilteringBehavior: bothDirections
+	fromColumn: CUSTOS_COMPLETO.SK_ATRIBUTOS
+	toColumn: ID_DATA_ATRB.SK_ATRIBUTOS
+
+relationship 31ecaccb-e171-41ef-a13c-a1ba47c641dc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: CUSTOS_DT_ULTIMA_ATUALIZACAO.DT_ULTIMA_ATUALIZACAO
+	toColumn: LocalDateTable_77e3242e-eb60-448a-82c4-91b872fa2b3d.Date
+
+relationship 835a346f-afca-42cf-aa2a-a5aa68d0fb72
+	fromColumn: ATRIBUTOS_PESSOAL.NOME_ESCOLARIDADE
+	toColumn: ESCOLARIDADE.ESCOLARIDADE
+
+relationship 3804e481-39a7-4e9b-b1da-e729153219d1
+	fromColumn: ATRIBUTOS_PESSOAL.DS_AREA_ATUACAO_SIORG
+	toColumn: AREA_ATUACAO.AREA_ATUACAO
+
+relationship b83adba4-31fa-4527-98e9-aeaad7d5a750
+	fromColumn: CUSTOS_COMPLETO.CO_ORG_N01
+	toColumn: SIGLA.CO_SIORG
+
+relationship 826e85cb-9c74-47cf-b04e-cadd5d36960d
+	fromColumn: 'NATUREZA_CUSTO (2)'.ITEM_DE_CUSTO
+	toColumn: NATUREZA_CUSTO.ITEM_DE_CUSTO
+
+relationship efc1e4c0-167e-45e0-a220-d6d9f4db1cb9
+	fromColumn: 'ESCOLARIDADE (2)'.ESCOLARIDADE
+	toColumn: ESCOLARIDADE.ESCOLARIDADE
+
+relationship 50a60517-ed15-45ed-afe8-f22bc9228ae8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: MVW_MOEDA.DT_EXCLUSAO_PTAX
+	toColumn: LocalDateTable_85552651-d1e4-45f2-ac43-6eafebb9f981.Date
+
+relationship dabcd698-9ada-4005-998c-1f3fec4af65e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: MVW_MOEDA.DT_INICIO_VIGENCIA
+	toColumn: LocalDateTable_bacb48e0-de0a-47c4-afa3-ec5eab703381.Date
+
+relationship f02b0e32-a422-4e9c-8d76-37866b269c47
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Aux_Calendario.Date
+	toColumn: LocalDateTable_8bd6b244-12e5-468d-85aa-4fd8eb120699.Date
+
+relationship 55c1d3ea-3737-4fb8-a0d7-7b8d2a9ae381
+	crossFilteringBehavior: bothDirections
+	fromColumn: CUSTOS_COMPLETO.DATA
+	toColumn: Aux_Calendario.Date
+
+relationship 1d4942e3-4a54-449a-bab9-931d4b0ab87f
+	fromColumn: Valor_Moeda.DT_VALOR_MOEDA
+	toColumn: Aux_Calendario.Date
+

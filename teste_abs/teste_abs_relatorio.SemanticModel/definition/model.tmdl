@@ -1,0 +1,22 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["new_sales","sales"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.142.928.0 (25.04)+de52df9f0bb74ad93a80d89c52d63fe6d07e0e1b
+
+ref table new_sales
+ref table DateTableTemplate_0c987098-5d28-4012-b13b-dc202feb1829
+ref table LocalDateTable_28cbef8b-dcae-4753-a8c1-ec4a6b4dc981
+ref table sales
+ref table LocalDateTable_ab2e9c35-8057-41ef-8a4c-1f20cdac2a1e
+
+ref cultureInfo pt-BR
+

@@ -1,0 +1,41 @@
+table DIM_ORGAO_MAXIMO_UO
+	lineageTag: b4ece059-e1c9-4269-adc7-62de42b700f7
+
+	column CO_ORGAO_MAXIMO_UO
+		dataType: string
+		isNullable: false
+		sourceProviderType: Varchar2
+		lineageTag: c5dcdbf7-3266-4ffd-80d9-a566ad5305e3
+		summarizeBy: none
+		sourceColumn: CO_ORGAO_MAXIMO_UO
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_ORGAO_UO
+		dataType: string
+		isNullable: false
+		sourceProviderType: Varchar2
+		lineageTag: 2f0ab321-df8c-42a5-b9ac-6a975ad39ef2
+		summarizeBy: none
+		sourceColumn: NO_ORGAO_UO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Órgão Máximo da UO' = DIM_ORGAO_MAXIMO_UO[CO_ORGAO_MAXIMO_UO] & " - " & DIM_ORGAO_MAXIMO_UO[NO_ORGAO_UO]
+		lineageTag: 8deca147-4cd8-404f-8930-6d5c8c174ade
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_ORGAO_MAXIMO_UO = m
+		mode: directQuery
+		source =
+				let
+				    Fonte = Oracle.Database("exastncl03-tlm0m-scan.prosubnet.vcndados.oraclevcn.com/DWPROD.prosubnet.vcndados.oraclevcn.com", [HierarchicalNavigation=true]),
+				    DEV_SIGEFI = Fonte{[Schema="DEV_SIGEFI"]}[Data],
+				    DIM_ORGAO_MAXIMO_UO1 = DEV_SIGEFI{[Name="DIM_ORGAO_MAXIMO_UO"]}[Data]
+				in
+				    DIM_ORGAO_MAXIMO_UO1
+
+	annotation PBI_ResultType = Table
+

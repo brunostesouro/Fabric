@@ -1,0 +1,961 @@
+table #Medidas
+	lineageTag: 7da4331d-8500-471a-87c8-a6003fa11b5c
+
+	measure 'CUSTOS CONTROLÁVEIS' = CALCULATE(SUM(CUSTOS_COMPLETO[CUSTO]),NATUREZA_CUSTO[IND_NATUREZA_DE_CUSTO] = 1)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: e3a1a70f-cc18-4b6e-bdcf-387838cd0c64
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'CUSTOS NÃO CONTROLÁVEIS' = CALCULATE(SUM(CUSTOS_COMPLETO[CUSTO]),NATUREZA_CUSTO[IND_NATUREZA_DE_CUSTO] = 2)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: eb4c9c9e-f315-46f0-8250-4e65e8fea05f
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure MEDIA_CUSTOS = AVERAGE(CUSTOS_COMPLETO[CUSTO])
+		lineageTag: 0b9d5d30-9cb4-46c2-9a3c-18f85ffcc84f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'TOTAL CUSTOS' = SUM(CUSTOS_COMPLETO[CUSTO])
+		lineageTag: 5ad42896-1e7a-4eb2-ac6c-cda732f82a89
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure TOTAL_CUSTOS_PORC = CALCULATE([TOTAL CUSTOS],ALL(CUSTOS_COMPLETO))
+		lineageTag: b69ca406-4875-4217-b9a7-f11ab3e6962c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure MédiaAnoAnterior
+		formatString: 0
+		lineageTag: 99437b93-d1f3-49e2-a9dd-fb556b64f972
+
+	measure ContarLinhas = ```
+			COUNTROWS(CUSTOS_COMPLETO) 
+			```
+		formatString: 0
+		lineageTag: 999937ac-21ce-41af-9098-ef8730a67e3b
+
+	measure VariacaoAnual = ```
+			
+			    var custoAnoAnterior = CALCULATE(SUM(CUSTOS_COMPLETO[CUSTO]),(CUSTOS_COMPLETO[ID_ANO] = YEAR(TODAY()) - 1))
+			    var custoAnoAnteriorAnterior = CALCULATE(SUM(CUSTOS_COMPLETO[CUSTO]),(CUSTOS_COMPLETO[ID_ANO] = YEAR(TODAY()) - 2))
+			
+			    RETURN 
+			    IF(custoAnoAnteriorAnterior = 0, 0,(custoAnoAnterior - custoAnoAnteriorAnterior) / custoAnoAnteriorAnterior)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: aa989b11-b165-49d5-ad0b-c373a9e907d7
+
+	measure 'Diferença CAP para menor CAP' = divide([CUSTOS CAP PER CAPITA],[Menor Valor Selecionado CAP],0)-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 141f0828-88d5-4442-aefa-23be45cfc40e
+
+	measure 'Valor nos ultimos 6 meses' =
+			
+			var MaxDate = CALCULATE(MAX(CUSTOS_COMPLETO[DATA]), ALL(CUSTOS_COMPLETO))
+			return
+			
+			CALCULATE(SUMX(CUSTOS_COMPLETO,CUSTOS_COMPLETO[CUSTO]), DATESBETWEEN(CUSTOS_COMPLETO[DATA], EDATE(MaxDate, -6), MaxDate))
+		lineageTag: 6081dd4f-c419-40ed-bd82-e906e749cdb0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Filtro Selecione 2 ou mais' =
+			IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[Órgão] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[Órgão] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[Órgão] ) ) > 1,
+			    "Y",
+			    "N"
+			)
+		lineageTag: 731394fc-8a10-4422-9adf-cd79750d1f49
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Custos CAP' = CALCULATE(SUM(CUSTOS_COMPLETO[CUSTO]),NATUREZA_CUSTO[Custos Atribuídos a Pessoal] = "Apenas CAP")
+		formatString: "R$"#,0.00;-"R$"#,0.00;"R$"#,0.00
+		lineageTag: f5e74451-a31d-43a0-b764-d1132b3fb57e
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Menor Valor Selecionado CAP' = ```
+			
+			
+			VAR menorValor = MINX(ALLSELECTED(CUSTOS_COMPLETO[Órgão]), [CUSTOS CAP PER CAPITA])
+			return 
+			menorValor
+			```
+		lineageTag: 6e11a70a-6582-4b9f-a8ea-575aecb4fce3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Menor CAP 100%' = ```
+			
+			VAR menorValor = MINX(ALLSELECTED(CUSTOS_COMPLETO[Órgão]), [Custos CAP])
+			return 
+			IF([Custos CAP]=menorValor,1)
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: 1a7702b2-2990-471f-b8d6-82fb6a17f681
+
+	measure 'info selecione 2 orgãos' =
+			IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[Órgão] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[Órgão] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[Órgão] ) ) > 1,
+			    " ",
+			    "Selecione ao menos dois órgãos para comparação"
+			)
+		lineageTag: ed1b928a-c54f-4b26-b99f-968a8d7eed95
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Custo Pessoal Ativo' = CALCULATE(SUM(CUSTOS_COMPLETO[CUSTO]),CUSTOS_COMPLETO[ITEM_CUSTO] ="PESSOAL ATIVO")
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: 8dbe97f2-beb4-430f-8eca-e53b68520b54
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Titulo Itens de Custo' = ```
+			
+			SWITCH(
+			    TRUE(),
+			    [Filtro natureza custo selecionada] = "N", "Itens de Custo",
+			    "CONTROLÁVEL" IN ALLSELECTED(NATUREZA_CUSTO[NATUREZA_DE_CUSTO]), "Itens de Custo Controláveis",
+			    "NÃO CONTROLÁVEL" IN ALLSELECTED(NATUREZA_CUSTO[NATUREZA_DE_CUSTO]), "Itens de Custo Não Controláveis",    
+			    "Itens de Custo"
+			)
+			
+			
+			```
+		lineageTag: b04d8599-4bf3-433f-b41b-d764fae9d052
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Filtro natureza custo selecionada' =
+			IF (
+			    COUNTROWS(ALLSELECTED ( NATUREZA_CUSTO[NATUREZA_DE_CUSTO] )) <> COUNTROWS(ALL ( NATUREZA_CUSTO[NATUREZA_DE_CUSTO] ))
+			        && COUNTROWS ( ALLSELECTED ( NATUREZA_CUSTO[NATUREZA_DE_CUSTO] ) ) > 0,
+			    "S",
+			    "N"
+			)
+		lineageTag: 14e39e7b-b400-487c-b54a-b0dbac9b1ff9
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Texto órgão selecionado' = ```
+			if(HASONEFILTER(CUSTOS_COMPLETO[Órgão]), SELECTEDVALUE(CUSTOS_COMPLETO[Órgão]), 
+			                    if(ISFILTERED(CUSTOS_COMPLETO[Órgão]),SELECTEDVALUE(CUSTOS_COMPLETO[Órgão],"Múltiplos Órgãos Selecionados"),"Consolidado"))
+			
+			```
+		lineageTag: 5b400171-cae5-4d14-9d54-1024d20e5389
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Texto ano selecionado' = ```
+			if(HASONEFILTER(CUSTOS_COMPLETO[ID_ANO]), SELECTEDVALUE(CUSTOS_COMPLETO[ID_ANO]), 
+			                    if(ISFILTERED(CUSTOS_COMPLETO[ID_ANO]),SELECTEDVALUE(CUSTOS_COMPLETO[ID_ANO],"Múltiplos Anos Selecionados"),"Valor Consolidado desde " & min(CUSTOS_COMPLETO[ID_ANO])))
+			```
+		formatString: 0
+		lineageTag: 69791149-56e9-4638-9a47-527ba5884a9e
+
+	measure Referencia = DIVIDE([Menor Valor Selecionado CAP],[Menor Valor Selecionado CAP],0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 5c242aad-a41a-4c8f-91f2-59a0a91e6f3e
+
+	measure 'Custos não CAP' = CALCULATE(SUM(CUSTOS_COMPLETO[CUSTO]),NATUREZA_CUSTO[Custos Atribuídos a Pessoal] = "Sem CAP")
+		lineageTag: c7ee9353-69e6-418c-9001-f3f3cc079786
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Custo Pessoal e Encargos' = CALCULATE(SUM(CUSTOS_COMPLETO[CUSTO]),CUSTOS_COMPLETO[ITEM_CUSTO]="PESSOAL ATIVO")+CALCULATE(SUM(CUSTOS_COMPLETO[CUSTO]),CUSTOS_COMPLETO[ITEM_CUSTO]="ENCARGOS PATRONAIS")
+		lineageTag: 972abe40-9773-40c8-95aa-c2cb54a4c19e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Força de Trabalho mais recente' = CALCULATE(SUM(ATRIBUTOS_PESSOAL[FORCA_TRABALHO]),LASTDATE(ATRIBUTOS_PESSOAL[DATA]))
+		formatString: #,0
+		lineageTag: a9d1d06a-128f-4451-a8b1-a6401edb57d4
+
+	measure 'CUSTOS CAP PER CAPITA' = CALCULATE([Custos CAP]/[Força de Trabalho mais recente])
+		formatString: "R$"#,0.00;-"R$"#,0.00;"R$"#,0.00
+		lineageTag: 8e07c6f9-6e6c-4855-81c1-049ecedb82c6
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'teste soma custo' =
+			CALCULATE([TOTAL CUSTOS],FILTER(ALL(CUSTOS_COMPLETO),CUSTOS_COMPLETO[DATA].[Ano] = SELECTEDVALUE(CUSTOS_COMPLETO[DATA].[Ano])-1
+			&& CUSTOS_COMPLETO[DATA].[Mês] in VALUES(CUSTOS_COMPLETO[DATA].[Mês])))
+		lineageTag: 5aee56fd-2cf0-4d50-878a-4482f3b587bb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Custo Total SEM CAP' = CALCULATE(SUM(CUSTOS_COMPLETO[CUSTO]),ALL(CUSTOS_COMPLETO[ITEM_CUSTO]),NATUREZA_CUSTO[Custos Atribuídos a Pessoal] = "Sem CAP")
+		lineageTag: ed0a4030-2eea-49f7-ae5b-7298c4c53c31
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure custoAnoSelecionado = CALCULATE(SUM(CUSTOS_COMPLETO[CUSTO]),FILTER(CUSTOS_COMPLETO,CUSTOS_COMPLETO[ID_ANO] = SELECTEDVALUE(CUSTOS_COMPLETO[ID_ANO])))
+		lineageTag: c959e75e-4cb4-49c8-acb0-7a9c6ea70e3c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure VariacaoCustoDinamica = ```
+			
+			    IF([custoAnoAnterior] = 0, 0,([custoAnoSelecionado] - [custoAnoAnterior]) / abs([custoAnoAnterior]))
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 885b795a-42e5-47d0-83aa-89220824d6d0
+
+	measure custoAnoAnterior =
+			CALCULATE([TOTAL CUSTOS],
+			FILTER(ALLEXCEPT(CUSTOS_COMPLETO,CUSTOS_COMPLETO[Órgão],CUSTOS_COMPLETO[ITEM_CUSTO],NATUREZA_CUSTO[NATUREZA_DE_CUSTO]),
+			CUSTOS_COMPLETO[ID_ANO] = SELECTEDVALUE(CUSTOS_COMPLETO[ID_ANO])-1
+			&& CUSTOS_COMPLETO[Mês] in VALUES(CUSTOS_COMPLETO[Mês])))
+		lineageTag: 0854bba2-9d22-4aaf-a886-d8e427c6533b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Variação Indicador' =
+			
+			SWITCH(TRUE(),
+			[VariacaoCustoDinamica]>0,
+			UNICHAR(9650),
+			UNICHAR(9660))
+		lineageTag: 95699ec9-690a-43e3-8d67-ccccb2698d42
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Título Força de Trabalho (Média)' = ```
+			
+			 IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[Órgão] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[Órgão] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[Órgão] ) ) > 1,
+			    "Força de Trabalho (Média)",
+			    " "
+			) 
+			```
+		lineageTag: 0c2d1edf-d150-4602-a523-beea07ec3739
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Título Custo per capita' = ```
+			
+			 IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[Órgão] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[Órgão] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[Órgão] ) ) > 1,
+			    "Custo per Capita",
+			    " "
+			) 
+			```
+		lineageTag: 3fccb685-3a04-4d5d-990d-ece5acc6cbcc
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Título Custo do Item (CAP)' = ```
+			
+			 IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[Órgão] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[Órgão] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[Órgão] ) ) > 1,
+			    "Custo do Item (CAP)",
+			    " "
+			) 
+			```
+		lineageTag: ffb883c8-6b13-4b0e-ae74-f5a3343c8bfc
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Título Evolução do Custo Per Capita' = ```
+			
+			 IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[Órgão] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[Órgão] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[Órgão] ) ) > 1,
+			    "Evolução do Custo Per Capita",
+			    " "
+			) 
+			```
+		lineageTag: 6d34afdb-ebbb-47a4-aadb-1c2d92c5a886
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Título Relação Custo do CAP sobre o Custo Total' = ```
+			
+			 IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[Órgão] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[Órgão] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[Órgão] ) ) > 1,
+			    "Relação Custo do CAP sobre o Custo Total",
+			    " "
+			) 
+			```
+		lineageTag: d74403b9-f03e-4fcf-8054-19bcffa852ae
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Título Desvio do CAP por unidade selecionada' = ```
+			
+			 IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[Órgão] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[Órgão] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[Órgão] ) ) > 1,
+			    "Desvio do CAP per Capita",
+			    " "
+			) 
+			```
+		lineageTag: a640ceed-138e-422f-a5b9-defda897db3f
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Título Proporção de Item de Custo para Cada Unidade' = ```
+			
+			 IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[Órgão] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[Órgão] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[Órgão] ) ) > 1,
+			    "Proporção de Item de Custo por Organização",
+			    " "
+			) 
+			```
+		lineageTag: c0e863df-2393-4cd6-9e05-aa076c18912a
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Texto Controlabilidade dos Custos' = "Controlabilidade dos Custos"
+		lineageTag: 7b650bdb-c985-4660-b9b5-43cb3ff22900
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Ranking órgãos cores' = RANKX(ALLSELECTED(CUSTOS_COMPLETO[Órgão]),CALCULATE(SUM(CUSTOS_COMPLETO[CUSTO])))
+		formatString: 0
+		lineageTag: 9ffd026e-67bf-4bea-8fbc-fb2ed5d51149
+
+	measure 'cores dinamicas órgãos' = ```
+			SWITCH(
+			    [Ranking órgãos cores],
+			    1,"#1e466a",
+			    2,"#08869b",
+			    3,"#4e857e",
+			    4,"#f8ac08",
+			    5,"#cec806",
+			    6,"#028063",
+			    7,"#149339",
+			    8,"#96c11e",
+			    9,"#ca4017",
+			    10,"#832f11",
+			    "#6e287c"
+			)
+			
+			```
+		lineageTag: 35c3afa8-34ab-457c-af62-53681d9d94aa
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'qtd selec' = ```
+			
+			    COUNTROWS(
+			        ALLSELECTED(
+			        CUSTOS_COMPLETO[Órgão])
+			        )
+			
+			```
+		formatString: 0
+		lineageTag: f10f89ba-6457-4c08-af92-39070334420b
+
+	measure 'Texto Itens de Custo' = "Itens de Custo"
+		lineageTag: 021290d5-2c8b-47fc-a7e2-57cb704823e4
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Texto Custos Atribuídos a Pessoal (CAP)' = "Custos Atribuíveis a Pessoal (CAP)"
+		lineageTag: 98f59829-927c-40a2-9ed6-5473d71a8353
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Texto CF' = "Custos de Funcionamento (CF)"
+		lineageTag: b6efdd77-fa5f-4ebb-bc34-2290b42e976f
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Teste Idioma' = ```
+			
+			 IF (
+			    SELECTEDVALUE( IDIOMA[IDOMA ]) = "pt",
+			    "Evolução do Custo Per Capita",
+			    "texto em inglês"
+			) 
+			```
+		lineageTag: 798ce664-56ed-4232-8c41-449c5089a4e7
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Texto Custo Pessoal Ativo por Área de Atuação' = "Custo Pessoal Ativo por Área de Atuação"
+		lineageTag: 495c84cd-a455-47fb-b847-ba5a2d2973b6
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Info Variação' =
+			
+			IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[ID_ANO] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[ID_ANO] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[ID_ANO] ) ) = 1,
+			    " ", if (COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[ID_ANO] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[ID_ANO] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[ID_ANO] ) ) >= 2,
+			    "Selecione apenas um ano para comparação",
+			    "Selecione um ano para comparação"
+			))
+		lineageTag: 38d76b3f-bcfd-4adb-8cf3-c29c9b27564b
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Comparar Valores' =
+			
+			IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[ID_ANO] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[ID_ANO] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[ID_ANO] ) ) = 1,
+			    "Sim",
+			    "Não"
+			)
+		lineageTag: 79b01253-978f-4294-b28c-41eeadad8203
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Titulo Variação' = ```
+			
+			 IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[ID_ANO] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[ID_ANO] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[ID_ANO] ) ) > 0,
+			    "Variação Ano Selecionado x Ano Anterior (R$)",
+			    " "
+			)
+			```
+		lineageTag: cb49d621-7c7f-4ea3-b52f-1b23a3424f1b
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Texto Controlabilidade dos Custos Ing' = "Cost Controlabillity"
+		lineageTag: 355d401f-7b92-4808-9cd6-7cc1615e56e2
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure Medida
+		lineageTag: 93721cdf-ec08-4e30-8e34-4cf187e535b4
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	measure 'Texto Itens de Custo Ing' = "Cost Items"
+		lineageTag: 82679bca-e846-4f14-8e92-4e291180fcc5
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Texto Custos Atribuídos a Pessoal (CAP) Ing' = "Costs Attributable to Personnel (CAP)"
+		lineageTag: b15e295f-c6fd-44a9-8486-f502882ec216
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Texto CF Ing' = "Operating Costs (OC)"
+		lineageTag: d4018650-e4b4-4075-b166-2945c63724d1
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Texto órgão selecionado Ing' = ```
+			if(HASONEFILTER(CUSTOS_COMPLETO[Órgão]), SELECTEDVALUE(CUSTOS_COMPLETO[Órgão]), 
+			                    if(ISFILTERED(CUSTOS_COMPLETO[Órgão]),SELECTEDVALUE(CUSTOS_COMPLETO[Órgão],"Multiple Selected Agencies"),"Consolidated"))
+			
+			```
+		lineageTag: 19a5baf9-eb71-4402-b40f-dee8711805c2
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Texto ano selecionado Ing' = ```
+			if(HASONEFILTER(CUSTOS_COMPLETO[ID_ANO]), SELECTEDVALUE(CUSTOS_COMPLETO[ID_ANO]), 
+			                    if(ISFILTERED(CUSTOS_COMPLETO[ID_ANO]),SELECTEDVALUE(CUSTOS_COMPLETO[ID_ANO], "Multiple Selected years"),"Consolidated amount since "& min(CUSTOS_COMPLETO[ID_ANO])))
+			```
+		lineageTag: 447b9f3a-a360-4ac6-9672-af815efddcd4
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Texto órgão selecionado Custos Comparaveis Ing' = ```
+			if(HASONEFILTER(CUSTOS_COMPLETO[Órgão]), SELECTEDVALUE(CUSTOS_COMPLETO[Órgão]), 
+			                    if(ISFILTERED(CUSTOS_COMPLETO[Órgão]),SELECTEDVALUE(CUSTOS_COMPLETO[Órgão],"Multiple Selected Agencies"),"Consolidated"))
+			```
+		lineageTag: 3a74bf9b-34af-4302-805e-aee43edbe47a
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Título Força de Trabalho (Média) Ing' = ```
+			
+			 IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[Órgão] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[Órgão] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[Órgão] ) ) > 1,
+			    "Workforce (Average)",
+			    " "
+			) 
+			```
+		lineageTag: b99a1d05-9f03-4200-8f51-b16e491a5e85
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Título Custo per capita Ing' = ```
+			
+			 IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[Órgão] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[Órgão] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[Órgão] ) ) > 1,
+			    "Cost per Capita",
+			    " "
+			) 
+			```
+		lineageTag: c2bbe59c-f897-4014-b8f0-52fd77b38ac0
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Título Evolução do Custo Per Capita Ing' = ```
+			
+			 IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[Órgão] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[Órgão] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[Órgão] ) ) > 1,
+			    "Evolution of Cost Per Capita",
+			    " "
+			) 
+			```
+		lineageTag: 5bb440ce-1501-40c1-9936-bc9137b61881
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Título Custo do Item (CAP) Ing' = ```
+			
+			 IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[Órgão] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[Órgão] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[Órgão] ) ) > 1,
+			    "Cost of Item (CAP)",
+			    " "
+			) 
+			```
+		lineageTag: 8b856c62-1c98-462c-ab29-5f0a743c2e47
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Título Relação Custo do CAP sobre o Custo Total Ing' = ```
+			
+			 IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[Órgão] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[Órgão] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[Órgão] ) ) > 1,
+			    "CAP Cost to Total Cost Ratio",
+			    " ")
+			```
+		lineageTag: 29be1f3b-e1eb-480a-b744-647061a6f395
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Título Desvio do CAP por unidade selecionada Ing' = ```
+			
+			 IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[Órgão] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[Órgão] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[Órgão] ) ) > 1,
+			    "Deviation of CAP per Capita",
+			    " "
+			) 
+			```
+		lineageTag: e61de4ac-1c49-43ec-8e2d-cf89be4ced9d
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Título Proporção de Item de Custo para Cada Unidade Ing' = ```
+			
+			 IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[Órgão] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[Órgão] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[Órgão] ) ) > 1,
+			    "Cost/Item Ratio by Organization",
+			    " "
+			) 
+			```
+		lineageTag: 698d4e4c-5d9b-4943-99ac-4b723d2f1b71
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Texto órgão selecionado Custos de Pessoal Ing' = ```
+			if(HASONEFILTER(CUSTOS_COMPLETO[Órgão]), SELECTEDVALUE(CUSTOS_COMPLETO[Órgão]), 
+			                    if(ISFILTERED(CUSTOS_COMPLETO[Órgão]),SELECTEDVALUE(CUSTOS_COMPLETO[Órgão],"Multiple Selected Agencies"),"Consolidated"))
+			
+			```
+		lineageTag: ed769cb8-4cf5-4c66-87ec-6bb25f463bb9
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Medida 2'
+		lineageTag: 58e8f2b3-a407-410d-9398-778cb9ec323c
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	measure 'Texto Custo Pessoal Ativo por Área de Atuação Ing' = "Cost Activy-Duty Public Servants by Area of ActivitCost Active-Duty Puy"
+		lineageTag: 66dbcd1a-8f8b-4af2-af7c-4eaa7cb9d556
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Cost from Previous Year' =
+			CALCULATE([TOTAL CUSTOS ing],
+			FILTER(ALLEXCEPT(CUSTOS_COMPLETO,CUSTOS_COMPLETO[Órgão],NATUREZA_CUSTO[ITEM_DE_CUSTO_ING],NATUREZA_CUSTO[NATUREZA_DE_CUSTO]),
+			CUSTOS_COMPLETO[ID_ANO] = SELECTEDVALUE(CUSTOS_COMPLETO[ID_ANO])-1
+			&& CUSTOS_COMPLETO[Mês] in VALUES(CUSTOS_COMPLETO[Mês])))
+		displayFolder: Dólar
+		lineageTag: ec78b3c2-430b-4f5a-9a4b-a853978a6c77
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Cost from Selected Year' = CALCULATE(SUM(CUSTOS_COMPLETO[Custo em dolar]),FILTER(CUSTOS_COMPLETO,CUSTOS_COMPLETO[ID_ANO] = SELECTEDVALUE(CUSTOS_COMPLETO[ID_ANO])))
+		displayFolder: Dólar
+		lineageTag: 35e49e3e-684a-4c46-a8c3-8a7c3e3f1f00
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'VariacaoCustoDinamica Ing' = ```
+			
+			    IF([Cost from Previous Year] = 0, 0,([Cost from Selected Year] - [Cost from Previous Year])/ABS([Cost from Previous Year]))
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: e5b493a9-0ac4-4319-8723-2515de1655aa
+
+	measure 'TOTAL CUSTOS ing' = SUM(CUSTOS_COMPLETO[Custo em dolar])
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 27e03347-1607-41a0-bf5d-44f620363be0
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Texto órgão selecionado Esp' = ```
+			if(HASONEFILTER(CUSTOS_COMPLETO[Órgão]), SELECTEDVALUE(CUSTOS_COMPLETO[Órgão]), 
+			                    if(ISFILTERED(CUSTOS_COMPLETO[Órgão]),SELECTEDVALUE(CUSTOS_COMPLETO[Órgão],"Múltiples Órganos Seleccionados"),"Consolidado"))
+			
+			```
+		lineageTag: 3ed66b8e-9e21-4945-80d4-4a2c3c3ca17b
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Texto Controlabilidade dos Custos Esp' = "Controlabilidad de Costos"
+		lineageTag: a339b4d6-7149-411a-b42a-019ff177e341
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Texto Itens de Custo Esp' = "Elementos de costo"
+		lineageTag: 9af62e1b-ba4d-4a3e-9db6-8b3cbfb0e80c
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Texto Custos Atribuídos a Pessoal (CAP) Esp' = "Costos Imputables al Personal (CIP)"
+		lineageTag: 69d24ed4-7c60-4f1b-bd90-83fe6870ca35
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Texto CF Esp' = "Costos de Operación (CO)"
+		lineageTag: 5c0d34e1-feb8-4a8d-944a-bdee9d7f6588
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Costo del Año Anterior' =
+			CALCULATE([Custo em euro_teste],
+			FILTER(ALLEXCEPT(CUSTOS_COMPLETO,CUSTOS_COMPLETO[Órgão],NATUREZA_CUSTO[ITEM_DE_CUSTO_Esp],NATUREZA_CUSTO[NATUREZA_DE_CUSTO]),
+			CUSTOS_COMPLETO[ID_ANO] = SELECTEDVALUE(CUSTOS_COMPLETO[ID_ANO])-1
+			&& CUSTOS_COMPLETO[Mês] in VALUES(CUSTOS_COMPLETO[Mês])))
+		formatString: #,0.00
+		lineageTag: f96212d7-14b9-4f6e-9aa3-398801c8cf07
+
+	measure 'TOTAL CUSTOS esp' = SUM(CUSTOS_COMPLETO[Custo em euro])
+		lineageTag: 598b62e3-455c-4e0c-b7ff-640f9131fccd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Costo del Año Seleccionado' = CALCULATE([Custo em euro_teste],FILTER(CUSTOS_COMPLETO,CUSTOS_COMPLETO[ID_ANO] = SELECTEDVALUE(CUSTOS_COMPLETO[ID_ANO])))
+		lineageTag: 62e7ca47-a271-4717-b908-96afa6f60bb2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Custos CAP Ing' = CALCULATE(SUM(CUSTOS_COMPLETO[Custo em dolar]),NATUREZA_CUSTO[Custos Atribuídos a Pessoal] = "Apenas CAP")
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Dólar
+		lineageTag: a6d0af46-7dd9-487a-af31-414b181fef71
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'CUSTOS CAP PER CAPITA Ing' = divide([Custos CAP Ing],[Força de Trabalho mais recente],0)
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		displayFolder: Dólar
+		lineageTag: 0b5b6e26-c778-4b37-a832-91ef4c6ccddd
+
+	measure 'Custo Total SEM CAP Ing' = CALCULATE(SUM(CUSTOS_COMPLETO[Custo em dolar]),ALL(CUSTOS_COMPLETO[ITEM_CUSTO]),NATUREZA_CUSTO[Custos Atribuídos a Pessoal] = "Sem CAP")
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: Dólar
+		lineageTag: 8df01c32-a395-4506-8ad5-9b7775e4cbe4
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Título Força de Trabalho (Média) Esp' = ```
+			
+			 IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[Órgão] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[Órgão] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[Órgão] ) ) > 1,
+			    "Fuerza Laboral (Promedio)",
+			    " "
+			) 
+			```
+		lineageTag: b089271d-4c0e-4d02-9b0b-dfc3dca159ff
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Título Custo do Item (CAP) Esp' = ```
+			
+			 IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[Órgão] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[Órgão] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[Órgão] ) ) > 1,
+			    "Costo del Elemento (CIP)",
+			    " "
+			)
+			```
+		lineageTag: 3a7b1779-c482-48b3-ae95-513d2492f544
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Custos CAP Esp' = CALCULATE([Custo em euro_teste],NATUREZA_CUSTO[Custos Atribuídos a Pessoal] = "Apenas CAP")
+		formatString: "€"\ #,0.00;-"€"\ #,0.00;"€"\ #,0.00
+		lineageTag: fed909bc-ad1e-4b0d-8f8b-e9cc556a81e6
+
+	measure 'Título Custo per capita Esp' = ```
+			
+			 IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[Órgão] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[Órgão] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[Órgão] ) ) > 1,
+			    "Costo per Cápita",
+			    " "
+			)
+			```
+		lineageTag: df7c0469-6c51-4bd4-a6fd-d0c11d57da99
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'CUSTOS CAP PER CAPITA Esp' = divide([Custos CAP Esp],[Força de Trabalho mais recente],0)
+		formatString: "€"\ #,0.00;-"€"\ #,0.00;"€"\ #,0.00
+		lineageTag: 06dd3c8d-7a13-4052-b913-e4ea0061d18f
+
+	measure 'Custo Total SEM CAP Esp' = CALCULATE(SUM(CUSTOS_COMPLETO[Custo em euro]),ALL(CUSTOS_COMPLETO[ITEM_CUSTO]),NATUREZA_CUSTO[Custos Atribuídos a Pessoal] = "Sem CAP")
+		lineageTag: a0891616-ebde-4665-859a-f05ee59110ae
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Título Desvio do CAP por unidade selecionada Esp' = ```
+			
+			 IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[Órgão] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[Órgão] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[Órgão] ) ) > 1,
+			    "Desviación de CIP per Cápita",
+			    " "
+			) 
+			```
+		lineageTag: 963c3557-46c1-46fa-9816-585cf6ba8fca
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Texto Custo Pessoal Ativo por Área de Atuação Esp' = "Costo de Personal Activo por Área de Actividad"
+		lineageTag: dd6c68bb-9787-45cd-9d1c-aa70bb810d8e
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'info selecione 2 orgãos (esp)' =
+			IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[Órgão] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[Órgão] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[Órgão] ) ) > 1,
+			    " ",
+			    "Seleccione al menos dos órganos para comparar"
+			)
+		lineageTag: a9c4e7f7-22c1-4a42-8940-847b996dafd7
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Info Variação (esp)' =
+			
+			IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[ID_ANO] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[ID_ANO] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[ID_ANO] ) ) = 1,
+			    " ", if (COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[ID_ANO] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[ID_ANO] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[ID_ANO] ) ) >= 2,
+			    "Seleccione solamente um año para la comparación",
+			    "Seleccione um año para la comparación"
+			))
+		lineageTag: 0f1c8db4-c1a0-4f60-a11e-162b558d88b4
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Titulo Variação (esp)' = ```
+			
+			 IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[ID_ANO] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[ID_ANO] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[ID_ANO] ) ) > 0,
+			    "Variación del Año Seleccionado frente al Año Anterior (€)",
+			    " "
+			)
+			```
+		lineageTag: 9a25d8b7-d6fd-46ea-a6d5-ef19359bf137
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Titulo Variação (ing)' = ```
+			
+			 IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[ID_ANO] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[ID_ANO] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[ID_ANO] ) ) > 0,
+			    "Variation Selected Year vs. Previous Year (US$)",
+			    " "
+			)
+			```
+		lineageTag: 40e49737-d9a1-4226-bb0e-8fd44d52b6b3
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Título Evolução do Custo Per Capita Esp' = ```
+			
+			 IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[Órgão] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[Órgão] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[Órgão] ) ) > 1,
+			    "Evolución del Costo Per Cápita",
+			    " "
+			) 
+			```
+		lineageTag: 180373d4-a421-4fda-982f-eea6641c559e
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Título Relação Custo do CAP sobre o Custo Total Esp' = ```
+			
+			 IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[Órgão] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[Órgão] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[Órgão] ) ) > 1,
+			    "Relación de Costo del CIP sobre el Costo Total",
+			    " ")
+			```
+		lineageTag: ff8fbcb7-8f09-4a54-85d6-5901d83b1b6f
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Título Proporção de Item de Custo para Cada Unidade Esp' = ```
+			
+			 IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[Órgão] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[Órgão] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[Órgão] ) ) > 1,
+			    "Proporción de Elementos de Costo por Organización",
+			    " "
+			)
+			```
+		lineageTag: b9a1a046-948a-4662-bbb4-2726376616fa
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure Custos_US = CALCULATE(sum(CUSTOS_COMPLETO[CUSTO])*sum(MVW_VALOR_MOEDA[VA_COMPRA]),USERELATIONSHIP(CUSTOS_COMPLETO[DATA],MVW_VALOR_MOEDA[Data]),MVW_MOEDA[NO_MOEDA]="Dolar")
+		lineageTag: fd51c69e-9724-4c7f-946d-b0359f224d0e
+
+	measure 'dolar filtrado' = ```
+			
+			    var mesDolar = MAX(Valor_Moeda[DT_VALOR_MOEDA])
+			    var mesCusto = MAX(Aux_Calendario[Mês])
+			    var anoCusto = MAX(Aux_Calendario[Ano])
+			    var tbl_dolar = FILTER(Valor_Moeda,Valor_Moeda[ID_MOEDA]=220)
+			    var maxValorDolar = CALCULATE(MAX(Valor_Moeda[VA_VENDA]),FILTER(tbl_dolar,AND(MAX(Aux_Calendario[Mês])=mesCusto,MAX(Aux_Calendario[Ano])=anoCusto)))
+			
+			
+			return
+			
+			 maxValorDolar
+			```
+		lineageTag: b7ec5f84-91c0-4c74-99a6-a2a18eee4e25
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'euro filtrado' = ```
+			
+			    var mesEuro = MAX(Valor_Moeda[DT_VALOR_MOEDA])
+			    var mesCusto = MAX(Aux_Calendario[Mês])
+			    var anoCusto = MAX(Aux_Calendario[Ano])
+			    var tbl_euro = FILTER(Valor_Moeda,Valor_Moeda[ID_MOEDA]=978)
+			    var maxValorEuro = CALCULATE(MAX(Valor_Moeda[VA_VENDA]),FILTER(tbl_euro,AND(MAX(Aux_Calendario[Mês])=mesCusto,MAX(Aux_Calendario[Ano])=anoCusto)))
+			
+			
+			return
+			
+			 maxValorEuro
+			```
+		lineageTag: 9e9004d8-b00e-4262-85e8-d8eb1d3a17f6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Custo em euro_teste' = CALCULATE(sum(CUSTOS_COMPLETO[CUSTO]))/[euro filtrado]
+		formatString: "€"\ #,0.00;-"€"\ #,0.00;"€"\ #,0.00
+		lineageTag: d52cca47-46a6-43a0-8d05-861747333760
+
+	measure 'info selecione 2 orgãos ING' =
+			IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[Órgão] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[Órgão] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[Órgão] ) ) > 1,
+			    " ",
+			    "Select at least two agencies for comparison")
+		lineageTag: 469a059f-34b2-4324-b252-43c01d9db18f
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure VariacaoCustoDinamica_esp = ```
+			
+			    IF([Costo del Año Anterior] = 0, "",([Costo del Año Seleccionado]- [Costo del Año Anterior])/abs([Costo del Año Anterior]))
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 07f27e32-876b-42d6-be41-1a731a5aae37
+
+	measure 'Custo em dolar_teste' = CALCULATE(sum(CUSTOS_COMPLETO[CUSTO]))/[dolar filtrado]
+		lineageTag: a15c322a-05af-4c71-9d26-64ad1acb0bfd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Info Variação ing' =
+			
+			IF (
+			    COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[ID_ANO] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[ID_ANO] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[ID_ANO] ) ) = 1,
+			    " ", if (COUNTROWS(ALLSELECTED ( CUSTOS_COMPLETO[ID_ANO] )) <> COUNTROWS(ALL ( CUSTOS_COMPLETO[ID_ANO] ))
+			        && COUNTROWS ( ALLSELECTED ( CUSTOS_COMPLETO[ID_ANO] ) ) >= 2,
+			    "Select only one year for comparison",
+			    "Select a year for comparison"
+			))
+		lineageTag: 1dea2a24-cc48-4bb2-a5f0-48d0911a4cbd
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Texto ano selecionado Esp' = ```
+			if(HASONEFILTER(CUSTOS_COMPLETO[ID_ANO]), SELECTEDVALUE(CUSTOS_COMPLETO[ID_ANO]), 
+			                    if(ISFILTERED(CUSTOS_COMPLETO[ID_ANO]),SELECTEDVALUE(CUSTOS_COMPLETO[ID_ANO],"Múltiples Órganos Seleccionados"),"Cifras consolidadas desde "& min(CUSTOS_COMPLETO[ID_ANO])))
+			```
+		lineageTag: a98ef42c-b7e4-459e-aa97-1b6553bd0f44
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure 'Custo Pessoal em Euro' = CALCULATE(sum(ATRIBUTOS_PESSOAL[CUSTO]))/[euro filtrado]
+		formatString: "€"\ #,0.00;-"€"\ #,0.00;"€"\ #,0.00
+		lineageTag: ed007e8c-123b-4119-8fb4-82e1dfb7bd94
+
+	measure 'Custo Pessoal em Dolar' = CALCULATE(sum(ATRIBUTOS_PESSOAL[CUSTO]))/[dolar filtrado]
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 567f140f-b2ff-4e84-9458-dd4904b1b152
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column Medidas
+		dataType: string
+		lineageTag: 4c8a13d1-b13e-49ca-9467-0bf90541c823
+		summarizeBy: none
+		sourceColumn: Medidas
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	partition #Medidas-d0c16169-fb5b-4333-9a6a-60f711c4e071 = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type text) meta [Serialized.Text = true]) in type table [Medidas = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Medidas", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+

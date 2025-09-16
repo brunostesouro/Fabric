@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "DPOF 2024 - PBI PRO"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f2405f92-b2ca-8ec6-4fd2-39914f466949"
+  }
+}

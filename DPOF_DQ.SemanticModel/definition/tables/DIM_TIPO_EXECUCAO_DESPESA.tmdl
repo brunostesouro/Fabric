@@ -1,0 +1,41 @@
+table DIM_TIPO_EXECUCAO_DESPESA
+	lineageTag: e7d05f8a-91f7-4a6e-9f08-735133dea834
+
+	column ID_TIPO_EXECUCAO_DESPESA
+		dataType: double
+		sourceProviderType: Decimal(38, 127)
+		lineageTag: 90995a84-ecc4-4947-81fc-1211f46c0859
+		summarizeBy: none
+		sourceColumn: ID_TIPO_EXECUCAO_DESPESA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NO_TIPO_EXECUCAO_DESPESA
+		dataType: string
+		sourceProviderType: Varchar2
+		lineageTag: 83e86f97-8861-4dba-aa0e-f75dc8164af3
+		summarizeBy: none
+		sourceColumn: NO_TIPO_EXECUCAO_DESPESA
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipo desp' = DIM_TIPO_EXECUCAO_DESPESA[ID_TIPO_EXECUCAO_DESPESA] &" - "& DIM_TIPO_EXECUCAO_DESPESA[NO_TIPO_EXECUCAO_DESPESA]
+		lineageTag: ec6f0492-be75-478a-8dcf-323724974312
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_TIPO_EXECUCAO_DESPESA = m
+		mode: directQuery
+		source =
+				let
+				    Fonte = Oracle.Database("exastncl03-tlm0m-scan.prosubnet.vcndados.oraclevcn.com/DWPROD.prosubnet.vcndados.oraclevcn.com", [HierarchicalNavigation=true]),
+				    DEV_SIGEFI = Fonte{[Schema="DEV_SIGEFI"]}[Data],
+				    DIM_TIPO_EXECUCAO_DESPESA1 = DEV_SIGEFI{[Name="DIM_TIPO_EXECUCAO_DESPESA"]}[Data]
+				in
+				    DIM_TIPO_EXECUCAO_DESPESA1
+
+	annotation PBI_ResultType = Table
+

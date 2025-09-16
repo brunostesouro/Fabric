@@ -1,0 +1,45 @@
+table Valor_Moeda
+	lineageTag: 0a4e575d-8e17-4f3e-ab1d-e33954079b4f
+
+	column DT_VALOR_MOEDA
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b51bfd58-9811-45dc-9d77-c7a0b9104550
+		summarizeBy: none
+		sourceColumn: DT_VALOR_MOEDA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column VA_VENDA
+		dataType: double
+		lineageTag: 03d6e03b-7fb3-4dec-ac8b-a1dfa618dd20
+		summarizeBy: sum
+		sourceColumn: VA_VENDA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ID_MOEDA
+		dataType: int64
+		formatString: 0
+		lineageTag: a9a0baeb-8381-4482-a60c-6612f963cba2
+		summarizeBy: sum
+		sourceColumn: ID_MOEDA
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Valor_Moeda-32cf9ca0-6f8c-45a1-9f0a-7f22a8337b6e = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.Combine({#"Mescla Euro", #"Mescla Dolar"}),
+				    #"Linhas Classificadas" = Table.Sort(Fonte,{{"DT_VALOR_MOEDA", Order.Descending}}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Linhas Classificadas", each [DT_VALOR_MOEDA] > #date(2014, 12, 31))
+				in
+				    #"Linhas Filtradas"
+
+	annotation PBI_ResultType = Table
+

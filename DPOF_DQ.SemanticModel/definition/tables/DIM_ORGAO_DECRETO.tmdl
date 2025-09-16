@@ -1,0 +1,84 @@
+table DIM_ORGAO_DECRETO
+	lineageTag: 2f6f8ccd-f5c1-4945-a96e-b0c5b60bc3c0
+
+	column ID_ORGAO_DECRETO_SK
+		dataType: string
+		isNullable: false
+		sourceProviderType: Decimal(38, 0)
+		lineageTag: 6b03db6a-b05f-4fa1-aed9-76261cf38c16
+		summarizeBy: none
+		sourceColumn: ID_ORGAO_DECRETO_SK
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO_ORGAO_DECRETO
+		dataType: string
+		sourceProviderType: Varchar2
+		lineageTag: 2564b3c6-6236-4358-b051-1b7976c41f0c
+		summarizeBy: none
+		sourceColumn: CO_ORGAO_DECRETO
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_ORGAO_DECRETO_ABREVIADO
+		dataType: string
+		sourceProviderType: Varchar2
+		lineageTag: 3240c887-8f76-4357-8216-f2425293153f
+		summarizeBy: none
+		sourceColumn: NO_ORGAO_DECRETO_ABREVIADO
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_ORGAO_DECRETO
+		dataType: string
+		sourceProviderType: Varchar2
+		lineageTag: adcaa0c1-aba5-49c2-81f1-30b02e5421fd
+		summarizeBy: none
+		sourceColumn: NO_ORGAO_DECRETO
+
+		annotation SummarizationSetBy = Automatic
+
+	column DT_ATUALIZACAO
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: Date
+		lineageTag: b865f3fe-af0f-467a-9cd5-cfe216046698
+		summarizeBy: none
+		sourceColumn: DT_ATUALIZACAO
+
+		annotation SummarizationSetBy = Automatic
+
+	column AN_EXERCICIO
+		dataType: double
+		sourceProviderType: Int16
+		lineageTag: a4334482-262a-43cb-90a9-066e425e0136
+		summarizeBy: sum
+		sourceColumn: AN_EXERCICIO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CO_NO_ORGAO_DECRETO_ABREV
+		dataType: string
+		sourceProviderType: Varchar2
+		lineageTag: 35bd432d-58b4-4289-938c-9b86b0922a05
+		summarizeBy: none
+		sourceColumn: CO_NO_ORGAO_DECRETO_ABREV
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_ORGAO_DECRETO = m
+		mode: directQuery
+		source =
+				let
+				    Fonte = Oracle.Database("exastncl03-tlm0m-scan.prosubnet.vcndados.oraclevcn.com/DWPROD.prosubnet.vcndados.oraclevcn.com", [HierarchicalNavigation=true]),
+				    DEV_SIGEFI = Fonte{[Schema="DEV_SIGEFI"]}[Data],
+				    DIM_ORGAO_DECRETO1 = DEV_SIGEFI{[Name="DIM_ORGAO_DECRETO"]}[Data]
+				in
+				    DIM_ORGAO_DECRETO1
+
+	annotation PBI_ResultType = Table
+

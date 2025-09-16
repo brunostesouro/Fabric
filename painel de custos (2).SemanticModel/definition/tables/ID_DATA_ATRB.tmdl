@@ -1,0 +1,36 @@
+table ID_DATA_ATRB
+	lineageTag: 8f24d5e4-3367-46d3-b576-ac6ba1519280
+
+	column SK_ATRIBUTOS
+		dataType: string
+		lineageTag: 5b46208b-ba39-4eb3-9082-5ca2478e177c
+		summarizeBy: none
+		sourceColumn: SK_ATRIBUTOS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	partition ID_DATA_ATRB-68698df8-9bd0-43c5-8287-d25500b0b52f = m
+		mode: import
+		source =
+				let
+				    Fonte = Oracle.Database("exastncl03-tlm0m-scan.prosubnet.vcndados.oraclevcn.com/DWPROD.prosubnet.vcndados.oraclevcn.com", [HierarchicalNavigation=true]),
+				    DEV_CUSTOS = Fonte{[Schema="PRD_CUSTOS"]}[Data],
+				    ATRIBUTOS_PESSOAL1 = DEV_CUSTOS{[Name="PAINEL_ATRIBUTOS_PESSOAL"]}[Data],
+				    #"Colunas Renomeadas" = Table.RenameColumns(ATRIBUTOS_PESSOAL1,{{"FORADETRABALHOSERVIDORESATIVO", "FORCA_TRABALHO"}}),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Colunas Renomeadas", "SG_MES_COMPLETO", "SG_MES_COMPLETO - Copiar"),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Coluna Duplicada",{{"SG_MES_COMPLETO - Copiar", "DATA"}}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Colunas Renomeadas1",{{"DATA", type date}}),
+				    #"Colunas Reordenadas" = Table.ReorderColumns(#"Tipo Alterado",{"CO_ORG_CONCAT", "ID_ANO_LANC", "ID_MES_LANC", "SG_MES_COMPLETO", "DATA", "NOME_ESCOLARIDADE", "NOME_FAIXA_ETARIA", "NOME_SEXO", "FORCA_TRABALHO", "DS_AREA_ATUACAO_SIORG"}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Colunas Reordenadas",{"CO_ORG_CONCAT", "ID_ANO_LANC", "ID_MES_LANC", "SG_MES_COMPLETO", "NOME_ESCOLARIDADE", "NOME_FAIXA_ETARIA", "NOME_SEXO", "FORCA_TRABALHO", "DS_AREA_ATUACAO_SIORG"}),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Colunas Removidas"),
+				    #"Duplicatas Removidas1" = Table.Distinct(#"Duplicatas Removidas"),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Duplicatas Removidas1", each true),
+				    #"Colunas Removidas1" = Table.RemoveColumns(#"Linhas Filtradas",{"DATA", "CUSTO"}),
+				    #"Duplicatas Removidas2" = Table.Distinct(#"Colunas Removidas1")
+				in
+				    #"Duplicatas Removidas2"
+
+	annotation PBI_ResultType = Table
+

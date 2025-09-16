@@ -1,0 +1,3650 @@
+{
+  "name": "{{Dataset_Name}}",
+  "compatibilityLevel": 1604,
+  "model": {
+    "name": "{{Dataset_Name}}",
+    "culture": "en-US",
+    "collation": "Latin1_General_100_BIN2_UTF8",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "Aux - Limites",
+        "sourceLineageTag": "[dbo].[Aux - Limites]",
+        "columns": [
+          {
+            "name": "Anexo Genef",
+            "dataType": "string",
+            "sourceColumn": "Anexo Genef",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Anexo Genef",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Anexo Gepof",
+            "dataType": "string",
+            "sourceColumn": "Anexo Gepof",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Anexo Gepof",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "Aux - Limites",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "Aux - Mês",
+        "sourceLineageTag": "[dbo].[Aux - Mês]",
+        "columns": [
+          {
+            "name": "Cód. Mês-1",
+            "dataType": "int64",
+            "sourceColumn": "Cód. Mês-1",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Cód. Mês-1",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Cód. Mês-2",
+            "dataType": "int64",
+            "sourceColumn": "Cód. Mês-2",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Cód. Mês-2",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Nome Mês",
+            "dataType": "string",
+            "sourceColumn": "Nome Mês",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Nome Mês",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Cód. Nome Mês",
+            "dataType": "string",
+            "sourceColumn": "Cód. Nome Mês",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Cód. Nome Mês",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Mês",
+            "dataType": "string",
+            "sourceColumn": "Mês",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Mês",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Data",
+            "dataType": "dateTime",
+            "sourceColumn": "Data",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "Data",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Cód. Nome Mês Completo",
+            "dataType": "string",
+            "sourceColumn": "Cód. Nome Mês Completo",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Cód. Nome Mês Completo",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Mês 2023",
+            "dataType": "string",
+            "sourceColumn": "Mês 2023",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Mês 2023",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Data 2023",
+            "dataType": "dateTime",
+            "sourceColumn": "Data 2023",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "Data 2023",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IN_PERIODO",
+            "dataType": "int64",
+            "sourceColumn": "IN_PERIODO",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "IN_PERIODO",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Mês_1",
+            "dataType": "string",
+            "sourceColumn": "Mês_1",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Mês_1",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "Aux - Mês",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "Aux - orgaos",
+        "sourceLineageTag": "[dbo].[Aux - orgaos]",
+        "columns": [
+          {
+            "name": "CO_ORGAO_DECRETO",
+            "dataType": "string",
+            "sourceColumn": "CO_ORGAO_DECRETO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "CO_ORGAO_DECRETO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_ORGAO_DECRETO_SK",
+            "dataType": "string",
+            "sourceColumn": "ID_ORGAO_DECRETO_SK",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ID_ORGAO_DECRETO_SK",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "Aux - orgaos",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "DIM_ACAO_ORCAMENTARIA",
+        "sourceLineageTag": "[dbo].[DIM_ACAO_ORCAMENTARIA]",
+        "columns": [
+          {
+            "name": "ID_ACAO_ORCAMENTARIA",
+            "dataType": "string",
+            "sourceColumn": "ID_ACAO_ORCAMENTARIA",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ID_ACAO_ORCAMENTARIA",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "NO_ACAO_ORCAMENTARIA",
+            "dataType": "string",
+            "sourceColumn": "NO_ACAO_ORCAMENTARIA",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "NO_ACAO_ORCAMENTARIA",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "DIM_ACAO_ORCAMENTARIA",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "DIM_ANEXO_DECRETO",
+        "sourceLineageTag": "[dbo].[DIM_ANEXO_DECRETO]",
+        "columns": [
+          {
+            "name": "ID_ANEXO_DECRETO_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_ANEXO_DECRETO_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_ANEXO_DECRETO_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "NO_ANEXO_DECRETO",
+            "dataType": "string",
+            "sourceColumn": "NO_ANEXO_DECRETO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "NO_ANEXO_DECRETO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "NR_ORDEM_ANEXO",
+            "dataType": "string",
+            "sourceColumn": "NR_ORDEM_ANEXO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "NR_ORDEM_ANEXO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "NO_FORMATADO",
+            "dataType": "string",
+            "sourceColumn": "NO_FORMATADO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "NO_FORMATADO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "DS_ANEXO_DECRETO",
+            "dataType": "string",
+            "sourceColumn": "DS_ANEXO_DECRETO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "DS_ANEXO_DECRETO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IN_TIPO_ANEXO",
+            "dataType": "double",
+            "sourceColumn": "IN_TIPO_ANEXO",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "IN_TIPO_ANEXO",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "AN_EXERCICIO",
+            "dataType": "double",
+            "sourceColumn": "AN_EXERCICIO",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "AN_EXERCICIO",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "IN_TIPO_LIMITE",
+            "dataType": "string",
+            "sourceColumn": "IN_TIPO_LIMITE",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "IN_TIPO_LIMITE",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SN_AFETA_LIMITE",
+            "dataType": "double",
+            "sourceColumn": "SN_AFETA_LIMITE",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "SN_AFETA_LIMITE",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ID_MARCA_CLASSIFICACAO_DESP_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_MARCA_CLASSIFICACAO_DESP_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_MARCA_CLASSIFICACAO_DESP_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ID_MARCA_CLASS_PAGTO_EFET_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_MARCA_CLASS_PAGTO_EFET_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_MARCA_CLASS_PAGTO_EFET_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "DIM_ANEXO_DECRETO",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "DIM_ANEXO_DECRETO_DESP",
+        "sourceLineageTag": "[dbo].[DIM_ANEXO_DECRETO_DESP]",
+        "columns": [
+          {
+            "name": "IS_ANEXO_DECRETO_DESP",
+            "dataType": "double",
+            "sourceColumn": "IS_ANEXO_DECRETO_DESP",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "IS_ANEXO_DECRETO_DESP",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ID_ANEXO_DECRETO_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_ANEXO_DECRETO_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_ANEXO_DECRETO_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "NO_ANEXO_DECRETO",
+            "dataType": "string",
+            "sourceColumn": "NO_ANEXO_DECRETO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "NO_ANEXO_DECRETO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "NR_ORDEM_ANEXO",
+            "dataType": "string",
+            "sourceColumn": "NR_ORDEM_ANEXO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "NR_ORDEM_ANEXO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "NO_FORMATADO",
+            "dataType": "string",
+            "sourceColumn": "NO_FORMATADO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "NO_FORMATADO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "DS_ANEXO_DECRETO",
+            "dataType": "string",
+            "sourceColumn": "DS_ANEXO_DECRETO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "DS_ANEXO_DECRETO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IN_TIPO_ANEXO",
+            "dataType": "double",
+            "sourceColumn": "IN_TIPO_ANEXO",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "IN_TIPO_ANEXO",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "AN_EXERCICIO",
+            "dataType": "double",
+            "sourceColumn": "AN_EXERCICIO",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "AN_EXERCICIO",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "IN_TIPO_LIMITE",
+            "dataType": "string",
+            "sourceColumn": "IN_TIPO_LIMITE",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "IN_TIPO_LIMITE",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SN_AFETA_LIMITE",
+            "dataType": "double",
+            "sourceColumn": "SN_AFETA_LIMITE",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "SN_AFETA_LIMITE",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ID_MARCA_CLASSIFICACAO_DESP_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_MARCA_CLASSIFICACAO_DESP_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_MARCA_CLASSIFICACAO_DESP_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ID_MARCA_CLASS_PAGTO_EFET_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_MARCA_CLASS_PAGTO_EFET_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_MARCA_CLASS_PAGTO_EFET_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "DIM_ANEXO_DECRETO_DESP",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "DIM_CALENDARIO",
+        "sourceLineageTag": "[dbo].[DIM_CALENDARIO]",
+        "columns": [
+          {
+            "name": "DT_CALENDARIO",
+            "dataType": "dateTime",
+            "sourceColumn": "DT_CALENDARIO",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "DT_CALENDARIO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "DIA_MES",
+            "dataType": "string",
+            "sourceColumn": "DIA_MES",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "DIA_MES",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "MES_ANO",
+            "dataType": "string",
+            "sourceColumn": "MES_ANO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "MES_ANO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "DIA",
+            "dataType": "double",
+            "sourceColumn": "DIA",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "DIA",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "MES",
+            "dataType": "double",
+            "sourceColumn": "MES",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "MES",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ANO",
+            "dataType": "double",
+            "sourceColumn": "ANO",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ANO",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "NO_MES",
+            "dataType": "string",
+            "sourceColumn": "NO_MES",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "NO_MES",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "NO_MES_ANO_ABV",
+            "dataType": "string",
+            "sourceColumn": "NO_MES_ANO_ABV",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "NO_MES_ANO_ABV",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SN_FIM_SEMANA",
+            "dataType": "string",
+            "sourceColumn": "SN_FIM_SEMANA",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SN_FIM_SEMANA",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "NO_DECENDIO",
+            "dataType": "string",
+            "sourceColumn": "NO_DECENDIO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "NO_DECENDIO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "VA_DECENDIO",
+            "dataType": "double",
+            "sourceColumn": "VA_DECENDIO",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "VA_DECENDIO",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "NO_FERIADO",
+            "dataType": "string",
+            "sourceColumn": "NO_FERIADO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "NO_FERIADO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "DIM_CALENDARIO",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "DIM_FONTE_RECURSO",
+        "sourceLineageTag": "[dbo].[DIM_FONTE_RECURSO]",
+        "columns": [
+          {
+            "name": "CO_GRUPO_FONTE_RECURSO_DECRETO",
+            "dataType": "string",
+            "sourceColumn": "CO_GRUPO_FONTE_RECURSO_DECRETO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "CO_GRUPO_FONTE_RECURSO_DECRETO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SN_FONTE_VINCULADA",
+            "dataType": "double",
+            "sourceColumn": "SN_FONTE_VINCULADA",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "SN_FONTE_VINCULADA",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "SN_ABERTURA_FONTE",
+            "dataType": "double",
+            "sourceColumn": "SN_ABERTURA_FONTE",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "SN_ABERTURA_FONTE",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "TX_OBSERVACAO_RELATORIO",
+            "dataType": "string",
+            "sourceColumn": "TX_OBSERVACAO_RELATORIO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "TX_OBSERVACAO_RELATORIO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CO_FONTE_RECURSO",
+            "dataType": "string",
+            "sourceColumn": "CO_FONTE_RECURSO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "CO_FONTE_RECURSO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "NO_FONTE_RECURSO",
+            "dataType": "string",
+            "sourceColumn": "NO_FONTE_RECURSO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "NO_FONTE_RECURSO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "DT_CRIACAO",
+            "dataType": "dateTime",
+            "sourceColumn": "DT_CRIACAO",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "DT_CRIACAO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "DIM_FONTE_RECURSO",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "DIM_GRUPO_DESPESA",
+        "sourceLineageTag": "[dbo].[DIM_GRUPO_DESPESA]",
+        "columns": [
+          {
+            "name": "ID_GRUPO_DESPESA",
+            "dataType": "double",
+            "sourceColumn": "ID_GRUPO_DESPESA",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_GRUPO_DESPESA",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "NO_GRUPO_DESPESA",
+            "dataType": "string",
+            "sourceColumn": "NO_GRUPO_DESPESA",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "NO_GRUPO_DESPESA",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "DIM_GRUPO_DESPESA",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "DIM_GRUPO_FONTE",
+        "sourceLineageTag": "[dbo].[DIM_GRUPO_FONTE]",
+        "columns": [
+          {
+            "name": "ID_GRUPO_FONTE",
+            "dataType": "double",
+            "sourceColumn": "ID_GRUPO_FONTE",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_GRUPO_FONTE",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "NO_GRUPO_FONTE",
+            "dataType": "string",
+            "sourceColumn": "NO_GRUPO_FONTE",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "NO_GRUPO_FONTE",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "DIM_GRUPO_FONTE",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "DIM_MARCA_CLASSIFICACAO",
+        "sourceLineageTag": "[dbo].[DIM_MARCA_CLASSIFICACAO]",
+        "columns": [
+          {
+            "name": "ID_MARCA_CLASSIFICACAO_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_MARCA_CLASSIFICACAO_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_MARCA_CLASSIFICACAO_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "NO_MARCA_CLASSIFICACAO",
+            "dataType": "string",
+            "sourceColumn": "NO_MARCA_CLASSIFICACAO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "NO_MARCA_CLASSIFICACAO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IN_MARCA_CLASSIFICACAO",
+            "dataType": "string",
+            "sourceColumn": "IN_MARCA_CLASSIFICACAO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "IN_MARCA_CLASSIFICACAO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "NO_MARCA_PUBLICACAO",
+            "dataType": "string",
+            "sourceColumn": "NO_MARCA_PUBLICACAO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "NO_MARCA_PUBLICACAO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IN_GRUPO_MENSAGEM_SOTN",
+            "dataType": "double",
+            "sourceColumn": "IN_GRUPO_MENSAGEM_SOTN",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "IN_GRUPO_MENSAGEM_SOTN",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "NR_PRIORIDADE",
+            "dataType": "double",
+            "sourceColumn": "NR_PRIORIDADE",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "NR_PRIORIDADE",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "IN_TIPO_LANCAMENTO_SUBCONTA",
+            "dataType": "string",
+            "sourceColumn": "IN_TIPO_LANCAMENTO_SUBCONTA",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "IN_TIPO_LANCAMENTO_SUBCONTA",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IN_TIPO_LANCAMENTO_SUBCON_DEST",
+            "dataType": "string",
+            "sourceColumn": "IN_TIPO_LANCAMENTO_SUBCON_DEST",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "IN_TIPO_LANCAMENTO_SUBCON_DEST",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SN_PRIMARIO",
+            "dataType": "double",
+            "sourceColumn": "SN_PRIMARIO",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "SN_PRIMARIO",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "DIM_MARCA_CLASSIFICACAO",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "DIM_ORGAO_DECRETO",
+        "sourceLineageTag": "[dbo].[DIM_ORGAO_DECRETO]",
+        "columns": [
+          {
+            "name": "ID_ORGAO_DECRETO_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_ORGAO_DECRETO_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_ORGAO_DECRETO_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "CO_ORGAO_DECRETO",
+            "dataType": "string",
+            "sourceColumn": "CO_ORGAO_DECRETO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "CO_ORGAO_DECRETO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "NO_ORGAO_DECRETO_ABREVIADO",
+            "dataType": "string",
+            "sourceColumn": "NO_ORGAO_DECRETO_ABREVIADO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "NO_ORGAO_DECRETO_ABREVIADO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "NO_ORGAO_DECRETO",
+            "dataType": "string",
+            "sourceColumn": "NO_ORGAO_DECRETO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "NO_ORGAO_DECRETO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "DT_ATUALIZACAO",
+            "dataType": "dateTime",
+            "sourceColumn": "DT_ATUALIZACAO",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "DT_ATUALIZACAO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "AN_EXERCICIO",
+            "dataType": "double",
+            "sourceColumn": "AN_EXERCICIO",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "AN_EXERCICIO",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "CO_NO_ORGAO_DECRETO_ABREV",
+            "dataType": "string",
+            "sourceColumn": "CO_NO_ORGAO_DECRETO_ABREV",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "CO_NO_ORGAO_DECRETO_ABREV",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "DIM_ORGAO_DECRETO",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "DIM_ORGAO_MAXIMO_UO",
+        "sourceLineageTag": "[dbo].[DIM_ORGAO_MAXIMO_UO]",
+        "columns": [
+          {
+            "name": "CO_ORGAO_MAXIMO_UO",
+            "dataType": "string",
+            "sourceColumn": "CO_ORGAO_MAXIMO_UO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "CO_ORGAO_MAXIMO_UO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "NO_ORGAO_UO",
+            "dataType": "string",
+            "sourceColumn": "NO_ORGAO_UO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "NO_ORGAO_UO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "DIM_ORGAO_MAXIMO_UO",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "DIM_RESULTADO_EOF",
+        "sourceLineageTag": "[dbo].[DIM_RESULTADO_EOF]",
+        "columns": [
+          {
+            "name": "ID_RESULTADO_EOF",
+            "dataType": "double",
+            "sourceColumn": "ID_RESULTADO_EOF",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_RESULTADO_EOF",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "NO_RESULTADO_EOF",
+            "dataType": "string",
+            "sourceColumn": "NO_RESULTADO_EOF",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "NO_RESULTADO_EOF",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "DIM_RESULTADO_EOF",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "DIM_TIPO_CREDITO",
+        "sourceLineageTag": "[dbo].[DIM_TIPO_CREDITO]",
+        "columns": [
+          {
+            "name": "ID_TIPO_CREDITO",
+            "dataType": "string",
+            "sourceColumn": "ID_TIPO_CREDITO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ID_TIPO_CREDITO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "NO_TIPO_CREDITO",
+            "dataType": "string",
+            "sourceColumn": "NO_TIPO_CREDITO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "NO_TIPO_CREDITO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "DIM_TIPO_CREDITO",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "DIM_TIPO_EXECUCAO_DESPESA",
+        "sourceLineageTag": "[dbo].[DIM_TIPO_EXECUCAO_DESPESA]",
+        "columns": [
+          {
+            "name": "ID_TIPO_EXECUCAO_DESPESA",
+            "dataType": "double",
+            "sourceColumn": "ID_TIPO_EXECUCAO_DESPESA",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_TIPO_EXECUCAO_DESPESA",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "NO_TIPO_EXECUCAO_DESPESA",
+            "dataType": "string",
+            "sourceColumn": "NO_TIPO_EXECUCAO_DESPESA",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "NO_TIPO_EXECUCAO_DESPESA",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "DIM_TIPO_EXECUCAO_DESPESA",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "DIM_UNIDADE_GESTORA",
+        "sourceLineageTag": "[dbo].[DIM_UNIDADE_GESTORA]",
+        "columns": [
+          {
+            "name": "ID_UNIDADE_GESTORA",
+            "dataType": "string",
+            "sourceColumn": "ID_UNIDADE_GESTORA",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ID_UNIDADE_GESTORA",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "NO_UNIDADE_GESTORA",
+            "dataType": "string",
+            "sourceColumn": "NO_UNIDADE_GESTORA",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "NO_UNIDADE_GESTORA",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "DIM_UNIDADE_GESTORA",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "DIM_UNIDADE_ORCAMENTARIA",
+        "sourceLineageTag": "[dbo].[DIM_UNIDADE_ORCAMENTARIA]",
+        "columns": [
+          {
+            "name": "ID_UNIDADE_ORCAMENTARIA",
+            "dataType": "string",
+            "sourceColumn": "ID_UNIDADE_ORCAMENTARIA",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ID_UNIDADE_ORCAMENTARIA",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "NO_UNIDADE_ORCAMENTARIA",
+            "dataType": "string",
+            "sourceColumn": "NO_UNIDADE_ORCAMENTARIA",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "NO_UNIDADE_ORCAMENTARIA",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "DIM_UNIDADE_ORCAMENTARIA",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "FATO_EXEC_DESP_MOV",
+        "sourceLineageTag": "[dbo].[FATO_EXEC_DESP_MOV]",
+        "columns": [
+          {
+            "name": "AN_EXECUCAO_DESPESA_MOVIMENTO",
+            "dataType": "double",
+            "sourceColumn": "AN_EXECUCAO_DESPESA_MOVIMENTO",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "AN_EXECUCAO_DESPESA_MOVIMENTO",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ME_EXECUCAO_DESPESA_MOVIMENTO",
+            "dataType": "double",
+            "sourceColumn": "ME_EXECUCAO_DESPESA_MOVIMENTO",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ME_EXECUCAO_DESPESA_MOVIMENTO",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "DT_EXECUCAO_DESPESA_MOVIMENTO",
+            "dataType": "dateTime",
+            "sourceColumn": "DT_EXECUCAO_DESPESA_MOVIMENTO",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "DT_EXECUCAO_DESPESA_MOVIMENTO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "AN_EMISSAO_NE",
+            "dataType": "double",
+            "sourceColumn": "AN_EMISSAO_NE",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "AN_EMISSAO_NE",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ID_EXECUCAO_DESPESA_MOVTO_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_EXECUCAO_DESPESA_MOVTO_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_EXECUCAO_DESPESA_MOVTO_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "CO_ORGAO_MAXIMO_UO",
+            "dataType": "string",
+            "sourceColumn": "CO_ORGAO_MAXIMO_UO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "CO_ORGAO_MAXIMO_UO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CO_ORGAO_UG",
+            "dataType": "string",
+            "sourceColumn": "CO_ORGAO_UG",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "CO_ORGAO_UG",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_UNIDADE_GESTORA",
+            "dataType": "string",
+            "sourceColumn": "ID_UNIDADE_GESTORA",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ID_UNIDADE_GESTORA",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CO_PROGRAMA_TRABALHO",
+            "dataType": "string",
+            "sourceColumn": "CO_PROGRAMA_TRABALHO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "CO_PROGRAMA_TRABALHO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_FUNCAO_ORCAMENTARIA",
+            "dataType": "string",
+            "sourceColumn": "ID_FUNCAO_ORCAMENTARIA",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ID_FUNCAO_ORCAMENTARIA",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_SUBFUNCAO_ORCAMENTARIA",
+            "dataType": "string",
+            "sourceColumn": "ID_SUBFUNCAO_ORCAMENTARIA",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ID_SUBFUNCAO_ORCAMENTARIA",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_PROGRAMA_ORCAMENTARIO",
+            "dataType": "string",
+            "sourceColumn": "ID_PROGRAMA_ORCAMENTARIO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ID_PROGRAMA_ORCAMENTARIO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_ACAO_ORCAMENTARIA",
+            "dataType": "string",
+            "sourceColumn": "ID_ACAO_ORCAMENTARIA",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ID_ACAO_ORCAMENTARIA",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_LOCALIZADOR_GASTO",
+            "dataType": "string",
+            "sourceColumn": "ID_LOCALIZADOR_GASTO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ID_LOCALIZADOR_GASTO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_PLANO_ORCAMENTARIO_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_PLANO_ORCAMENTARIO_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_PLANO_ORCAMENTARIO_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ID_PTRES",
+            "dataType": "string",
+            "sourceColumn": "ID_PTRES",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ID_PTRES",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CO_NATUREZA_DESPESA",
+            "dataType": "string",
+            "sourceColumn": "CO_NATUREZA_DESPESA",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "CO_NATUREZA_DESPESA",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CO_FONTE_RECURSO",
+            "dataType": "string",
+            "sourceColumn": "CO_FONTE_RECURSO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "CO_FONTE_RECURSO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IS_FONTE_RECURSO_DETALHE",
+            "dataType": "string",
+            "sourceColumn": "IS_FONTE_RECURSO_DETALHE",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "IS_FONTE_RECURSO_DETALHE",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_PROGRAMACAO_SELECIONADA",
+            "dataType": "double",
+            "sourceColumn": "ID_PROGRAMACAO_SELECIONADA",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_PROGRAMACAO_SELECIONADA",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "SN_EXCECAO_DECRETO",
+            "dataType": "string",
+            "sourceColumn": "SN_EXCECAO_DECRETO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SN_EXCECAO_DECRETO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_RESULTADO_LEI",
+            "dataType": "double",
+            "sourceColumn": "ID_RESULTADO_LEI",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_RESULTADO_LEI",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ID_RESULTADO_EOF",
+            "dataType": "double",
+            "sourceColumn": "ID_RESULTADO_EOF",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_RESULTADO_EOF",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "SN_LEI_CALMON",
+            "dataType": "string",
+            "sourceColumn": "SN_LEI_CALMON",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SN_LEI_CALMON",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_TIPO_CREDITO",
+            "dataType": "string",
+            "sourceColumn": "ID_TIPO_CREDITO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ID_TIPO_CREDITO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "VA_MOVIMENTO_ITEM_INFORMACAO",
+            "dataType": "double",
+            "sourceColumn": "VA_MOVIMENTO_ITEM_INFORMACAO",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "VA_MOVIMENTO_ITEM_INFORMACAO",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ID_TIPO_EXECUCAO_DESPESA",
+            "dataType": "double",
+            "sourceColumn": "ID_TIPO_EXECUCAO_DESPESA",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_TIPO_EXECUCAO_DESPESA",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "IN_CONTROLADO",
+            "dataType": "string",
+            "sourceColumn": "IN_CONTROLADO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "IN_CONTROLADO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_INSTRUMENTO_LEGAL_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_INSTRUMENTO_LEGAL_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_INSTRUMENTO_LEGAL_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "SN_MOEDA_REAL",
+            "dataType": "string",
+            "sourceColumn": "SN_MOEDA_REAL",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SN_MOEDA_REAL",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_MARCA_CLASSIFICACAO_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_MARCA_CLASSIFICACAO_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_MARCA_CLASSIFICACAO_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ID_UNIDADE_ORCAMENTARIA",
+            "dataType": "string",
+            "sourceColumn": "ID_UNIDADE_ORCAMENTARIA",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ID_UNIDADE_ORCAMENTARIA",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_grupo_MARCA_CLASSIFICACAO_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_grupo_MARCA_CLASSIFICACAO_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_grupo_MARCA_CLASSIFICACAO_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ID_ORGAO_DECRETO_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_ORGAO_DECRETO_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_ORGAO_DECRETO_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "FATO_EXEC_DESP_MOV",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "FATO_EXEC_DESP_SALDO",
+        "sourceLineageTag": "[dbo].[FATO_EXEC_DESP_SALDO]",
+        "columns": [
+          {
+            "name": "AN_EXECUCAO_DESPESA_SALDO",
+            "dataType": "double",
+            "sourceColumn": "AN_EXECUCAO_DESPESA_SALDO",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "AN_EXECUCAO_DESPESA_SALDO",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "AN_EMISSAO_NE",
+            "dataType": "double",
+            "sourceColumn": "AN_EMISSAO_NE",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "AN_EMISSAO_NE",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ID_EXECUCAO_DESPESA_SALDO_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_EXECUCAO_DESPESA_SALDO_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_EXECUCAO_DESPESA_SALDO_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "CO_ORGAO_MAXIMO_UO",
+            "dataType": "string",
+            "sourceColumn": "CO_ORGAO_MAXIMO_UO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "CO_ORGAO_MAXIMO_UO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CO_ORGAO_UG",
+            "dataType": "string",
+            "sourceColumn": "CO_ORGAO_UG",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "CO_ORGAO_UG",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_UNIDADE_GESTORA",
+            "dataType": "string",
+            "sourceColumn": "ID_UNIDADE_GESTORA",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ID_UNIDADE_GESTORA",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CO_PROGRAMA_TRABALHO",
+            "dataType": "string",
+            "sourceColumn": "CO_PROGRAMA_TRABALHO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "CO_PROGRAMA_TRABALHO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_PLANO_ORCAMENTARIO_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_PLANO_ORCAMENTARIO_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_PLANO_ORCAMENTARIO_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ID_PTRES",
+            "dataType": "string",
+            "sourceColumn": "ID_PTRES",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ID_PTRES",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IN_TIPO_SALDO",
+            "dataType": "string",
+            "sourceColumn": "IN_TIPO_SALDO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "IN_TIPO_SALDO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CO_NATUREZA_DESPESA",
+            "dataType": "string",
+            "sourceColumn": "CO_NATUREZA_DESPESA",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "CO_NATUREZA_DESPESA",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IS_FONTE_RECURSO_DETALHE",
+            "dataType": "string",
+            "sourceColumn": "IS_FONTE_RECURSO_DETALHE",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "IS_FONTE_RECURSO_DETALHE",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_PROGRAMACAO_SELECIONADA",
+            "dataType": "double",
+            "sourceColumn": "ID_PROGRAMACAO_SELECIONADA",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_PROGRAMACAO_SELECIONADA",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "SN_EXCECAO_DECRETO",
+            "dataType": "string",
+            "sourceColumn": "SN_EXCECAO_DECRETO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SN_EXCECAO_DECRETO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_RESULTADO_LEI",
+            "dataType": "double",
+            "sourceColumn": "ID_RESULTADO_LEI",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_RESULTADO_LEI",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ID_RESULTADO_EOF",
+            "dataType": "double",
+            "sourceColumn": "ID_RESULTADO_EOF",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_RESULTADO_EOF",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "SN_LEI_CALMON",
+            "dataType": "string",
+            "sourceColumn": "SN_LEI_CALMON",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SN_LEI_CALMON",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_TIPO_CREDITO",
+            "dataType": "string",
+            "sourceColumn": "ID_TIPO_CREDITO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ID_TIPO_CREDITO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "VA_SALDO_ITEM_INFORMACAO",
+            "dataType": "double",
+            "sourceColumn": "VA_SALDO_ITEM_INFORMACAO",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "VA_SALDO_ITEM_INFORMACAO",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ID_TIPO_EXECUCAO_DESPESA",
+            "dataType": "double",
+            "sourceColumn": "ID_TIPO_EXECUCAO_DESPESA",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_TIPO_EXECUCAO_DESPESA",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "IN_CONTROLADO",
+            "dataType": "string",
+            "sourceColumn": "IN_CONTROLADO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "IN_CONTROLADO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_INSTRUMENTO_LEGAL_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_INSTRUMENTO_LEGAL_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_INSTRUMENTO_LEGAL_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "CO_FONTE_RECURSO",
+            "dataType": "string",
+            "sourceColumn": "CO_FONTE_RECURSO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "CO_FONTE_RECURSO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SN_MOEDA_REAL",
+            "dataType": "string",
+            "sourceColumn": "SN_MOEDA_REAL",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SN_MOEDA_REAL",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_MARCA_CLASSIFICACAO_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_MARCA_CLASSIFICACAO_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_MARCA_CLASSIFICACAO_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "SN_IND_RESSALVADA",
+            "dataType": "string",
+            "sourceColumn": "SN_IND_RESSALVADA",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SN_IND_RESSALVADA",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SN_IND_OBRIG_CONT_FLUXO",
+            "dataType": "string",
+            "sourceColumn": "SN_IND_OBRIG_CONT_FLUXO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SN_IND_OBRIG_CONT_FLUXO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SN_IND_COMPENSACAO_META",
+            "dataType": "string",
+            "sourceColumn": "SN_IND_COMPENSACAO_META",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SN_IND_COMPENSACAO_META",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SN_IND_CRED_EXTRA_CONTROLADO",
+            "dataType": "string",
+            "sourceColumn": "SN_IND_CRED_EXTRA_CONTROLADO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SN_IND_CRED_EXTRA_CONTROLADO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SN_IND_SUJEITO_TETO",
+            "dataType": "string",
+            "sourceColumn": "SN_IND_SUJEITO_TETO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SN_IND_SUJEITO_TETO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_IDUSO",
+            "dataType": "string",
+            "sourceColumn": "ID_IDUSO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ID_IDUSO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_ORGAO_DECRETO_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_ORGAO_DECRETO_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_ORGAO_DECRETO_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ID_FUNCAO_ORCAMENTARIA",
+            "dataType": "string",
+            "sourceColumn": "ID_FUNCAO_ORCAMENTARIA",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ID_FUNCAO_ORCAMENTARIA",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_SUBFUNCAO_ORCAMENTARIA",
+            "dataType": "string",
+            "sourceColumn": "ID_SUBFUNCAO_ORCAMENTARIA",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ID_SUBFUNCAO_ORCAMENTARIA",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_PROGRAMA_ORCAMENTARIO",
+            "dataType": "string",
+            "sourceColumn": "ID_PROGRAMA_ORCAMENTARIO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ID_PROGRAMA_ORCAMENTARIO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_ACAO_ORCAMENTARIA",
+            "dataType": "string",
+            "sourceColumn": "ID_ACAO_ORCAMENTARIA",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ID_ACAO_ORCAMENTARIA",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_LOCALIZADOR_GASTO",
+            "dataType": "string",
+            "sourceColumn": "ID_LOCALIZADOR_GASTO",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ID_LOCALIZADOR_GASTO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_UNIDADE_ORCAMENTARIA",
+            "dataType": "string",
+            "sourceColumn": "ID_UNIDADE_ORCAMENTARIA",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ID_UNIDADE_ORCAMENTARIA",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_GRUPO_MARCA_CLASSIF_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_GRUPO_MARCA_CLASSIF_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_GRUPO_MARCA_CLASSIF_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "IS_ANEXO_DECRETO_DESP",
+            "dataType": "double",
+            "sourceColumn": "IS_ANEXO_DECRETO_DESP",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "IS_ANEXO_DECRETO_DESP",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "FATO_EXEC_DESP_SALDO",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "FATO_LIMITES",
+        "sourceLineageTag": "[dbo].[FATO_LIMITES]",
+        "columns": [
+          {
+            "name": "IN_PERIODO",
+            "dataType": "double",
+            "sourceColumn": "IN_PERIODO",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "IN_PERIODO",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "VA_VALOR",
+            "dataType": "double",
+            "sourceColumn": "VA_VALOR",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "VA_VALOR",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "VA_ANTERIOR",
+            "dataType": "double",
+            "sourceColumn": "VA_ANTERIOR",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "VA_ANTERIOR",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "VA_VARIACAO",
+            "dataType": "double",
+            "sourceColumn": "VA_VARIACAO",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "VA_VARIACAO",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "VA_DESPESA_PAGA",
+            "dataType": "double",
+            "sourceColumn": "VA_DESPESA_PAGA",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "VA_DESPESA_PAGA",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "VA_RESTOS_PAGAR",
+            "dataType": "double",
+            "sourceColumn": "VA_RESTOS_PAGAR",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "VA_RESTOS_PAGAR",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "VA_PAGAMENTO_EFET_ORG_DEC",
+            "dataType": "double",
+            "sourceColumn": "VA_PAGAMENTO_EFET_ORG_DEC",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "VA_PAGAMENTO_EFET_ORG_DEC",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "VA_TRANSFERENCIA_EXTERIOR",
+            "dataType": "double",
+            "sourceColumn": "VA_TRANSFERENCIA_EXTERIOR",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "VA_TRANSFERENCIA_EXTERIOR",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "DT_ATO",
+            "dataType": "dateTime",
+            "sourceColumn": "DT_ATO",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "DT_ATO",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ID_LIMITE_EMPENHO_PAGTO_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_LIMITE_EMPENHO_PAGTO_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_LIMITE_EMPENHO_PAGTO_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ID_LIMITE_EMPENHO_PAGTO_VAL_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_LIMITE_EMPENHO_PAGTO_VAL_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_LIMITE_EMPENHO_PAGTO_VAL_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ID_ORGAO_DECRETO_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_ORGAO_DECRETO_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_ORGAO_DECRETO_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ID_ANEXO_DECRETO_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_ANEXO_DECRETO_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_ANEXO_DECRETO_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ID_INSTRUMENTO_LEGAL_LIMITE_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_INSTRUMENTO_LEGAL_LIMITE_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_INSTRUMENTO_LEGAL_LIMITE_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "SN_VIGENTE",
+            "dataType": "string",
+            "sourceColumn": "SN_VIGENTE",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SN_VIGENTE",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "FATO_LIMITES",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "FATO_LIMITES_PAGEFET",
+        "sourceLineageTag": "[dbo].[FATO_LIMITES_PAGEFET]",
+        "columns": [
+          {
+            "name": "ID_PAGAMENTO_EFET_ORG_DEC_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_PAGAMENTO_EFET_ORG_DEC_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_PAGAMENTO_EFET_ORG_DEC_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "AN_PAGAMENTO_EFETIVO",
+            "dataType": "double",
+            "sourceColumn": "AN_PAGAMENTO_EFETIVO",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "AN_PAGAMENTO_EFETIVO",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ME_PAGAMENTO_EFETIVO",
+            "dataType": "double",
+            "sourceColumn": "ME_PAGAMENTO_EFETIVO",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ME_PAGAMENTO_EFETIVO",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ID_ORGAO_DECRETO_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_ORGAO_DECRETO_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_ORGAO_DECRETO_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ID_ANEXO_DECRETO_SK",
+            "dataType": "double",
+            "sourceColumn": "ID_ANEXO_DECRETO_SK",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "ID_ANEXO_DECRETO_SK",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "VA_DESPESA_PAGA",
+            "dataType": "double",
+            "sourceColumn": "VA_DESPESA_PAGA",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "VA_DESPESA_PAGA",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "VA_RESTOS_PAGAR",
+            "dataType": "double",
+            "sourceColumn": "VA_RESTOS_PAGAR",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "VA_RESTOS_PAGAR",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "VA_PAGAMENTO_EFET_ORG_DEC",
+            "dataType": "double",
+            "sourceColumn": "VA_PAGAMENTO_EFET_ORG_DEC",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "VA_PAGAMENTO_EFET_ORG_DEC",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "VA_TRANSFERENCIA_EXTERIOR",
+            "dataType": "double",
+            "sourceColumn": "VA_TRANSFERENCIA_EXTERIOR",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "VA_TRANSFERENCIA_EXTERIOR",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "VA_LIMITE_SAQUE",
+            "dataType": "double",
+            "sourceColumn": "VA_LIMITE_SAQUE",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "VA_LIMITE_SAQUE",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "FATO_LIMITES_PAGEFET",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "Limites provisórios",
+        "sourceLineageTag": "[dbo].[Limites provisórios]",
+        "columns": [
+          {
+            "name": "Orgãos Código",
+            "dataType": "string",
+            "sourceColumn": "Orgãos Código",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Orgãos Código",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Orgãos Nome",
+            "dataType": "string",
+            "sourceColumn": "Orgãos Nome",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Orgãos Nome",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Anexo",
+            "dataType": "string",
+            "sourceColumn": "Anexo",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Anexo",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Valor",
+            "dataType": "double",
+            "sourceColumn": "Valor",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "Valor",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "Mes",
+            "dataType": "string",
+            "sourceColumn": "Mes",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Mes",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "Limites provisórios",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      }
+    ],
+    "expressions": [
+      {
+        "name": "DatabaseQuery",
+        "kind": "m",
+        "expression": "let\n    database = {{TDS_Endpoint}}\nin\n    database\n"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "SourceLineageTagType",
+        "value": "DatabaseFullyQualifiedName"
+      }
+    ]
+  }
+}

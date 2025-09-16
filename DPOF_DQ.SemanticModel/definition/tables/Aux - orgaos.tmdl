@@ -1,0 +1,33 @@
+table 'Aux - orgaos'
+	lineageTag: 479f08fb-0e41-4189-afd3-995cbba1c948
+
+	column CO_ORGAO_DECRETO
+		dataType: string
+		lineageTag: 8592e374-3ef6-40ed-bf6c-66f6692640c6
+		summarizeBy: none
+		sourceColumn: CO_ORGAO_DECRETO
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_ORGAO_DECRETO_SK
+		dataType: string
+		lineageTag: 2c3a1361-8817-431c-97c5-8f08de255d92
+		summarizeBy: none
+		sourceColumn: ID_ORGAO_DECRETO_SK
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Aux - orgaos' = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents("\\cruzeiro.stn.intra\Dados_ANALITICOS\DADOS-DAS-AREAS\COFIN\DPOF\Aux orgaos.xlsx"), null, true),
+				    Table1_Table = Fonte{[Item="Table1",Kind="Table"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Table1_Table,{{"CO_ORGAO_DECRETO", type text}, {"ID_ORGAO_DECRETO_SK", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

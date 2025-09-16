@@ -1,0 +1,88 @@
+expression 'Mescla Euro' =
+		let
+		    Fonte = Table.Combine({#"Calendário BASE", #"MVW_VALOR_MOEDA Euro"}),
+		    #"Linhas Classificadas" = Table.Sort(Fonte,{{"DT_VALOR_MOEDA", Order.Descending}}),
+		    #"Duplicatas Removidas" = Table.Distinct(#"Linhas Classificadas", {"DT_VALOR_MOEDA"}),
+		    #"Preenchido Acima" = Table.FillUp(#"Duplicatas Removidas",{"VA_VENDA", "ID_MOEDA"})
+		in
+		    #"Preenchido Acima"
+	lineageTag: fa6b7863-7e84-408a-94d7-a4566bec1128
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+
+expression 'MVW_VALOR_MOEDA DOLAR' =
+		let
+		    Fonte = Oracle.Database("exastncl03-tlm0m-scan.prosubnet.vcndados.oraclevcn.com/DWPROD.prosubnet.vcndados.oraclevcn.com", [HierarchicalNavigation=true]),
+		    PRD_CORPORATIVO = Fonte{[Schema="PRD_CORPORATIVO"]}[Data],
+		    MVW_VALOR_MOEDA1 = PRD_CORPORATIVO{[Name="MVW_VALOR_MOEDA"]}[Data],
+		    #"Linhas Filtradas" = Table.SelectRows(MVW_VALOR_MOEDA1, each ([ID_MOEDA] = 220 or [ID_MOEDA] = 978)),
+		    #"Coluna Duplicada" = Table.DuplicateColumn(#"Linhas Filtradas", "DT_VALOR_MOEDA", "DT_VALOR_MOEDA - Copiar"),
+		    #"Tipo Alterado" = Table.TransformColumnTypes(#"Coluna Duplicada",{{"DT_VALOR_MOEDA - Copiar", type date}}),
+		    #"Colunas Renomeadas" = Table.RenameColumns(#"Tipo Alterado",{{"DT_VALOR_MOEDA - Copiar", "Data"}}),
+		    #"Colunas Removidas" = Table.RemoveColumns(#"Colunas Renomeadas",{"ID_VALOR_MOEDA", "VA_COMPRA", "VA_PAR_COMPRA", "VA_PAR_VENDA", "DT_REGISTRO_STN", "Data"}),
+		    #"Linhas Filtradas1" = Table.SelectRows(#"Colunas Removidas", each ([ID_MOEDA] = 220)),
+		    #"Linhas Classificadas" = Table.Sort(#"Linhas Filtradas1",{{"DT_VALOR_MOEDA", Order.Ascending}}),
+		    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Linhas Classificadas",{{"DT_VALOR_MOEDA", type date}, {"ID_MOEDA", Int64.Type}})
+		in
+		    #"Tipo Alterado1"
+	lineageTag: 2e279c5c-265a-4420-9284-388f40533a6a
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+
+expression 'MVW_VALOR_MOEDA Euro' =
+		let
+		    Fonte = Oracle.Database("exastncl03-tlm0m-scan.prosubnet.vcndados.oraclevcn.com/DWPROD.prosubnet.vcndados.oraclevcn.com", [HierarchicalNavigation=true]),
+		    PRD_CORPORATIVO = Fonte{[Schema="PRD_CORPORATIVO"]}[Data],
+		    MVW_VALOR_MOEDA1 = PRD_CORPORATIVO{[Name="MVW_VALOR_MOEDA"]}[Data],
+		    #"Linhas Filtradas" = Table.SelectRows(MVW_VALOR_MOEDA1, each ([ID_MOEDA] = 220 or [ID_MOEDA] = 978)),
+		    #"Coluna Duplicada" = Table.DuplicateColumn(#"Linhas Filtradas", "DT_VALOR_MOEDA", "DT_VALOR_MOEDA - Copiar"),
+		    #"Tipo Alterado" = Table.TransformColumnTypes(#"Coluna Duplicada",{{"DT_VALOR_MOEDA - Copiar", type date}}),
+		    #"Colunas Renomeadas" = Table.RenameColumns(#"Tipo Alterado",{{"DT_VALOR_MOEDA - Copiar", "Data"}}),
+		    #"Colunas Removidas" = Table.RemoveColumns(#"Colunas Renomeadas",{"ID_VALOR_MOEDA", "VA_COMPRA", "VA_PAR_COMPRA", "VA_PAR_VENDA", "DT_REGISTRO_STN", "Data"}),
+		    #"Linhas Filtradas1" = Table.SelectRows(#"Colunas Removidas", each ([ID_MOEDA] = 978)),
+		    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Linhas Filtradas1",{{"DT_VALOR_MOEDA", type date}, {"ID_MOEDA", Int64.Type}})
+		in
+		    #"Tipo Alterado1"
+	lineageTag: 783c7229-7367-4e9e-a599-c70c72cd42db
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+
+expression 'Mescla Dolar' =
+		let
+		    Fonte = Table.Combine({#"Calendário BASE", #"MVW_VALOR_MOEDA DOLAR"}),
+		    #"Linhas Classificadas" = Table.Sort(Fonte,{{"DT_VALOR_MOEDA", Order.Descending}}),
+		    #"Duplicatas Removidas" = Table.Distinct(#"Linhas Classificadas", {"DT_VALOR_MOEDA"}),
+		    #"Preenchido Acima" = Table.FillUp(#"Duplicatas Removidas",{"VA_VENDA", "ID_MOEDA"})
+		in
+		    #"Preenchido Acima"
+	lineageTag: a7084b66-356c-40cf-a39c-26d5f1691c88
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+
+expression 'Calendário BASE' =
+		let
+		    Fonte = List.Dates (#date(2015,1,1), 365 * 8, #duration(1,0,0,0)),
+		    #"Convertido para Tabela" = Table.FromList(Fonte, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+		    #"Tipo Alterado" = Table.TransformColumnTypes(#"Convertido para Tabela",{{"Column1", type date}}),
+		    #"Colunas Renomeadas" = Table.RenameColumns(#"Tipo Alterado",{{"Column1", "DT_VALOR_MOEDA"}}),
+		    #"Personalização Adicionada" = Table.AddColumn(#"Colunas Renomeadas", "Personalizar", each null),
+		    #"Coluna Duplicada" = Table.DuplicateColumn(#"Personalização Adicionada", "Personalizar", "Personalizar - Copiar"),
+		    #"Colunas Renomeadas1" = Table.RenameColumns(#"Coluna Duplicada",{{"Personalizar", "VA_VENDA"}, {"Personalizar - Copiar", "ID_MOEDA"}}),
+		    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Colunas Renomeadas1",{{"VA_VENDA", type number}, {"ID_MOEDA", Int64.Type}}),
+		    #"Linhas Classificadas" = Table.Sort(#"Tipo Alterado1",{{"DT_VALOR_MOEDA", Order.Descending}})
+		in
+		    #"Linhas Classificadas"
+	lineageTag: 542c6f73-1dbe-4ef9-b655-34e69a2fc714
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

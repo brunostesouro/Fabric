@@ -1,0 +1,39 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		fastCombine
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.139.2054.0 (24.12)+334ca1c95b576cc53924655643b0d36f21caac55
+
+annotation PBI_QueryOrder = ["ATRIBUTOS_PESSOAL","CUSTOS_COMPLETO","NATUREZA_CUSTO","#Medidas","ID_DATA_ATRB","CUSTOS_DT_ULTIMA_ATUALIZACAO","ESCOLARIDADE","AREA_ATUACAO","SIGLA","AREA_ATUACAO (2)","ESCOLARIDADE (2)","NATUREZA_CUSTO (2)","MVW_MOEDA","MVW_VALOR_MOEDA DOLAR","MVW_VALOR_MOEDA Euro","Calendário BASE","Mescla Dolar","Mescla Euro","Valor_Moeda"]
+
+ref table ATRIBUTOS_PESSOAL
+ref table DateTableTemplate_25230483-c7ce-4850-88f2-1c5d01cb2ab0
+ref table CUSTOS_COMPLETO
+ref table NATUREZA_CUSTO
+ref table #Medidas
+ref table ID_DATA_ATRB
+ref table LocalDateTable_3b2905ed-7bc0-4381-906e-0df4a07b79c2
+ref table CUSTOS_DT_ULTIMA_ATUALIZACAO
+ref table LocalDateTable_77e3242e-eb60-448a-82c4-91b872fa2b3d
+ref table ESCOLARIDADE
+ref table AREA_ATUACAO
+ref table SIGLA
+ref table 'AREA_ATUACAO (2)'
+ref table 'ESCOLARIDADE (2)'
+ref table 'NATUREZA_CUSTO (2)'
+ref table MVW_MOEDA
+ref table LocalDateTable_85552651-d1e4-45f2-ac43-6eafebb9f981
+ref table LocalDateTable_bacb48e0-de0a-47c4-afa3-ec5eab703381
+ref table Aux_Calendario
+ref table LocalDateTable_8bd6b244-12e5-468d-85aa-4fd8eb120699
+ref table Valor_Moeda
+
+ref cultureInfo pt-BR
+

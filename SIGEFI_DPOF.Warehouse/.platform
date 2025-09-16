@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Warehouse",
+    "displayName": "SIGEFI_DPOF"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2e037310-3df0-a34f-4e6b-a0feca9abfd5"
+  }
+}

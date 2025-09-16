@@ -1,0 +1,60 @@
+table ESCOLARIDADE
+	lineageTag: a73880aa-47a0-48a0-b57d-7411dadecec7
+
+	column ESCOLARIDADE
+		dataType: string
+		lineageTag: 4b5d330f-5c27-481f-bae7-af234de94b1f
+		summarizeBy: none
+		sourceColumn: ESCOLARIDADE
+		sortByColumn: INDICE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column INDICE
+		dataType: int64
+		formatString: 0
+		lineageTag: 7cc58852-da17-4d2a-8f15-8c9d50c752fe
+		summarizeBy: sum
+		sourceColumn: INDICE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ESCOLARIDADE_ESP
+		dataType: string
+		lineageTag: b8d26ceb-e74c-48c4-ab73-aa9671bcbd88
+		summarizeBy: none
+		sourceColumn: ESCOLARIDADE_ESP
+		sortByColumn: INDICE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column ESCOLARIDADE_ING
+		dataType: string
+		lineageTag: a6dbb5ba-0fd0-4bb5-a47d-19633ff890bd
+		summarizeBy: none
+		sourceColumn: ESCOLARIDADE_ING
+		sortByColumn: INDICE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	partition ESCOLARIDADE-303c3dda-5a75-46dc-91a2-3597f724777a = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WCi4tSC3KzC9S0lEyUYrViVbyPbwyJTMfyDUGc11TSpMTDy8/vDhfwenwwuLM5ESglBFYyg8k6JJZXJCfd3htWWoOUMIcYkRqcUlRYgrIEFOwgEt+aUk+VMQMLOKYl5iTlpiUWgISMlSKjQUA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type text) meta [Serialized.Text = true]) in type table [ESCOLARIDADE = _t, INDICE = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"ESCOLARIDADE", type text}, {"INDICE", Int64.Type}}),
+				    #"Colunas Reordenadas" = Table.ReorderColumns(#"Tipo Alterado",{"INDICE", "ESCOLARIDADE"}),
+				    #"Linhas Classificadas" = Table.Sort(#"Colunas Reordenadas",{{"INDICE", Order.Ascending}}),
+				    #"Consultas Mescladas" = Table.NestedJoin(#"Linhas Classificadas", {"INDICE"}, #"ESCOLARIDADE (2)", {"INDICE"}, "ESCOLARIDADE (2)", JoinKind.LeftOuter),
+				    #"ESCOLARIDADE (2) Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas", "ESCOLARIDADE (2)", {"ESCOLARIDADE_ESP", "ESCOLARIDADE_ING"}, {"ESCOLARIDADE_ESP", "ESCOLARIDADE_ING"})
+				in
+				    #"ESCOLARIDADE (2) Expandido"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,28 @@
+table Sheet1
+	lineageTag: b18ea5d5-0288-460d-a8d1-5caacd66b2e1
+
+	measure Medida = "hello world"
+		lineageTag: 3636cb9c-010f-4628-a8eb-b5e3245eb85f
+
+	column Column1
+		dataType: string
+		lineageTag: 64c35121-8710-4cfb-b369-e699cc20e59d
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Sheet1 = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents("\\libra.stn.intra\Corporativo\Grupos\COSIS\Planilha_Teste.xlsx"), null, true),
+				    Sheet1_Sheet = Fonte{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Sheet1_Sheet,{{"Column1", type any}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

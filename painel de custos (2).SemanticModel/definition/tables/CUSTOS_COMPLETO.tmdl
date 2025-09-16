@@ -1,0 +1,305 @@
+table CUSTOS_COMPLETO
+	lineageTag: 1e16b643-5215-49bc-868f-5720c6b0db72
+
+	column CO_ORG_N01
+		dataType: string
+		lineageTag: fcc1f598-9407-49da-9cdb-c0db1ab2e42c
+		summarizeBy: none
+		sourceColumn: CO_ORG_N01
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column Órgão
+		dataType: string
+		lineageTag: f614c37d-dce6-4534-b45f-120909ffd0d0
+		summarizeBy: none
+		sourceColumn: Órgão
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column DS_ORG_N02
+		dataType: string
+		lineageTag: 4f96f557-9357-4f06-a270-c0dad2a1728e
+		summarizeBy: none
+		sourceColumn: DS_ORG_N02
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column DS_ORG_N03
+		dataType: string
+		lineageTag: 9a2d7da5-40e5-4a1f-ac1f-ce8c49e2fdf3
+		summarizeBy: none
+		sourceColumn: DS_ORG_N03
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column DS_ORG_N04
+		dataType: string
+		lineageTag: 28a4e824-dedc-4a01-aebb-35fbde13d66a
+		summarizeBy: none
+		sourceColumn: DS_ORG_N04
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column SG_MES_COMPLETO
+		dataType: string
+		lineageTag: 6d823c2b-1d76-426b-be64-243fa5bd4db0
+		summarizeBy: none
+		sourceColumn: SG_MES_COMPLETO
+		sortByColumn: DATA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column ITEM_CUSTO
+		dataType: string
+		lineageTag: 3299bc2e-dea9-4ad5-a653-c74500a51e0d
+		summarizeBy: none
+		sourceColumn: ITEM_CUSTO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column CUSTO
+		dataType: double
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: 91ff2ea3-dbf8-4ab6-bd27-8e19c08464ca
+		summarizeBy: sum
+		sourceColumn: CUSTO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column FORCA_DE_TRABALHO
+		dataType: int64
+		lineageTag: 680e6963-7e85-4f02-a51a-eac0d1d7bf1a
+		summarizeBy: sum
+		sourceColumn: FORCA_DE_TRABALHO
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ID_ANO = RIGHT(CUSTOS_COMPLETO[SG_MES_COMPLETO], 4)
+		dataType: int64
+		formatString: 0
+		lineageTag: b5e8ee18-3d1e-47fb-985b-953c9b43d9cd
+		summarizeBy: sum
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column NUMERO_MES = MONTH(CUSTOS_COMPLETO[SG_MES_COMPLETO])
+		formatString: 0
+		lineageTag: 068a4d4b-d74d-4cfd-8fcc-6e58a6abb466
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATA
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 4f65ede8-d0e3-47af-9f5c-bf647f78fb8b
+		summarizeBy: none
+		sourceColumn: DATA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Tipo de Órgão'
+		dataType: string
+		lineageTag: 0835c299-2a33-43a4-a693-42b5c28d6373
+		summarizeBy: none
+		sourceColumn: Tipo de Órgão
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column SK_ATRIBUTOS
+		dataType: string
+		lineageTag: 26231e3a-a4ab-4825-a08b-35021cc70366
+		summarizeBy: none
+		sourceColumn: SK_ATRIBUTOS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Custo em dolar' = ```
+			CUSTOS_COMPLETO[CUSTO]/[dolar filtrado]
+			
+			```
+		dataType: decimal
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 117df4b2-4196-46f8-93d7-1bd56b2d182b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Custo em euro'
+		type: calculated
+		formatString: 0
+		lineageTag: fef3e00b-2f05-4a57-a4de-3856a6a83844
+		summarizeBy: sum
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":"CUSTOS_COMPLETO[CUSTO]/[euro filtrado]"}
+
+		annotation 277cc1b9-af89-4597-8e15-cacc25c0886b = ```
+				Uma dependência circular foi detectada: CUSTOS_COMPLETO[Custo em euro], CUSTOS_COMPLETO[Custo em dolar], CUSTOS_COMPLETO[Custo em euro].
+				
+				```
+
+	column 'SG_MES_COMPLETO - Ing'
+		dataType: string
+		lineageTag: 23756be4-0ddc-4345-b943-ccdd0bd28dae
+		summarizeBy: none
+		sourceColumn: SG_MES_COMPLETO - Ing
+		sortByColumn: DATA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Mes - Ing'
+		dataType: string
+		lineageTag: e8602728-21be-4118-8306-03af78de3faa
+		summarizeBy: none
+		sourceColumn: Mes - Ing
+		sortByColumn: NUMERO_MES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Mes - Esp'
+		dataType: string
+		lineageTag: 3c3e8e27-40d8-43d1-9ebe-bc28d08d2a1f
+		summarizeBy: none
+		sourceColumn: Mes - Esp
+		sortByColumn: NUMERO_MES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'SG_MES_COMPLETO - Esp'
+		dataType: string
+		lineageTag: 22ebd9fc-0cb8-4c7d-9bf2-a7fa01f8fd8f
+		summarizeBy: none
+		sourceColumn: SG_MES_COMPLETO - Esp
+		sortByColumn: DATA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column Mês
+		dataType: int64
+		formatString: 0
+		lineageTag: 8b9a4c3e-121d-4ebd-adbe-9a97ae661987
+		summarizeBy: sum
+		sourceColumn: Mês
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nome do Mês'
+		dataType: string
+		lineageTag: 85d5e04a-8209-4548-aa2d-7994aa866b87
+		summarizeBy: none
+		sourceColumn: Nome do Mês
+		sortByColumn: Mês
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	hierarchy 'DS_ORG_N02 Hierarquia'
+		lineageTag: d7c0a55e-2089-4de1-be51-99ba15dc141f
+
+		level DS_ORG_N02
+			lineageTag: afcea65d-8243-49f8-927a-ed0afcdef2f3
+			column: DS_ORG_N02
+
+		level DS_ORG_N03
+			lineageTag: 330020ef-8c17-400a-b845-3e9cacc09607
+			column: DS_ORG_N03
+
+		level DS_ORG_N04
+			lineageTag: f1b11904-adcd-4158-a1e2-d5eda70f66d4
+			column: DS_ORG_N04
+
+	hierarchy 'Órgão Hierarquia'
+		lineageTag: afbc4144-5f4c-4df9-9dfd-c01b3c21f4a6
+
+		level Órgão
+			lineageTag: 787bef9b-8ca4-4aee-b4d6-b211be22931d
+			column: Órgão
+
+		level DS_ORG_N02
+			lineageTag: da7abb19-42f2-4fab-acf4-038eb363ce4b
+			column: DS_ORG_N02
+
+	partition CUSTOS_COMPLETO-41bace48-1286-4143-a793-9f434495c9c7 = m
+		mode: import
+		source =
+				let
+				    Fonte = Oracle.Database("exastncl03-tlm0m-scan.prosubnet.vcndados.oraclevcn.com/DWPROD.prosubnet.vcndados.oraclevcn.com", [HierarchicalNavigation=true]),
+				    DEV_CUSTOS = Fonte{[Schema="PRD_CUSTOS"]}[Data],
+				    CUSTOS_COMPLETO1 = DEV_CUSTOS{[Name="PAINEL_CUSTOS_COMPLETO"]}[Data],
+				    #"Coluna Duplicada" = Table.DuplicateColumn(CUSTOS_COMPLETO1, "SG_MES_COMPLETO", "SG_MES_COMPLETO - Copiar"),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Coluna Duplicada",{{"SG_MES_COMPLETO - Copiar", "DATA"}}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Colunas Renomeadas1",{{"DATA", type date}}),
+				    #"Tipo Alterado2" = Table.TransformColumnTypes(#"Tipo Alterado",{{"SG_MES_COMPLETO", type text}}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Tipo Alterado2",{{"DS_NATUREZA_JURIDICA_SIORG", "Tipo de Órgão"}, {"DS_ORG_N01", "Órgão"}}),
+				    #"Colocar Cada Palavra Em Maiúscula" = Table.TransformColumns(#"Colunas Renomeadas",{{"Órgão", Text.Proper, type text}, {"DS_ORG_N02", Text.Proper, type text}, {"DS_ORG_N03", Text.Proper, type text}, {"DS_ORG_N04", Text.Proper, type text}, {"ITEM_CUSTO", Text.Proper, type text}}),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Colocar Cada Palavra Em Maiúscula","¿","º",Replacer.ReplaceText,{"DS_ORG_N03"}),
+				    #"Mes em ingles" = Table.AddColumn(#"Valor Substituído", "Mes - Ing", each Date.MonthName([DATA],"en-US"), type text),
+				    #"Texto em Maiúscula Inserido" = Table.AddColumn(#"Mes em ingles", "MAIÚSCULA", each Text.Upper([#"Mes - Ing"]), type text),
+				    #"Primeiros Caracteres Inseridos" = Table.AddColumn(#"Texto em Maiúscula Inserido", "Primeiros caracteres", each Text.Start([MAIÚSCULA], 3), type text),
+				    #"Últimos caracteres inseridos" = Table.AddColumn(#"Primeiros Caracteres Inseridos", "Últimos caracteres", each Text.End(Text.From([DATA], "pt-BR"), 5), type text),
+				    #"Colunas Mescladas" = Table.CombineColumns(#"Últimos caracteres inseridos",{"Primeiros caracteres", "Últimos caracteres"},Combiner.CombineTextByDelimiter("", QuoteStyle.None),"Month-Year"),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Colunas Mescladas",{"MAIÚSCULA"}),
+				    #"Data Analisada Inserida" = Table.AddColumn(#"Colunas Removidas", "Mes - Esp", each Text.Proper(Date.MonthName([DATA],"es-ES")), type text),
+				    #"Texto em Maiúscula Inserido1" = Table.AddColumn(#"Data Analisada Inserida", "MAIÚSCULA", each Text.Upper([#"Mes - Esp"]), type text),
+				    #"Primeiros caracteres extraídos" = Table.TransformColumns(#"Texto em Maiúscula Inserido1", {{"MAIÚSCULA", each Text.Start(_, 3), type text}}),
+				    #"Últimos caracteres inseridos1" = Table.AddColumn(#"Primeiros caracteres extraídos", "Últimos caracteres", each Text.End(Text.From([DATA], "pt-BR"), 5), type text),
+				    #"Colunas Mescladas1" = Table.CombineColumns(#"Últimos caracteres inseridos1",{"MAIÚSCULA", "Últimos caracteres"},Combiner.CombineTextByDelimiter("", QuoteStyle.None),"Mesclado"),
+				    #"Colunas Renomeadas2" = Table.RenameColumns(#"Colunas Mescladas1",{{"Month-Year", "SG_MES_COMPLETO - Ing"}, {"Mesclado", "SG_MES_COMPLETO - Esp"}}),
+				    #"Data Inserida" = Table.AddColumn(#"Colunas Renomeadas2", "Data (ing)", each DateTime.From([DATA],"en-en")),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Data Inserida",{{"Data (ing)", type date}}),
+				    #"Colocar Cada Palavra Em Maiúscula1" = Table.TransformColumns(#"Tipo Alterado1",{{"SG_MES_COMPLETO", Text.Proper, type text}}),
+				    #"Colunas Removidas1" = Table.RemoveColumns(#"Colocar Cada Palavra Em Maiúscula1",{"Data (ing)"}),
+				    #"Colocar Cada Palavra Em Maiúscula2" = Table.TransformColumns(#"Colunas Removidas1",{{"SG_MES_COMPLETO - Ing", Text.Proper, type text}, {"SG_MES_COMPLETO - Esp", Text.Proper, type text}}),
+				    #"Mês Inserido" = Table.AddColumn(#"Colocar Cada Palavra Em Maiúscula2", "Mês", each Date.Month([DATA]), Int64.Type),
+				    #"Nome do Mês Inserido" = Table.AddColumn(#"Mês Inserido", "Nome do Mês", each Date.MonthName([DATA]), type text)
+				in
+				    #"Nome do Mês Inserido"
+
+	annotation PBI_ResultType = Table
+

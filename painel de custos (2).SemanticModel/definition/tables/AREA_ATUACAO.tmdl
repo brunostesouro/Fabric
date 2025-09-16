@@ -1,0 +1,60 @@
+table AREA_ATUACAO
+	lineageTag: 891ae955-f777-47fd-b3ef-e0287eb29e90
+
+	column AREA_ATUACAO
+		dataType: string
+		lineageTag: eb031aad-371e-4244-badf-01d35ed0c10d
+		summarizeBy: none
+		sourceColumn: AREA_ATUACAO
+		sortByColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 5ea4b558-a7b9-4d7d-8469-735660effb6c
+		summarizeBy: none
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AREA_ATUACAO_ESP
+		dataType: string
+		lineageTag: 54faa1f9-c6b1-4993-8d26-ed6c34a88c14
+		summarizeBy: none
+		sourceColumn: AREA_ATUACAO_ESP
+		sortByColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column AREA_ATUACAO_ING
+		dataType: string
+		lineageTag: d34a391f-8ebd-457c-b2ab-7c7a9b328ca1
+		summarizeBy: none
+		sourceColumn: AREA_ATUACAO_ING
+		sortByColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	partition AREA_ATUACAO-b8f844bf-acc4-4a2f-89d4-508215380f29 = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WcsvMS8zJLC7JTE5U0lEyVIrViVYKLi3ILypJBfKNwHy/w4vzFVwyiwvy8w6vLUvNAUoYK8XGAgA=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type text) meta [Serialized.Text = true]) in type table [AREA_ATUACAO = _t, ID = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"AREA_ATUACAO", type text}, {"ID", Int64.Type}}),
+				    #"Consultas Mescladas" = Table.NestedJoin(#"Tipo Alterado", {"ID"}, #"AREA_ATUACAO (2)", {"ID"}, "AREA_ATUACAO (2)", JoinKind.LeftOuter),
+				    #"AREA_ATUACAO (2) Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas", "AREA_ATUACAO (2)", {"AREA_ATUACAO_ESP", "AREA_ATUACAO_ING"}, {"AREA_ATUACAO (2).AREA_ATUACAO_ESP", "AREA_ATUACAO (2).AREA_ATUACAO_ING"}),
+				    #"Colunas Reordenadas" = Table.ReorderColumns(#"AREA_ATUACAO (2) Expandido",{"ID", "AREA_ATUACAO", "AREA_ATUACAO (2).AREA_ATUACAO_ESP", "AREA_ATUACAO (2).AREA_ATUACAO_ING"}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Colunas Reordenadas",{{"AREA_ATUACAO (2).AREA_ATUACAO_ESP", "AREA_ATUACAO_ESP"}, {"AREA_ATUACAO (2).AREA_ATUACAO_ING", "AREA_ATUACAO_ING"}})
+				in
+				    #"Colunas Renomeadas"
+
+	annotation PBI_ResultType = Table
+

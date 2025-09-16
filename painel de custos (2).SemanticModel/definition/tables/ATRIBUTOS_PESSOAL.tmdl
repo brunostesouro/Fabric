@@ -1,0 +1,162 @@
+table ATRIBUTOS_PESSOAL
+	lineageTag: 3cbcd560-f40f-4ce9-8b21-57be8b92f958
+
+	column CO_ORG_CONCAT
+		dataType: string
+		lineageTag: cbfea8e1-620e-4cad-a242-850d45410c30
+		summarizeBy: none
+		sourceColumn: CO_ORG_CONCAT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column ID_ANO_LANC
+		dataType: double
+		lineageTag: 840fbd8c-9d51-46e3-948c-f945772bceea
+		summarizeBy: sum
+		sourceColumn: ID_ANO_LANC
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ID_MES_LANC
+		dataType: double
+		lineageTag: b9f39b11-f166-4b82-a300-7892e786bc35
+		summarizeBy: sum
+		sourceColumn: ID_MES_LANC
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SG_MES_COMPLETO
+		dataType: string
+		lineageTag: 6720320c-9301-4861-be9f-ec66823d1acd
+		summarizeBy: none
+		sourceColumn: SG_MES_COMPLETO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column NOME_ESCOLARIDADE
+		dataType: string
+		lineageTag: f5fb650a-d168-49e4-a356-f2461cd73b58
+		summarizeBy: none
+		sourceColumn: NOME_ESCOLARIDADE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column NOME_FAIXA_ETARIA
+		dataType: string
+		lineageTag: 51368f4c-5625-4fa9-b922-5a39310e6105
+		summarizeBy: none
+		sourceColumn: NOME_FAIXA_ETARIA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column NOME_SEXO
+		dataType: string
+		lineageTag: 928e6d7c-6407-465b-91dc-69c76c7176af
+		summarizeBy: none
+		sourceColumn: NOME_SEXO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column FORCA_TRABALHO
+		dataType: double
+		formatString: 0
+		lineageTag: 0e32a3c5-c74a-4335-a86f-4d0d3c6bf46e
+		summarizeBy: sum
+		sourceColumn: FORCA_TRABALHO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column DS_AREA_ATUACAO_SIORG
+		dataType: string
+		lineageTag: 92dc5370-aa89-4589-8aca-807c5c6b8de0
+		summarizeBy: none
+		sourceColumn: DS_AREA_ATUACAO_SIORG
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column DATA
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ef452093-b000-42fe-803f-4b3179763ebd
+		summarizeBy: none
+		sourceColumn: DATA
+
+		variation Variation
+			isDefault
+			relationship: 571dba1c-2efb-441e-bfbd-abf451340cec
+			defaultHierarchy: LocalDateTable_3b2905ed-7bc0-4381-906e-0df4a07b79c2.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column SK_ATRIBUTOS
+		dataType: string
+		lineageTag: 1feb7243-65f5-4e40-8149-a3f545815900
+		summarizeBy: none
+		sourceColumn: SK_ATRIBUTOS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column NOME_FAIXA_ETARIA_S/ANOS = SUBSTITUTE( ATRIBUTOS_PESSOAL[NOME_FAIXA_ETARIA],"ANOS"," ")
+		lineageTag: 3d41a934-a9d4-4e58-966e-20d5c99b9016
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column CUSTO
+		dataType: double
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: 4a4e3cf3-1c35-4772-806b-e9540834d4e7
+		summarizeBy: sum
+		sourceColumn: CUSTO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	partition ATRIBUTOS_PESSOAL-32c7b5c9-1982-4034-8bdb-a658e9d68902 = m
+		mode: import
+		source =
+				let
+				    Fonte = Oracle.Database("exastncl03-tlm0m-scan.prosubnet.vcndados.oraclevcn.com/DWPROD.prosubnet.vcndados.oraclevcn.com", [HierarchicalNavigation=true]),
+				    DEV_CUSTOS = Fonte{[Schema="PRD_CUSTOS"]}[Data],
+				    ATRIBUTOS_PESSOAL1 = DEV_CUSTOS{[Name="PAINEL_ATRIBUTOS_PESSOAL"]}[Data],
+				    #"Colunas Renomeadas" = Table.RenameColumns(ATRIBUTOS_PESSOAL1,{{"FORADETRABALHOSERVIDORESATIVO", "FORCA_TRABALHO"}}),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Colunas Renomeadas", "SG_MES_COMPLETO", "SG_MES_COMPLETO - Copiar"),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Coluna Duplicada",{{"SG_MES_COMPLETO - Copiar", "DATA"}}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Colunas Renomeadas1",{{"DATA", type date}}),
+				    #"Colunas Reordenadas" = Table.ReorderColumns(#"Tipo Alterado",{"CO_ORG_CONCAT", "ID_ANO_LANC", "ID_MES_LANC", "SG_MES_COMPLETO", "DATA", "NOME_ESCOLARIDADE", "NOME_FAIXA_ETARIA", "NOME_SEXO", "FORCA_TRABALHO", "DS_AREA_ATUACAO_SIORG"}),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Colunas Reordenadas","SEM INFORMACAO","NÃO DISPONÍVEL",Replacer.ReplaceText,{"DS_AREA_ATUACAO_SIORG"}),
+				    #"Valor Substituído1" = Table.ReplaceValue(#"Valor Substituído","CODIGO INVALIDO","NÃO DISPONÍVEL",Replacer.ReplaceText,{"DS_AREA_ATUACAO_SIORG"}),
+				    #"Colocar Cada Palavra Em Maiúscula" = Table.TransformColumns(#"Valor Substituído1",{{"DS_AREA_ATUACAO_SIORG", Text.Proper, type text}}),
+				    #"Valor Substituído2" = Table.ReplaceValue(#"Colocar Cada Palavra Em Maiúscula","S/i","Não Disponível",Replacer.ReplaceText,{"NOME_ESCOLARIDADE"}),
+				    #"Valor Substituído3" = Table.ReplaceValue(#"Valor Substituído2",null,"Não Disponível",Replacer.ReplaceValue,{"NOME_ESCOLARIDADE"}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Valor Substituído3", each true)
+				in
+				    #"Linhas Filtradas"
+
+	annotation PBI_ResultType = Table
+

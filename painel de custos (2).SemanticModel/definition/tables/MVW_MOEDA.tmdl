@@ -1,0 +1,114 @@
+table MVW_MOEDA
+	lineageTag: 87676358-f21d-4176-b527-74e323d3c5c0
+
+	column NO_MOEDA
+		dataType: string
+		lineageTag: b11854ca-bbfe-47c4-a08b-20f3b1d90183
+		summarizeBy: none
+		sourceColumn: NO_MOEDA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column SG_MOEDA
+		dataType: string
+		lineageTag: 34c1daf5-a7c1-4775-9e41-9a3e4047b36c
+		summarizeBy: none
+		sourceColumn: SG_MOEDA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column NR_ORDEM
+		dataType: double
+		lineageTag: 7ea22d21-d2c9-41ee-99dc-3c48a66e9238
+		summarizeBy: sum
+		sourceColumn: NR_ORDEM
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SG_SIMBOLO
+		dataType: string
+		lineageTag: 2f4f317a-c390-41c2-9ebd-6b6950a04e84
+		summarizeBy: none
+		sourceColumn: SG_SIMBOLO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column ID_MOEDA
+		dataType: double
+		lineageTag: 66fed152-8d3f-405c-b46a-7e29e7e6d397
+		summarizeBy: sum
+		sourceColumn: ID_MOEDA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IN_TIPO_MOEDA
+		dataType: string
+		lineageTag: 669c7530-cd04-422e-b0ea-4ae68bfa4c46
+		summarizeBy: none
+		sourceColumn: IN_TIPO_MOEDA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column DT_EXCLUSAO_PTAX
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3ba12d84-b1b5-405b-8d92-b335fc467a08
+		summarizeBy: none
+		sourceColumn: DT_EXCLUSAO_PTAX
+
+		variation Variation
+			isDefault
+			relationship: 50a60517-ed15-45ed-afe8-f22bc9228ae8
+			defaultHierarchy: LocalDateTable_85552651-d1e4-45f2-ac43-6eafebb9f981.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DT_INICIO_VIGENCIA
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 681954af-6041-44c8-bbe3-50643ae15672
+		summarizeBy: none
+		sourceColumn: DT_INICIO_VIGENCIA
+
+		variation Variation
+			isDefault
+			relationship: dabcd698-9ada-4005-998c-1f3fec4af65e
+			defaultHierarchy: LocalDateTable_bacb48e0-de0a-47c4-afa3-ec5eab703381.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_PAIS
+		dataType: double
+		lineageTag: 1a847ecf-3e10-4aa5-a264-516e0979d495
+		summarizeBy: sum
+		sourceColumn: ID_PAIS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition MVW_MOEDA-f51dc473-7cc2-4f84-8450-99fef07240f9 = m
+		mode: import
+		source =
+				let
+				    Fonte = Oracle.Database("exastncl03-tlm0m-scan.prosubnet.vcndados.oraclevcn.com/DWPROD.prosubnet.vcndados.oraclevcn.com", [HierarchicalNavigation=true]),
+				    PRD_CORPORATIVO = Fonte{[Schema="PRD_CORPORATIVO"]}[Data],
+				    MVW_MOEDA1 = PRD_CORPORATIVO{[Name="MVW_MOEDA"]}[Data],
+				    #"Linhas Filtradas" = Table.SelectRows(MVW_MOEDA1, each ([NO_MOEDA] = "DOLAR DOS EUA" or [NO_MOEDA] = "EURO"))
+				in
+				    #"Linhas Filtradas"
+
+	annotation PBI_ResultType = Table
+

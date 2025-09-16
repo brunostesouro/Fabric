@@ -1,0 +1,39 @@
+table DIM_TIPO_CREDITO
+	lineageTag: da4414de-3bc7-41f0-bd78-898983ee941b
+
+	column ID_TIPO_CREDITO
+		dataType: string
+		sourceProviderType: Varchar2
+		lineageTag: f7312687-4f0a-4261-a636-7a7fcae6c74d
+		summarizeBy: none
+		sourceColumn: ID_TIPO_CREDITO
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_TIPO_CREDITO
+		dataType: string
+		sourceProviderType: Varchar2
+		lineageTag: 3f2f5196-7d89-4e53-81c9-d247a3438869
+		summarizeBy: none
+		sourceColumn: NO_TIPO_CREDITO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipo credito' = DIM_TIPO_CREDITO[ID_TIPO_CREDITO] &" - "& DIM_TIPO_CREDITO[NO_TIPO_CREDITO]
+		lineageTag: 03b7799f-4711-41d2-9bf0-58b9a6477614
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_TIPO_CREDITO = m
+		mode: directQuery
+		source =
+				let
+				    Fonte = Oracle.Database("exastncl03-tlm0m-scan.prosubnet.vcndados.oraclevcn.com/DWPROD.prosubnet.vcndados.oraclevcn.com", [HierarchicalNavigation=true]),
+				    DEV_SIGEFI = Fonte{[Schema="DEV_SIGEFI"]}[Data],
+				    DIM_TIPO_CREDITO1 = DEV_SIGEFI{[Name="DIM_TIPO_CREDITO"]}[Data]
+				in
+				    DIM_TIPO_CREDITO1
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,9 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definitionProperties/2.0.0/schema.json",
+  "version": "4.0",
+  "datasetReference": {
+    "byConnection": {
+      "connectionString": "Data Source=powerbi://api.powerbi.com/v1.0/myorg/Estudos_Fabric;initial catalog=estudo;integrated security=ClaimsToken;semanticmodelid=a5f829b7-bb0f-41bd-9d38-ff50fa1b5696"
+    }
+  }
+}

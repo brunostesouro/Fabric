@@ -1,0 +1,81 @@
+table DIM_ORGAO_DECRETO
+	lineageTag: f51221f2-5d61-45d7-a11b-bd6a08314f73
+
+	column ID_ORGAO_DECRETO_SK
+		dataType: string
+		lineageTag: e8022b9e-38dc-4aeb-9b89-f40fc3df2e22
+		summarizeBy: none
+		sourceColumn: ID_ORGAO_DECRETO_SK
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO_ORGAO_DECRETO
+		dataType: string
+		lineageTag: 483ac5b5-5199-4e15-82bf-960cfa2cace8
+		summarizeBy: none
+		sourceColumn: CO_ORGAO_DECRETO
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_ORGAO_DECRETO_ABREVIADO
+		dataType: string
+		lineageTag: 353b7048-7477-4cd1-8206-ae00c508760c
+		summarizeBy: none
+		sourceColumn: NO_ORGAO_DECRETO_ABREVIADO
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_ORGAO_DECRETO
+		dataType: string
+		lineageTag: 3f0f29a8-6708-4beb-9a96-d0c8e6fddc2f
+		summarizeBy: none
+		sourceColumn: NO_ORGAO_DECRETO
+
+		annotation SummarizationSetBy = Automatic
+
+	column DT_ATUALIZACAO
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 35ce3b27-9fc7-4ea6-953d-9e3e50ed7865
+		summarizeBy: none
+		sourceColumn: DT_ATUALIZACAO
+
+		variation Variation
+			isDefault
+			relationship: e936b9e5-72b8-4b46-a59b-f273f7776705
+			defaultHierarchy: LocalDateTable_f684fb79-fe96-4c86-951c-595a6409d29e.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column AN_EXERCICIO
+		dataType: double
+		lineageTag: efa5639a-9fe1-4bcf-9b3a-ecbebb68c2a8
+		summarizeBy: sum
+		sourceColumn: AN_EXERCICIO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CO_NO_ORGAO_DECRETO_ABREV
+		dataType: string
+		lineageTag: 839a1cc2-318c-4c78-afef-f550c2191e29
+		summarizeBy: none
+		sourceColumn: CO_NO_ORGAO_DECRETO_ABREV
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_ORGAO_DECRETO-8b040ff4-858a-4ad1-8ada-07bb2ceebbd2 = m
+		mode: import
+		source =
+				let
+				    Fonte = Oracle.Database("cluster3-scan/dwprod", [HierarchicalNavigation=true]),
+				    DEV_SIGEFI2 = Fonte{[Schema="DEV_SIGEFI2"]}[Data],
+				    DIM_ORGAO_DECRETO1 = DEV_SIGEFI2{[Name="DIM_ORGAO_DECRETO"]}[Data]
+				in
+				    DIM_ORGAO_DECRETO1
+
+	annotation PBI_ResultType = Table
+

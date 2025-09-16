@@ -1,0 +1,106 @@
+table DIM_MARCA_CLASSIFICACAO
+	lineageTag: 113572f4-2dd6-45c7-bc4d-aa7ecd736f9c
+
+	column ID_MARCA_CLASSIFICACAO_SK
+		dataType: double
+		isNullable: false
+		sourceProviderType: Decimal(38, 0)
+		lineageTag: 1b389719-d7f7-429d-9602-a76d11c432db
+		summarizeBy: none
+		sourceColumn: ID_MARCA_CLASSIFICACAO_SK
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NO_MARCA_CLASSIFICACAO
+		dataType: string
+		isNullable: false
+		sourceProviderType: Varchar2
+		lineageTag: ffcebc9f-2cd4-48c8-ab01-41da6099b7e5
+		summarizeBy: none
+		sourceColumn: NO_MARCA_CLASSIFICACAO
+
+		annotation SummarizationSetBy = Automatic
+
+	column IN_MARCA_CLASSIFICACAO
+		dataType: string
+		sourceProviderType: Varchar2
+		lineageTag: 9078ffbb-1d79-4a8f-8015-eafc2af1fec4
+		summarizeBy: none
+		sourceColumn: IN_MARCA_CLASSIFICACAO
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_MARCA_PUBLICACAO
+		dataType: string
+		sourceProviderType: Varchar2
+		lineageTag: 70a103a7-91c1-4d7a-9c7a-c546a2b5500c
+		summarizeBy: none
+		sourceColumn: NO_MARCA_PUBLICACAO
+
+		annotation SummarizationSetBy = Automatic
+
+	column IN_GRUPO_MENSAGEM_SOTN
+		dataType: double
+		sourceProviderType: Int16
+		lineageTag: 0d1aaa32-c4f5-4eef-a747-ce88add25a95
+		summarizeBy: none
+		sourceColumn: IN_GRUPO_MENSAGEM_SOTN
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NR_PRIORIDADE
+		dataType: double
+		sourceProviderType: Int16
+		lineageTag: 11111afc-8514-49a8-8319-148886a166f1
+		summarizeBy: none
+		sourceColumn: NR_PRIORIDADE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IN_TIPO_LANCAMENTO_SUBCONTA
+		dataType: string
+		sourceProviderType: Varchar2
+		lineageTag: 2b4e0654-99ef-4ba6-bb11-050fe88b8d5d
+		summarizeBy: none
+		sourceColumn: IN_TIPO_LANCAMENTO_SUBCONTA
+
+		annotation SummarizationSetBy = Automatic
+
+	column IN_TIPO_LANCAMENTO_SUBCON_DEST
+		dataType: string
+		sourceProviderType: Varchar2
+		lineageTag: 75475f85-93f6-4a7e-a416-4c1aa0fbb72d
+		summarizeBy: none
+		sourceColumn: IN_TIPO_LANCAMENTO_SUBCON_DEST
+
+		annotation SummarizationSetBy = Automatic
+
+	column SN_PRIMARIO
+		dataType: double
+		sourceProviderType: Int16
+		lineageTag: a8836d64-af11-4532-b0ad-b5fa9eeb74ba
+		summarizeBy: none
+		sourceColumn: SN_PRIMARIO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition DIM_MARCA_CLASSIFICACAO = m
+		mode: directQuery
+		source =
+				let
+				    Fonte = Oracle.Database("exastncl03-tlm0m-scan.prosubnet.vcndados.oraclevcn.com/DWPROD.prosubnet.vcndados.oraclevcn.com", [HierarchicalNavigation=true]),
+				    DEV_SIGEFI = Fonte{[Schema="DEV_SIGEFI"]}[Data],
+				    DIM_MARCA_CLASSIFICACAO1 = DEV_SIGEFI{[Name="DIM_MARCA_CLASSIFICACAO"]}[Data]
+				in
+				    DIM_MARCA_CLASSIFICACAO1
+
+	annotation PBI_ResultType = Table
+

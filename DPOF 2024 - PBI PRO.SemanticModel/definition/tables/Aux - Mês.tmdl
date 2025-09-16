@@ -1,0 +1,123 @@
+table 'Aux - Mês'
+	lineageTag: 094216a9-a929-4ea0-bf31-c161318d73da
+
+	column 'Cód. Mês-1'
+		dataType: int64
+		formatString: 0
+		lineageTag: ef247878-5768-4705-b544-602727e85701
+		summarizeBy: sum
+		sourceColumn: Cód. Mês-1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cód. Mês-2'
+		dataType: int64
+		formatString: 0
+		lineageTag: 575fac12-fa35-423f-99cc-de439a52bc00
+		summarizeBy: sum
+		sourceColumn: Cód. Mês-2
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nome Mês'
+		dataType: string
+		lineageTag: d69e168d-4381-41e3-b374-9101d1ecabdb
+		summarizeBy: none
+		sourceColumn: Nome Mês
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cód. Nome Mês'
+		dataType: string
+		lineageTag: f8e4b390-5a85-4f53-b3db-0b1c776aed1c
+		summarizeBy: none
+		sourceColumn: Cód. Nome Mês
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mês
+		dataType: string
+		lineageTag: 44605ff4-373a-4408-8c60-14b12ea5955d
+		summarizeBy: none
+		sourceColumn: Mês
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9ef0b2dc-7498-4d7f-aaa4-2c551b7989a2
+		summarizeBy: none
+		sourceColumn: Data
+
+		variation Variation
+			isDefault
+			relationship: cba8dca0-181c-4736-9207-248661462cde
+			defaultHierarchy: LocalDateTable_e4227bcd-46fe-48e9-b6c7-3aa842c86615.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Cód. Nome Mês Completo'
+		dataType: string
+		lineageTag: 74b11581-4e9a-4cc9-9891-a798b381cdc0
+		summarizeBy: none
+		sourceColumn: Cód. Nome Mês Completo
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mês 2023'
+		dataType: string
+		lineageTag: 49fa828a-257f-41b7-bc32-8896bcf9c47c
+		summarizeBy: none
+		sourceColumn: Mês 2023
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Data 2023'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 175fd264-8fda-4ce8-ba5c-e4e3b335614b
+		summarizeBy: none
+		sourceColumn: Data 2023
+
+		variation Variation
+			isDefault
+			relationship: 57954a33-b82c-4847-8906-779c0d21a30b
+			defaultHierarchy: LocalDateTable_ba269539-dbc4-424b-b6f3-98756dc3d75b.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column IN_PERIODO
+		dataType: int64
+		formatString: 0
+		lineageTag: 6344eccc-c54b-48af-ab07-2bede8902cf3
+		summarizeBy: none
+		sourceColumn: IN_PERIODO
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mês_1
+		dataType: string
+		lineageTag: 84b3886a-b7e3-4366-8148-2a571b0cbed0
+		summarizeBy: none
+		sourceColumn: Mês_1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Aux - Mês' = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents("\\cruzeiro.stn.intra\Dados_ANALITICOS\DADOS-DAS-AREAS\COFIN\Painel por Órgão\Mês.xlsx"), null, true),
+				    Planilha1_Sheet = Fonte{[Item="Planilha1",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Planilha1_Sheet, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Cód. Mês-1", Int64.Type}, {"Cód. Mês-2", Int64.Type}, {"Nome Mês", type text}, {"Cód. Nome Mês", type text}, {"Mês", type text}, {"Data", type date}, {"Cód. Nome Mês Completo", type text}, {"Mês 2023", type text}, {"Data 2023", type date}, {"IN_PERIODO", Int64.Type}, {"Mês_1", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+

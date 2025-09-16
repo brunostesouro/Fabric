@@ -1,0 +1,39 @@
+table DIM_GRUPO_DESPESA
+	lineageTag: 3ed443f7-e553-446d-bfd5-24f0961f1dc9
+
+	column ID_GRUPO_DESPESA
+		dataType: double
+		lineageTag: 4460b6c9-d352-4655-a93f-956d8845167c
+		summarizeBy: none
+		sourceColumn: ID_GRUPO_DESPESA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NO_GRUPO_DESPESA
+		dataType: string
+		lineageTag: 7e63d6e6-637e-42ab-9920-de831cab1a8e
+		summarizeBy: none
+		sourceColumn: NO_GRUPO_DESPESA
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grupo despesa' = DIM_GRUPO_DESPESA[ID_GRUPO_DESPESA] &" - "& DIM_GRUPO_DESPESA[NO_GRUPO_DESPESA]
+		lineageTag: 8a3ed41d-70d1-47d4-8313-045b8e23aee2
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_GRUPO_DESPESA-3fb598dd-83ee-4165-82d0-6bb9e6873e2c = m
+		mode: import
+		source =
+				let
+				    Fonte = Oracle.Database("exastncl03-tlm0m-scan.prosubnet.vcndados.oraclevcn.com/DWPROD.prosubnet.vcndados.oraclevcn.com", [HierarchicalNavigation=true]),
+				    DEV_SIGEFI2 = Fonte{[Schema="DEV_SIGEFI2"]}[Data],
+				    DIM_GRUPO_DESPESA1 = DEV_SIGEFI2{[Name="DIM_GRUPO_DESPESA"]}[Data]
+				in
+				    DIM_GRUPO_DESPESA1
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,37 @@
+table DIM_GRUPO_FONTE
+	lineageTag: 4d48b94e-f337-4be0-a509-e37584da1f34
+
+	column ID_GRUPO_FONTE
+		dataType: double
+		isNullable: false
+		sourceProviderType: Int16
+		lineageTag: 91ef5da2-74d1-4c41-9d72-d0d28480cfa4
+		summarizeBy: sum
+		sourceColumn: ID_GRUPO_FONTE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NO_GRUPO_FONTE
+		dataType: string
+		isNullable: false
+		sourceProviderType: Varchar2
+		lineageTag: a015aeee-7052-4504-aeb1-f04cff3c6f53
+		summarizeBy: none
+		sourceColumn: NO_GRUPO_FONTE
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_GRUPO_FONTE = m
+		mode: directQuery
+		source =
+				let
+				    Fonte = Oracle.Database("exastncl03-tlm0m-scan.prosubnet.vcndados.oraclevcn.com/DWPROD.prosubnet.vcndados.oraclevcn.com", [HierarchicalNavigation=true]),
+				    DEV_SIGEFI = Fonte{[Schema="DEV_SIGEFI"]}[Data],
+				    DIM_GRUPO_FONTE1 = DEV_SIGEFI{[Name="DIM_GRUPO_FONTE"]}[Data]
+				in
+				    DIM_GRUPO_FONTE1
+
+	annotation PBI_ResultType = Table
+

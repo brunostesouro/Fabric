@@ -1,0 +1,41 @@
+table DIM_RESULTADO_EOF
+	lineageTag: 543bdb0a-c605-4320-81f4-0cd3fc95a9d9
+
+	column ID_RESULTADO_EOF
+		dataType: string
+		sourceProviderType: Decimal(38, 127)
+		lineageTag: 1d1de717-38b9-4625-bbf2-65d263271d3d
+		summarizeBy: none
+		sourceColumn: ID_RESULTADO_EOF
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_RESULTADO_EOF
+		dataType: string
+		sourceProviderType: Varchar2
+		lineageTag: 69987413-bf51-4c2b-88c8-f6f1c8c64dc2
+		summarizeBy: none
+		sourceColumn: NO_RESULTADO_EOF
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ident Res Prim' = DIM_RESULTADO_EOF[ID_RESULTADO_EOF] &" - "& DIM_RESULTADO_EOF[NO_RESULTADO_EOF]
+		lineageTag: 012d3314-6ea1-45fd-962c-22b1dbb470d8
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_RESULTADO_EOF = m
+		mode: directQuery
+		source =
+				let
+				    Fonte = Oracle.Database("exastncl03-tlm0m-scan.prosubnet.vcndados.oraclevcn.com/DWPROD.prosubnet.vcndados.oraclevcn.com", [HierarchicalNavigation=true]),
+				    DEV_SIGEFI = Fonte{[Schema="DEV_SIGEFI"]}[Data],
+				    DIM_RESULTADO_EOF1 = DEV_SIGEFI{[Name="DIM_RESULTADO_EOF"]}[Data]
+				in
+				    DIM_RESULTADO_EOF1
+
+	annotation PBI_ResultType = Table
+

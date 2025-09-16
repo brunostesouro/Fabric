@@ -1,0 +1,277 @@
+table 'NATUREZA_CUSTO (2)'
+	isHidden
+	excludeFromModelRefresh
+	lineageTag: bc5dcb87-4121-4037-85b0-2e60904a572b
+
+	column ITEM_DE_CUSTO
+		dataType: string
+		isHidden
+		lineageTag: 61fe00c3-700e-42dd-8aae-3a4d5cca63ae
+		summarizeBy: none
+		sourceColumn: ITEM_DE_CUSTO
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column IND_ITEM
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 88fa58bf-7540-45ac-b0f1-391d8c5bf6c3
+		summarizeBy: sum
+		sourceColumn: IND_ITEM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column K_RAT
+		dataType: string
+		isHidden
+		lineageTag: 158ce5de-6e99-4cb5-929d-0b66a0bfcf94
+		summarizeBy: none
+		sourceColumn: K_RAT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column K_RAT_SUB
+		dataType: string
+		isHidden
+		lineageTag: 31ab7706-f16e-4b20-ad9b-b641b6e3d7b7
+		summarizeBy: none
+		sourceColumn: K_RAT_SUB
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column IND_K_RAT
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 37a798fd-fe17-43fe-a7ff-6447afabd33c
+		summarizeBy: sum
+		sourceColumn: IND_K_RAT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column IND_NATUREZA_DE_CUSTO
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d066ce8a-f2d8-40a2-a208-f0b556927040
+		summarizeBy: sum
+		sourceColumn: IND_NATUREZA_DE_CUSTO
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column NATUREZA_DE_CUSTO
+		dataType: string
+		isHidden
+		lineageTag: 7a86ff55-da0d-461a-9ae8-cc976e84b49c
+		summarizeBy: none
+		sourceColumn: NATUREZA_DE_CUSTO
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Custos Atribuídos a Pessoal'
+		dataType: string
+		isHidden
+		lineageTag: eab775ff-d420-4e72-b251-48656ebd5a13
+		summarizeBy: none
+		sourceColumn: Custos Atribuídos a Pessoal
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column SIG_ITEM
+		dataType: string
+		isHidden
+		lineageTag: 30f9e4f8-2107-41d0-b2bc-89eb58f3431b
+		summarizeBy: none
+		sourceColumn: SIG_ITEM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Custos de Funcionamento'
+		dataType: string
+		isHidden
+		lineageTag: d7e98e8e-f7af-4759-ba5b-86e852ad49f3
+		summarizeBy: none
+		sourceColumn: Custos de Funcionamento
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column ITEM_DE_CUSTO_Esp
+		dataType: string
+		isHidden
+		lineageTag: 3871ca4a-5606-4217-a397-e96c57f850f9
+		summarizeBy: none
+		sourceColumn: ITEM_DE_CUSTO_Esp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column NATUREZA_DE_CUSTO_Esp
+		dataType: string
+		isHidden
+		lineageTag: c91809fe-b781-42ae-9fde-9fdacc4ea745
+		summarizeBy: none
+		sourceColumn: NATUREZA_DE_CUSTO_Esp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Custos Atribuídos a Pessoal_Esp'
+		dataType: string
+		isHidden
+		lineageTag: 9a2ed677-ab71-4d2c-8c75-b4ad6be7a090
+		summarizeBy: none
+		sourceColumn: Custos Atribuídos a Pessoal_Esp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column SIG_ITEM_Esp
+		dataType: string
+		isHidden
+		lineageTag: 77a27ca5-c29b-4093-97ef-bcbbf2e1566c
+		summarizeBy: none
+		sourceColumn: SIG_ITEM_Esp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Custos de Funcionamento_Esp'
+		dataType: string
+		isHidden
+		lineageTag: 03361df3-bfe3-403c-a109-670c417068d6
+		summarizeBy: none
+		sourceColumn: Custos de Funcionamento_Esp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column ITEM_DE_CUSTO_ING
+		dataType: string
+		isHidden
+		lineageTag: cf22a6bc-b5ca-48f6-8efb-16f15995499c
+		summarizeBy: none
+		sourceColumn: ITEM_DE_CUSTO_ING
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column NATUREZA_DE_CUSTO_ING
+		dataType: string
+		isHidden
+		lineageTag: a0d6ffde-a761-458c-a7a2-539ab5559eed
+		summarizeBy: none
+		sourceColumn: NATUREZA_DE_CUSTO_ING
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Custos Atribuídos a Pessoal_ING'
+		dataType: string
+		isHidden
+		lineageTag: f6e65b57-c751-464d-9ac9-43c90db8e47a
+		summarizeBy: none
+		sourceColumn: Custos Atribuídos a Pessoal_ING
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column SIG_ITEM_ING
+		dataType: string
+		isHidden
+		lineageTag: d0ea1346-c32b-4453-9d91-8a5286b9885f
+		summarizeBy: none
+		sourceColumn: SIG_ITEM_ING
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Custos de Funcionamento_ING'
+		dataType: string
+		isHidden
+		lineageTag: 434bede8-a6db-4f47-b4f4-d22f172bf2de
+		summarizeBy: none
+		sourceColumn: Custos de Funcionamento_ING
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	partition 'NATUREZA_CUSTO (2)-03dacbdb-4b2b-4201-b10f-dc5e11d6c594' = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents("\\cruzeiro\Dados_ANALITICOS\DADOS-DAS-AREAS\COINC\CUSTOS Tabela_Tradução Portal.xlsx"), null, true),
+				    NATUREZA_CUSTO_Sheet = Fonte{[Item="NATUREZA_CUSTO",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(NATUREZA_CUSTO_Sheet, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"ITEM_DE_CUSTO", type text}, {"IND_ITEM", Int64.Type}, {"K_RAT", type text}, {"K_RAT_SUB", type text}, {"IND_K_RAT", Int64.Type}, {"IND_NATUREZA_DE_CUSTO", Int64.Type}, {"NATUREZA_DE_CUSTO", type text}, {"Custos Atribuídos a Pessoal", type text}, {"SIG_ITEM", type text}, {"Custos de Funcionamento", type text}, {"ITEM_DE_CUSTO_Esp", type text}, {"NATUREZA_DE_CUSTO_Esp", type text}, {"Custos Atribuídos a Pessoal_Esp", type text}, {"SIG_ITEM_Esp", type text}, {"Custos de Funcionamento_Esp", type text}, {"ITEM_DE_CUSTO_ING", type text}, {"NATUREZA_DE_CUSTO_ING", type text}, {"Custos Atribuídos a Pessoal_ING", type text}, {"SIG_ITEM_ING", type text}, {"Custos de Funcionamento_ING", type text}}),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Tipo Alterado","CAP","CIP",Replacer.ReplaceText,{"Custos Atribuídos a Pessoal_Esp"}),
+				    #"Valor Substituído1" = Table.ReplaceValue(#"Valor Substituído","CF","CO",Replacer.ReplaceText,{"Custos de Funcionamento_Esp"})
+				in
+				    #"Valor Substituído1"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,246 @@
+table NATUREZA_CUSTO
+	lineageTag: 8a11b0f8-b0cc-4df0-a3d7-126b31ec999b
+
+	column ITEM_DE_CUSTO
+		dataType: string
+		lineageTag: 8683f5c7-eeee-411c-af3b-91336c03c489
+		summarizeBy: none
+		sourceColumn: ITEM_DE_CUSTO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column IND_ITEM
+		dataType: double
+		lineageTag: a52bdd22-cc05-4322-88c4-8171bad82da7
+		summarizeBy: sum
+		sourceColumn: IND_ITEM
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column K_RAT
+		dataType: string
+		lineageTag: f4871a00-ce6e-475d-bed3-5117a7612ffb
+		summarizeBy: none
+		sourceColumn: K_RAT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column K_RAT_SUB
+		dataType: string
+		lineageTag: b05d0830-86e9-47d8-b4ab-3e5ba620c945
+		summarizeBy: none
+		sourceColumn: K_RAT_SUB
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column IND_K_RAT
+		dataType: string
+		lineageTag: 6c6e7b33-577d-4121-a1e0-5ed5419dea86
+		summarizeBy: none
+		sourceColumn: IND_K_RAT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column IND_NATUREZA_DE_CUSTO
+		dataType: double
+		lineageTag: eb29e339-6f3a-492b-b512-078cca2ea811
+		summarizeBy: sum
+		sourceColumn: IND_NATUREZA_DE_CUSTO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NATUREZA_DE_CUSTO
+		dataType: string
+		lineageTag: cf46d862-56a6-4b12-9a3c-c1efd4dd6ee7
+		summarizeBy: none
+		sourceColumn: NATUREZA_DE_CUSTO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Custos Atribuídos a Pessoal'
+		dataType: string
+		lineageTag: 85365884-3c68-4b5e-95c2-28b68cc59e0a
+		summarizeBy: none
+		sourceColumn: Custos Atribuídos a Pessoal
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column SIG_ITEM
+		dataType: string
+		lineageTag: 3679e4ef-71ca-40f2-86db-a0033ee31c3f
+		summarizeBy: none
+		sourceColumn: SIG_ITEM
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Custos de Funcionamento'
+		dataType: string
+		lineageTag: 8f50fa20-1bf3-4733-9d81-321651e014c1
+		summarizeBy: none
+		sourceColumn: Custos de Funcionamento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column USAR_RANKING
+		dataType: string
+		lineageTag: defea264-7695-4667-84e4-74036331b20c
+		summarizeBy: none
+		sourceColumn: USAR_RANKING
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column ITEM_DE_CUSTO_Esp
+		dataType: string
+		lineageTag: 883d902c-b7e0-4aaa-88e4-adf0ae879d41
+		summarizeBy: none
+		sourceColumn: ITEM_DE_CUSTO_Esp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column NATUREZA_DE_CUSTO_Esp
+		dataType: string
+		lineageTag: 8c486f9c-29aa-4eb2-9c16-f60e0db67407
+		summarizeBy: none
+		sourceColumn: NATUREZA_DE_CUSTO_Esp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Custos Atribuídos a Pessoal_Esp'
+		dataType: string
+		lineageTag: 8106bc70-7de1-4163-bdba-b1f9c37241de
+		summarizeBy: none
+		sourceColumn: Custos Atribuídos a Pessoal_Esp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column SIG_ITEM_Esp
+		dataType: string
+		lineageTag: da80f669-ca90-459b-af87-618910d1ba1a
+		summarizeBy: none
+		sourceColumn: SIG_ITEM_Esp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Custos de Funcionamento_Esp'
+		dataType: string
+		lineageTag: e6e797c4-89ef-4b2f-a27f-15911bc50590
+		summarizeBy: none
+		sourceColumn: Custos de Funcionamento_Esp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column ITEM_DE_CUSTO_ING
+		dataType: string
+		lineageTag: c9fc75c4-8f85-46e1-9bb2-eea618e7ebc7
+		summarizeBy: none
+		sourceColumn: ITEM_DE_CUSTO_ING
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column NATUREZA_DE_CUSTO_ING
+		dataType: string
+		lineageTag: d09ca51f-aae7-46f1-aa44-07c0e8461521
+		summarizeBy: none
+		sourceColumn: NATUREZA_DE_CUSTO_ING
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Custos Atribuídos a Pessoal_ING'
+		dataType: string
+		lineageTag: bb8183e4-7af7-492f-8735-01cbc2da7a6d
+		summarizeBy: none
+		sourceColumn: Custos Atribuídos a Pessoal_ING
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column SIG_ITEM_ING
+		dataType: string
+		lineageTag: 1bc26736-ee38-470d-9a4d-63deb2e8f58b
+		summarizeBy: none
+		sourceColumn: SIG_ITEM_ING
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Custos de Funcionamento_ING'
+		dataType: string
+		lineageTag: 479705f5-21c5-4a85-9716-da3d1010b7bc
+		summarizeBy: none
+		sourceColumn: Custos de Funcionamento_ING
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	hierarchy 'ITEM_DE_CUSTO_Esp Hierarquia'
+		lineageTag: b6cc63ce-7c89-49a8-a2d7-7727abc43165
+
+		level ITEM_DE_CUSTO_Esp
+			lineageTag: e4c59d56-70f5-4c79-8d0d-7e727b38a283
+			column: ITEM_DE_CUSTO_Esp
+
+		level NATUREZA_DE_CUSTO_Esp
+			lineageTag: 53001472-73e0-4089-aab3-207d553d12c6
+			column: NATUREZA_DE_CUSTO_Esp
+
+	partition NATUREZA_CUSTO-0af2141c-16f1-4b9b-81af-2fa10e6d9012 = m
+		mode: import
+		source =
+				let
+				    Fonte = Oracle.Database("exastncl03-tlm0m-scan.prosubnet.vcndados.oraclevcn.com/DWPROD.prosubnet.vcndados.oraclevcn.com", [HierarchicalNavigation=true]),
+				    PRD_CUSTOS = Fonte{[Schema="PRD_CUSTOS"]}[Data],
+				    NATUREZA_CUSTO1 = PRD_CUSTOS{[Name="NATUREZA_CUSTO"]}[Data],
+				    #"Colunas Renomeadas" = Table.RenameColumns(NATUREZA_CUSTO1,{{"SEP_PESSOAL", "Custos Atribuídos a Pessoal"}, {"CEST", "Custos de Funcionamento"}}),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Colunas Renomeadas","S","Apenas CAP",Replacer.ReplaceText,{"Custos Atribuídos a Pessoal"}),
+				    #"Valor Substituído1" = Table.ReplaceValue(#"Valor Substituído","N","Sem CAP ",Replacer.ReplaceText,{"Custos Atribuídos a Pessoal"}),
+				    #"Valor Substituído2" = Table.ReplaceValue(#"Valor Substituído1","S","Apenas CF",Replacer.ReplaceText,{"Custos de Funcionamento"}),
+				    #"Valor Substituído3" = Table.ReplaceValue(#"Valor Substituído2","N","Sem CF",Replacer.ReplaceText,{"Custos de Funcionamento"}),
+				    #"Colocar Cada Palavra Em Maiúscula" = Table.TransformColumns(#"Valor Substituído3",{{"NATUREZA_DE_CUSTO", Text.Proper, type text}}),
+				    #"Consultas Mescladas" = Table.NestedJoin(#"Colocar Cada Palavra Em Maiúscula", {"IND_ITEM"}, #"NATUREZA_CUSTO (2)", {"IND_ITEM"}, "NATUREZA_CUSTO (2)", JoinKind.LeftOuter),
+				    #"NATUREZA_CUSTO (2) Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas", "NATUREZA_CUSTO (2)", {"ITEM_DE_CUSTO_Esp", "NATUREZA_DE_CUSTO_Esp", "Custos Atribuídos a Pessoal_Esp", "SIG_ITEM_Esp", "Custos de Funcionamento_Esp", "ITEM_DE_CUSTO_ING", "NATUREZA_DE_CUSTO_ING", "Custos Atribuídos a Pessoal_ING", "SIG_ITEM_ING", "Custos de Funcionamento_ING"}, {"ITEM_DE_CUSTO_Esp", "NATUREZA_DE_CUSTO_Esp", "Custos Atribuídos a Pessoal_Esp", "SIG_ITEM_Esp", "Custos de Funcionamento_Esp", "ITEM_DE_CUSTO_ING", "NATUREZA_DE_CUSTO_ING", "Custos Atribuídos a Pessoal_ING", "SIG_ITEM_ING", "Custos de Funcionamento_ING"}),
+				    #"Colocar Cada Palavra Em Maiúscula1" = Table.TransformColumns(#"NATUREZA_CUSTO (2) Expandido",{{"ITEM_DE_CUSTO_Esp", Text.Proper, type text}}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Colocar Cada Palavra Em Maiúscula1", each ([ITEM_DE_CUSTO] <> "NC - TRANSFERÊNCIAS OBRIGATÓRIAS"))
+				in
+				    #"Linhas Filtradas"
+
+	annotation PBI_ResultType = Table
+

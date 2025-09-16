@@ -1,0 +1,381 @@
+table FATO_EXEC_DESP_SALDO_FECHA_MES
+	lineageTag: f4efd373-b824-4d35-8fbd-799e862e9569
+
+	column AN_EXECUCAO_DESPESA_SALDO
+		dataType: string
+		lineageTag: b3bb6fea-2d35-4886-b043-8bd63ce9af67
+		summarizeBy: none
+		sourceColumn: AN_EXECUCAO_DESPESA_SALDO
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column AN_EMISSAO_NE
+		dataType: string
+		lineageTag: d2227d75-b4bd-4d19-ba8d-bfeb3dc7ce20
+		summarizeBy: none
+		sourceColumn: AN_EMISSAO_NE
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_EXECUCAO_DESPESA_SALDO_SK
+		dataType: double
+		lineageTag: ea95c75c-f417-4cc6-8d4b-606392eb236f
+		summarizeBy: sum
+		sourceColumn: ID_EXECUCAO_DESPESA_SALDO_SK
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CO_ORGAO_MAXIMO_UO
+		dataType: string
+		lineageTag: 909d9f54-8adc-4a6b-baf6-9a402460afc7
+		summarizeBy: none
+		sourceColumn: CO_ORGAO_MAXIMO_UO
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO_ORGAO_UG
+		dataType: string
+		lineageTag: 8e38b831-408c-4b5c-8990-4ea2fb7e4009
+		summarizeBy: none
+		sourceColumn: CO_ORGAO_UG
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_UNIDADE_GESTORA
+		dataType: string
+		lineageTag: 306c4de2-f615-4e62-a552-e053de9ab791
+		summarizeBy: none
+		sourceColumn: ID_UNIDADE_GESTORA
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO_PROGRAMA_TRABALHO
+		dataType: string
+		lineageTag: ec833ebb-4ba2-40cb-8e53-f28de181c3ba
+		summarizeBy: none
+		sourceColumn: CO_PROGRAMA_TRABALHO
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_PLANO_ORCAMENTARIO_SK
+		dataType: string
+		lineageTag: 28367428-ecfe-4ad5-ba00-40c38ddfcc5f
+		summarizeBy: none
+		sourceColumn: ID_PLANO_ORCAMENTARIO_SK
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_PTRES
+		dataType: string
+		lineageTag: 412cae89-0b91-4d45-bf1c-25ad01bcb075
+		summarizeBy: none
+		sourceColumn: ID_PTRES
+
+		annotation SummarizationSetBy = Automatic
+
+	column IN_TIPO_SALDO
+		dataType: string
+		lineageTag: fdda40c6-bea2-46f7-9fc0-eb9c1a2e31ba
+		summarizeBy: none
+		sourceColumn: IN_TIPO_SALDO
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO_NATUREZA_DESPESA
+		dataType: string
+		lineageTag: 62e0072c-f2ee-45ed-beac-08ff3ad67a07
+		summarizeBy: none
+		sourceColumn: CO_NATUREZA_DESPESA
+
+		annotation SummarizationSetBy = Automatic
+
+	column IS_FONTE_RECURSO_DETALHE
+		dataType: string
+		lineageTag: 1b8681f6-f5cb-498d-9fb2-b88f05a655c2
+		summarizeBy: none
+		sourceColumn: IS_FONTE_RECURSO_DETALHE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_PROGRAMACAO_SELECIONADA
+		dataType: string
+		lineageTag: b098fb75-1627-4997-9235-187c1481f471
+		summarizeBy: none
+		sourceColumn: ID_PROGRAMACAO_SELECIONADA
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column SN_EXCECAO_DECRETO
+		dataType: string
+		lineageTag: 0e462542-a5ce-4129-aa80-d238ece762ce
+		summarizeBy: none
+		sourceColumn: SN_EXCECAO_DECRETO
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_RESULTADO_LEI
+		dataType: string
+		lineageTag: 0a20dff4-cc18-4014-b323-b178bfa9cd7a
+		summarizeBy: none
+		sourceColumn: ID_RESULTADO_LEI
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_RESULTADO_EOF
+		dataType: double
+		lineageTag: 0ac68869-57ce-4c3a-9429-1f91cd8e304e
+		summarizeBy: none
+		sourceColumn: ID_RESULTADO_EOF
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SN_LEI_CALMON
+		dataType: string
+		lineageTag: 03a64f6e-fb64-413b-aed5-7efa37534a25
+		summarizeBy: none
+		sourceColumn: SN_LEI_CALMON
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_TIPO_CREDITO
+		dataType: string
+		lineageTag: eacd7f08-8c6c-4c37-8a04-67d73c0d28cd
+		summarizeBy: none
+		sourceColumn: ID_TIPO_CREDITO
+
+		annotation SummarizationSetBy = Automatic
+
+	column VA_SALDO_ITEM_INFORMACAO
+		dataType: double
+		lineageTag: 746505a2-ad80-4e36-9464-1f034a3db635
+		summarizeBy: sum
+		sourceColumn: VA_SALDO_ITEM_INFORMACAO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ID_TIPO_EXECUCAO_DESPESA
+		dataType: double
+		lineageTag: 3ceaa9d5-3407-4217-a397-8f5b3e6b22b5
+		summarizeBy: none
+		sourceColumn: ID_TIPO_EXECUCAO_DESPESA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IN_CONTROLADO
+		dataType: string
+		lineageTag: 106c4d88-78d5-41a1-8991-a3386782ffa4
+		summarizeBy: none
+		sourceColumn: IN_CONTROLADO
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_INSTRUMENTO_LEGAL_SK
+		dataType: string
+		lineageTag: f4dcbdd6-f866-4f74-a1e5-f51ea930560c
+		summarizeBy: none
+		sourceColumn: ID_INSTRUMENTO_LEGAL_SK
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO_FONTE_RECURSO
+		dataType: string
+		lineageTag: 661ae6b4-5bec-48be-adfe-f7de8c8e0013
+		summarizeBy: none
+		sourceColumn: CO_FONTE_RECURSO
+
+		annotation SummarizationSetBy = Automatic
+
+	column SN_MOEDA_REAL
+		dataType: string
+		lineageTag: a2519fa2-7e5f-4d35-a417-c851a6032521
+		summarizeBy: none
+		sourceColumn: SN_MOEDA_REAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_MARCA_CLASSIFICACAO_SK
+		dataType: string
+		lineageTag: 2464d31d-eaed-449b-95eb-15c99244b540
+		summarizeBy: none
+		sourceColumn: ID_MARCA_CLASSIFICACAO_SK
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column SN_IND_RESSALVADA
+		dataType: string
+		lineageTag: 5b4d6b9f-1933-4440-a018-10b90d6fddad
+		summarizeBy: none
+		sourceColumn: SN_IND_RESSALVADA
+
+		annotation SummarizationSetBy = Automatic
+
+	column SN_IND_OBRIG_CONT_FLUXO
+		dataType: string
+		lineageTag: a630e37c-126a-4f73-83f6-a08b664415fd
+		summarizeBy: none
+		sourceColumn: SN_IND_OBRIG_CONT_FLUXO
+
+		annotation SummarizationSetBy = Automatic
+
+	column SN_IND_COMPENSACAO_META
+		dataType: string
+		lineageTag: 066103d1-b7b7-4aa7-896d-962cb36dc559
+		summarizeBy: none
+		sourceColumn: SN_IND_COMPENSACAO_META
+
+		annotation SummarizationSetBy = Automatic
+
+	column SN_IND_CRED_EXTRA_CONTROLADO
+		dataType: string
+		lineageTag: a33cd77f-06b0-4301-8def-e93fe69aaf2f
+		summarizeBy: none
+		sourceColumn: SN_IND_CRED_EXTRA_CONTROLADO
+
+		annotation SummarizationSetBy = Automatic
+
+	column SN_IND_SUJEITO_TETO
+		dataType: string
+		lineageTag: 69f67b8a-140b-4a36-881a-cd6fc30f2d29
+		summarizeBy: none
+		sourceColumn: SN_IND_SUJEITO_TETO
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_IDUSO
+		dataType: string
+		lineageTag: be7c4fc7-5328-49e0-abc3-6ea8c01f40e0
+		summarizeBy: none
+		sourceColumn: ID_IDUSO
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_ORGAO_DECRETO_SK
+		dataType: double
+		lineageTag: 44af4cac-ba9b-4208-8133-305a17ca4295
+		summarizeBy: none
+		sourceColumn: ID_ORGAO_DECRETO_SK
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ID_FUNCAO_ORCAMENTARIA
+		dataType: string
+		lineageTag: e63897a4-eb6e-4fc3-8385-bb91a14c56ea
+		summarizeBy: none
+		sourceColumn: ID_FUNCAO_ORCAMENTARIA
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_SUBFUNCAO_ORCAMENTARIA
+		dataType: string
+		lineageTag: 7a93be2a-ac10-4763-a95d-75d17c049e61
+		summarizeBy: none
+		sourceColumn: ID_SUBFUNCAO_ORCAMENTARIA
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_PROGRAMA_ORCAMENTARIO
+		dataType: string
+		lineageTag: 610c9491-a466-424f-aa02-1802c4c8d9d1
+		summarizeBy: none
+		sourceColumn: ID_PROGRAMA_ORCAMENTARIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_ACAO_ORCAMENTARIA
+		dataType: string
+		lineageTag: 1e7daf00-a78e-47f6-ba5f-c9fdba7bc31f
+		summarizeBy: none
+		sourceColumn: ID_ACAO_ORCAMENTARIA
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_LOCALIZADOR_GASTO
+		dataType: string
+		lineageTag: 9c8b4977-aaf9-4f8a-bf51-bbd108ef7c02
+		summarizeBy: none
+		sourceColumn: ID_LOCALIZADOR_GASTO
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_UNIDADE_ORCAMENTARIA
+		dataType: string
+		lineageTag: 6c2915eb-edc8-4723-aef5-4c8e49190390
+		summarizeBy: none
+		sourceColumn: ID_UNIDADE_ORCAMENTARIA
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_GRUPO_MARCA_CLASSIF_SK
+		dataType: string
+		lineageTag: 8660c399-9969-4883-a555-5e378a190ebf
+		summarizeBy: none
+		sourceColumn: ID_GRUPO_MARCA_CLASSIF_SK
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column IS_ANEXO_DECRETO_DESP
+		dataType: double
+		lineageTag: 6f80689d-e9de-4b5b-b999-d004a9c72b4f
+		summarizeBy: none
+		sourceColumn: IS_ANEXO_DECRETO_DESP
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column POSICAO
+		dataType: string
+		lineageTag: 6c23c6ef-bc8f-498d-82f5-63c9ecd9d6a6
+		summarizeBy: none
+		sourceColumn: POSICAO
+
+		annotation SummarizationSetBy = Automatic
+
+	column GND
+		dataType: string
+		lineageTag: ba2c11eb-f198-4371-bfa4-e14421942f1d
+		summarizeBy: none
+		sourceColumn: GND
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FATO_EXEC_DESP_SALDO_FECHA_MES-b32ebd2f-ed3d-43e5-8871-5d7d659be369 = m
+		mode: import
+		source =
+				let
+				    Fonte = Oracle.Database("cluster3-scan/dwprod", [HierarchicalNavigation=true]),
+				    DEV_SIGEFI2 = Fonte{[Schema="DEV_SIGEFI2"]}[Data],
+				    FATO_EXEC_DESP_SALDO_FECHA_MES1 = DEV_SIGEFI2{[Name="FATO_EXEC_DESP_SALDO_FECHA_MES"]}[Data],
+				    #"Intervalo de texto inserido" = Table.AddColumn(FATO_EXEC_DESP_SALDO_FECHA_MES1, "Intervalo de texto", each Text.Middle([CO_NATUREZA_DESPESA], 1, 1), type text),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Intervalo de texto inserido",{{"Intervalo de texto", "GND"}})
+				in
+				    #"Colunas Renomeadas"
+
+	annotation PBI_ResultType = Table
+

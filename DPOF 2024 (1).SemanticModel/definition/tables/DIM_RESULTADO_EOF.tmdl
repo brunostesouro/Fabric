@@ -1,0 +1,39 @@
+table DIM_RESULTADO_EOF
+	lineageTag: a545d539-dd5a-42f4-b227-22b9a5724573
+
+	column ID_RESULTADO_EOF
+		dataType: string
+		lineageTag: 5cd9611b-5c4d-4db0-be34-69c622daa428
+		summarizeBy: none
+		sourceColumn: ID_RESULTADO_EOF
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_RESULTADO_EOF
+		dataType: string
+		lineageTag: e39b5c17-7928-46b1-9846-2c332c301ad0
+		summarizeBy: none
+		sourceColumn: NO_RESULTADO_EOF
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ident Res Prim' = DIM_RESULTADO_EOF[ID_RESULTADO_EOF] &" - "& DIM_RESULTADO_EOF[NO_RESULTADO_EOF]
+		lineageTag: 5f9ed8e6-8ca3-4cc3-a5ec-41474cc231cd
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_RESULTADO_EOF-bf6afb21-7f09-4d3b-b086-9d7d21616fe6 = m
+		mode: import
+		source =
+				let
+				    Fonte = Oracle.Database("cluster3-scan/dwprod", [HierarchicalNavigation=true]),
+				    DEV_SIGEFI2 = Fonte{[Schema="DEV_SIGEFI2"]}[Data],
+				    DIM_RESULTADO_EOF1 = DEV_SIGEFI2{[Name="DIM_RESULTADO_EOF"]}[Data]
+				in
+				    DIM_RESULTADO_EOF1
+
+	annotation PBI_ResultType = Table
+

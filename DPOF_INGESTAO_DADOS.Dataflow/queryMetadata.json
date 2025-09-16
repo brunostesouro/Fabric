@@ -1,0 +1,276 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "DPOF_INGESTAO_DADOS",
+  "queryGroups": [],
+  "documentLocale": "pt-BR",
+  "gatewayObjectId": "ec341007-a86a-4818-ad7f-38859b1b6a9e",
+  "queriesMetadata": {
+    "DIM_ACAO_ORCAMENTARIA": {
+      "queryId": "6e6a8e59-079c-486a-ae0a-657e411fc9ca",
+      "queryName": "DIM_ACAO_ORCAMENTARIA"
+    },
+    "DIM_ANEXO_DECRETO": {
+      "queryId": "e11b1c54-0133-4945-a245-258783069379",
+      "queryName": "DIM_ANEXO_DECRETO"
+    },
+    "DIM_ANEXO_DECRETO_DESP": {
+      "queryId": "f784470b-1275-484f-8494-9d106afbd372",
+      "queryName": "DIM_ANEXO_DECRETO_DESP"
+    },
+    "DIM_CALENDARIO": {
+      "queryId": "72dd59fe-9dbe-4eee-9ed9-d8ceb92163a0",
+      "queryName": "DIM_CALENDARIO"
+    },
+    "DIM_FONTE_RECURSO": {
+      "queryId": "67ced91f-8dab-42f3-a534-588428ddc2e1",
+      "queryName": "DIM_FONTE_RECURSO"
+    },
+    "DIM_GRUPO_DESPESA": {
+      "queryId": "9b426212-196b-4911-b497-1554dd292480",
+      "queryName": "DIM_GRUPO_DESPESA"
+    },
+    "DIM_GRUPO_FONTE": {
+      "queryId": "228a4149-74fa-41fd-a421-15c57fea605d",
+      "queryName": "DIM_GRUPO_FONTE"
+    },
+    "DIM_MARCA_CLASSIFICACAO": {
+      "queryId": "da4673c2-9431-4a53-a800-dca6d86b022c",
+      "queryName": "DIM_MARCA_CLASSIFICACAO"
+    },
+    "DIM_ORGAO_DECRETO": {
+      "queryId": "297befff-c265-4c1b-bd31-3d8b7734f868",
+      "queryName": "DIM_ORGAO_DECRETO"
+    },
+    "DIM_ORGAO_MAXIMO_UO": {
+      "queryId": "c535e0e7-692d-4534-92c0-04da27c09b15",
+      "queryName": "DIM_ORGAO_MAXIMO_UO"
+    },
+    "DIM_RESULTADO_EOF": {
+      "queryId": "27246de9-1efa-431a-9df0-bf7aa01b048e",
+      "queryName": "DIM_RESULTADO_EOF"
+    },
+    "DIM_TIPO_CREDITO": {
+      "queryId": "e9da503c-e60d-4ef8-9fc1-c98103da9858",
+      "queryName": "DIM_TIPO_CREDITO"
+    },
+    "DIM_TIPO_EXECUCAO_DESPESA": {
+      "queryId": "0a06f341-11a1-4784-a29f-4d54ddaefdeb",
+      "queryName": "DIM_TIPO_EXECUCAO_DESPESA"
+    },
+    "DIM_UNIDADE_GESTORA": {
+      "queryId": "5c37a2f3-4d57-4239-9c89-c1dc8af35fe8",
+      "queryName": "DIM_UNIDADE_GESTORA"
+    },
+    "DIM_UNIDADE_ORCAMENTARIA": {
+      "queryId": "90b89f38-b98e-47d0-856c-f3be7839e8e0",
+      "queryName": "DIM_UNIDADE_ORCAMENTARIA"
+    },
+    "FATO_EXEC_DESP_MOV": {
+      "queryId": "2e62c1f6-0590-4301-bafc-84268f2737d3",
+      "queryName": "FATO_EXEC_DESP_MOV"
+    },
+    "FATO_EXEC_DESP_SALDO": {
+      "queryId": "4fea600a-f304-4409-b6dc-fb3ba9ce9540",
+      "queryName": "FATO_EXEC_DESP_SALDO"
+    },
+    "FATO_LIMITES": {
+      "queryId": "889fb2ff-a213-4f34-841a-86538a575012",
+      "queryName": "FATO_LIMITES"
+    },
+    "FATO_LIMITES_PAGEFET": {
+      "queryId": "1813fb30-117f-4a31-a2ff-a343bad34643",
+      "queryName": "FATO_LIMITES_PAGEFET"
+    },
+    "Aux - orgaos": {
+      "queryId": "6c214497-40ed-412c-9a7e-c8bbfcc8211a",
+      "queryName": "Aux - orgaos"
+    },
+    "Aux - Limites": {
+      "queryId": "8ae9db64-4333-4456-b6f7-34cf70097e08",
+      "queryName": "Aux - Limites"
+    },
+    "Limites provisórios": {
+      "queryId": "9db42006-b8be-4493-ae4f-c8453bdfc09e",
+      "queryName": "Limites provisórios"
+    },
+    "Aux - Mês": {
+      "queryId": "5b9436a0-40be-4425-a485-2c78159fe722",
+      "queryName": "Aux - Mês"
+    },
+    "Data de atualização": {
+      "queryId": "a8d55241-4631-411e-b295-50ea1190ed9d",
+      "queryName": "Data de atualização"
+    },
+    "DIM_ACAO_ORCAMENTARIA_DataDestination": {
+      "queryId": "8148a1c7-4398-4296-8532-70a7ca9b146b",
+      "queryName": "DIM_ACAO_ORCAMENTARIA_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "DIM_ANEXO_DECRETO_DataDestination": {
+      "queryId": "3d810638-0c58-4f66-bedb-bb0641b3b879",
+      "queryName": "DIM_ANEXO_DECRETO_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "DIM_ANEXO_DECRETO_DESP_DataDestination": {
+      "queryId": "6ac14bf0-52cf-46e1-b5b0-dc330b28b4ca",
+      "queryName": "DIM_ANEXO_DECRETO_DESP_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "DefaultDestination": {
+      "queryId": "2acde2d0-5d87-483c-9c46-b4b20ff9b64f",
+      "queryName": "DefaultDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "DIM_CALENDARIO_DataDestination": {
+      "queryId": "1620c346-cb06-4ad7-8410-4e8e06d76e17",
+      "queryName": "DIM_CALENDARIO_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "DIM_FONTE_RECURSO_DataDestination": {
+      "queryId": "d6434917-a0bd-4ca5-beb8-333ad6fc27b6",
+      "queryName": "DIM_FONTE_RECURSO_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "DIM_GRUPO_DESPESA_DataDestination": {
+      "queryId": "2a0fad1d-f0ea-49cb-b908-f7071ceddda9",
+      "queryName": "DIM_GRUPO_DESPESA_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "DIM_GRUPO_FONTE_DataDestination": {
+      "queryId": "2be006cc-d302-42b2-bef4-275d6f43fb24",
+      "queryName": "DIM_GRUPO_FONTE_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "DIM_MARCA_CLASSIFICACAO_DataDestination": {
+      "queryId": "17d2aed5-f959-41ef-b027-a050b4599457",
+      "queryName": "DIM_MARCA_CLASSIFICACAO_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "DIM_ORGAO_DECRETO_DataDestination": {
+      "queryId": "fe0ab943-67fb-4733-9245-0c94a4207b7f",
+      "queryName": "DIM_ORGAO_DECRETO_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "DIM_ORGAO_MAXIMO_UO_DataDestination": {
+      "queryId": "02193564-4319-437b-b70b-4d2e70e945cf",
+      "queryName": "DIM_ORGAO_MAXIMO_UO_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "DIM_RESULTADO_EOF_DataDestination": {
+      "queryId": "561013d8-63a9-4b56-807a-e5ace01a7ee5",
+      "queryName": "DIM_RESULTADO_EOF_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "DIM_TIPO_CREDITO_DataDestination": {
+      "queryId": "d74937ee-06ef-4314-8dc0-dae3ffb37ad2",
+      "queryName": "DIM_TIPO_CREDITO_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "DIM_TIPO_EXECUCAO_DESPESA_DataDestination": {
+      "queryId": "fd93a426-4710-44ec-8559-f751e9014946",
+      "queryName": "DIM_TIPO_EXECUCAO_DESPESA_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "DIM_UNIDADE_GESTORA_DataDestination": {
+      "queryId": "5322049f-ee63-4ce4-95ac-c94fd019bd1a",
+      "queryName": "DIM_UNIDADE_GESTORA_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "DIM_UNIDADE_ORCAMENTARIA_DataDestination": {
+      "queryId": "d5a9fc5c-cd0c-4173-a296-ed8ddcfccf7c",
+      "queryName": "DIM_UNIDADE_ORCAMENTARIA_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "FATO_EXEC_DESP_MOV_DataDestination": {
+      "queryId": "44d59170-0d81-4533-8936-bfa4ee030969",
+      "queryName": "FATO_EXEC_DESP_MOV_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "FATO_EXEC_DESP_SALDO_DataDestination": {
+      "queryId": "3f83800b-272d-4363-8f19-27f00bbb33e7",
+      "queryName": "FATO_EXEC_DESP_SALDO_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "FATO_LIMITES_DataDestination": {
+      "queryId": "fba65827-c66d-400b-8c9a-dd4d8a62ad3f",
+      "queryName": "FATO_LIMITES_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "Aux - orgaos_DataDestination": {
+      "queryId": "52da711a-aa05-492d-9551-51c20bf8a483",
+      "queryName": "Aux - orgaos_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "Aux - Limites_DataDestination": {
+      "queryId": "f5d3abb7-6fa5-4929-abdd-262c26bf1329",
+      "queryName": "Aux - Limites_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "Limites provisórios_DataDestination": {
+      "queryId": "c4248008-f423-42f6-8994-5be71e1417d8",
+      "queryName": "Limites provisórios_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "Aux - Mês_DataDestination": {
+      "queryId": "3e425a59-97ca-426a-9e15-0b2099614ae9",
+      "queryName": "Aux - Mês_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Warehouse",
+      "kind": "Warehouse",
+      "connectionId": "{\"ClusterId\":\"f26f4d98-3acf-4222-8e6c-1111d8fe7481\",\"DatasourceId\":\"cf4fd836-842d-4b71-9e42-4313afaa1c0c\"}"
+    },
+    {
+      "path": "exastncl03-tlm0m-scan.prosubnet.vcndados.oraclevcn.com/dwprod.prosubnet.vcndados.oraclevcn.com",
+      "kind": "Oracle",
+      "connectionId": "{\"ClusterId\":\"ec341007-a86a-4818-ad7f-38859b1b6a9e\",\"DatasourceId\":\"0d7161f8-750e-4a31-a147-68fc143f8375\"}"
+    },
+    {
+      "path": "\\\\cruzeiro.stn.intra\\dados_analiticos\\dados-das-areas\\cofin\\dpof\\aux orgaos.xlsx",
+      "kind": "File",
+      "connectionId": "{\"ClusterId\":\"ec341007-a86a-4818-ad7f-38859b1b6a9e\",\"DatasourceId\":\"7e45f7c5-2b81-40ae-8761-8acb51856d73\"}"
+    },
+    {
+      "path": "\\\\cruzeiro.stn.intra\\dados_analiticos\\dados-das-areas\\cofin\\dpof\\aux limites.xlsx",
+      "kind": "File",
+      "connectionId": "{\"ClusterId\":\"ec341007-a86a-4818-ad7f-38859b1b6a9e\",\"DatasourceId\":\"96d7d223-9212-4fd8-923d-434116089f13\"}"
+    },
+    {
+      "path": "\\\\cruzeiro.stn.intra\\dados_analiticos\\dados-das-areas\\cofin\\dpof\\limites longo.xlsx",
+      "kind": "File",
+      "connectionId": "{\"ClusterId\":\"ec341007-a86a-4818-ad7f-38859b1b6a9e\",\"DatasourceId\":\"2d6bceb9-4283-4968-ae0f-f235440f9673\"}"
+    },
+    {
+      "path": "\\\\cruzeiro.stn.intra\\dados_analiticos\\dados-das-areas\\cofin\\painel por órgão\\mês.xlsx",
+      "kind": "File",
+      "connectionId": "{\"ClusterId\":\"ec341007-a86a-4818-ad7f-38859b1b6a9e\",\"DatasourceId\":\"8e8a15b9-4f97-454a-88d1-b7e8ec9dd53e\"}"
+    }
+  ]
+}

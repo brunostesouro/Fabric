@@ -1,0 +1,32 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "carrega_sales",
+  "queryGroups": [],
+  "documentLocale": "pt-BR",
+  "queriesMetadata": {
+    "DefaultDestination": {
+      "queryId": "85dc0870-cd6c-4fa1-ac36-9bb5abdb8951",
+      "queryName": "DefaultDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "sales": {
+      "queryId": "a92807d6-a2b0-490d-b1cd-365f0b8e39a2",
+      "queryName": "sales",
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"f26f4d98-3acf-4222-8e6c-1111d8fe7481\",\"DatasourceId\":\"176b2ba8-cb49-4a6f-bce6-4fc782d0d2e7\"}"
+    },
+    {
+      "path": "https://tesouro-my.sharepoint.com/personal/bruno_silva_tesouro_gov_br/",
+      "kind": "Web",
+      "connectionId": "{\"ClusterId\":\"f26f4d98-3acf-4222-8e6c-1111d8fe7481\",\"DatasourceId\":\"e8804c74-d38d-4637-a95c-7d3f726e8b9d\"}"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+table 'AREA_ATUACAO (2)'
+	isHidden
+	excludeFromModelRefresh
+	lineageTag: 4b1dfe8a-6752-4b4f-bec5-45a823c4e14d
+
+	column AREA_ATUACAO
+		dataType: string
+		isHidden
+		lineageTag: c249a4e1-1ddf-4655-b3d8-c12ba1284332
+		summarizeBy: none
+		sourceColumn: AREA_ATUACAO
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column AREA_ATUACAO_ESP
+		dataType: string
+		isHidden
+		lineageTag: c82efaec-4b6e-452a-b89e-e39ee3d19eaf
+		summarizeBy: none
+		sourceColumn: AREA_ATUACAO_ESP
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column AREA_ATUACAO_ING
+		dataType: string
+		isHidden
+		lineageTag: 24043dc1-79d8-41c6-8622-05de58380066
+		summarizeBy: none
+		sourceColumn: AREA_ATUACAO_ING
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 08e4e7bb-f20a-4155-a1e5-31dcb7e7dc34
+		summarizeBy: count
+		sourceColumn: ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'AREA_ATUACAO (2)-e7b3a1c9-aa96-4367-a246-d1e3bdfbc84e' = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents("\\cruzeiro\Dados_ANALITICOS\DADOS-DAS-AREAS\COINC\CUSTOS Tabela_Tradução Portal.xlsx"), null, true),
+				    AREA_ATUACAO_Sheet = Fonte{[Item="AREA_ATUACAO",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(AREA_ATUACAO_Sheet, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"AREA_ATUACAO", type text}, {"AREA_ATUACAO_ESP", type text}, {"AREA_ATUACAO_ING", type text}, {"ID", Int64.Type}}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Tipo Alterado", each ([AREA_ATUACAO] <> null))
+				in
+				    #"Linhas Filtradas"
+
+	annotation PBI_ResultType = Table
+

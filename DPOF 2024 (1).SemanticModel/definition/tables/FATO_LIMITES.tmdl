@@ -1,0 +1,162 @@
+table FATO_LIMITES
+	lineageTag: 2ea4ad49-65d3-415f-9a56-dd88f455d0ba
+
+	column IN_PERIODO
+		dataType: string
+		lineageTag: fb63b334-2e10-4d5c-8739-b0b478aeacd3
+		summarizeBy: none
+		sourceColumn: IN_PERIODO
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column VA_VALOR
+		dataType: double
+		lineageTag: 7b0a0629-9dac-4500-a70e-2e41bb44d5ba
+		summarizeBy: sum
+		sourceColumn: VA_VALOR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VA_ANTERIOR
+		dataType: double
+		lineageTag: 6df3b423-d05e-46be-b58e-8b8d2ea8d51b
+		summarizeBy: sum
+		sourceColumn: VA_ANTERIOR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VA_VARIACAO
+		dataType: double
+		lineageTag: 4afe551f-b422-47cf-9659-283d44f9c146
+		summarizeBy: sum
+		sourceColumn: VA_VARIACAO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VA_DESPESA_PAGA
+		dataType: double
+		lineageTag: 06b7235a-f044-4292-8e43-675048da64bc
+		summarizeBy: sum
+		sourceColumn: VA_DESPESA_PAGA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VA_RESTOS_PAGAR
+		dataType: double
+		lineageTag: 18b147bd-dfa7-4661-96a5-baee73c2ed99
+		summarizeBy: sum
+		sourceColumn: VA_RESTOS_PAGAR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VA_PAGAMENTO_EFET_ORG_DEC
+		dataType: double
+		lineageTag: 3cb8243e-4506-48f7-af61-ed204a1e5210
+		summarizeBy: sum
+		sourceColumn: VA_PAGAMENTO_EFET_ORG_DEC
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VA_TRANSFERENCIA_EXTERIOR
+		dataType: double
+		lineageTag: 64d770d1-40f0-4f3d-b321-c4571cca1d34
+		summarizeBy: sum
+		sourceColumn: VA_TRANSFERENCIA_EXTERIOR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DT_ATO
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5cb84b93-f8ad-47f9-bb2c-6dcec56dd552
+		summarizeBy: none
+		sourceColumn: DT_ATO
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_LIMITE_EMPENHO_PAGTO_SK
+		dataType: double
+		lineageTag: d6d273ff-825d-4f41-85e3-3b18e87368b8
+		summarizeBy: sum
+		sourceColumn: ID_LIMITE_EMPENHO_PAGTO_SK
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ID_LIMITE_EMPENHO_PAGTO_VAL_SK
+		dataType: double
+		lineageTag: 59284d3a-25a3-45b2-a923-be681de8abcb
+		summarizeBy: sum
+		sourceColumn: ID_LIMITE_EMPENHO_PAGTO_VAL_SK
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ID_ORGAO_DECRETO_SK
+		dataType: string
+		lineageTag: d7a94768-644f-4c9e-97bd-cb984a942ba8
+		summarizeBy: none
+		sourceColumn: ID_ORGAO_DECRETO_SK
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_ANEXO_DECRETO_SK
+		dataType: double
+		lineageTag: 9d44c132-da28-4944-98ec-fa3024177874
+		summarizeBy: none
+		sourceColumn: ID_ANEXO_DECRETO_SK
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ID_INSTRUMENTO_LEGAL_LIMITE_SK
+		dataType: double
+		lineageTag: fd072ea3-c8c9-43f3-8d69-cc352a8f9dc8
+		summarizeBy: sum
+		sourceColumn: ID_INSTRUMENTO_LEGAL_LIMITE_SK
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SN_VIGENTE
+		dataType: string
+		lineageTag: cbe04157-4615-4386-b268-902a1fadb3aa
+		summarizeBy: none
+		sourceColumn: SN_VIGENTE
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FATO_LIMITES-3d53f015-0180-4d98-99ca-c202e711bb84 = m
+		mode: import
+		source =
+				let
+				    Fonte = Oracle.Database("cluster3-scan/dwprod", [HierarchicalNavigation=true]),
+				    DEV_SIGEFI2 = Fonte{[Schema="DEV_SIGEFI2"]}[Data],
+				    FATO_LIMITES1 = DEV_SIGEFI2{[Name="FATO_LIMITES"]}[Data]
+				in
+				    FATO_LIMITES1
+
+	annotation PBI_ResultType = Table
+

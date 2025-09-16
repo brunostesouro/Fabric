@@ -1,0 +1,34 @@
+table DIM_UNIDADE_GESTORA
+	lineageTag: 59f397d7-89ee-4768-93fe-d87c679cb74d
+
+	column ID_UNIDADE_GESTORA
+		dataType: string
+		isNullable: false
+		sourceProviderType: Varchar2
+		lineageTag: 3ea93d6f-6517-4255-81d4-5859b7236088
+		summarizeBy: none
+		sourceColumn: ID_UNIDADE_GESTORA
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_UNIDADE_GESTORA
+		dataType: string
+		sourceProviderType: Varchar2
+		lineageTag: 6a98edd4-f2ab-4ee0-a44a-92915acd6345
+		summarizeBy: none
+		sourceColumn: NO_UNIDADE_GESTORA
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_UNIDADE_GESTORA = m
+		mode: directQuery
+		source =
+				let
+				    Fonte = Oracle.Database("exastncl03-tlm0m-scan.prosubnet.vcndados.oraclevcn.com/DWPROD.prosubnet.vcndados.oraclevcn.com", [HierarchicalNavigation=true]),
+				    DEV_SIGEFI = Fonte{[Schema="DEV_SIGEFI"]}[Data],
+				    DIM_UNIDADE_GESTORA1 = DEV_SIGEFI{[Name="DIM_UNIDADE_GESTORA"]}[Data]
+				in
+				    DIM_UNIDADE_GESTORA1
+
+	annotation PBI_ResultType = Table
+

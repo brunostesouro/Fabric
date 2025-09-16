@@ -1,0 +1,5 @@
+CREATE TABLE [dbo].[DIM_TIPO_CREDITO] (
+
+	[ID_TIPO_CREDITO] varchar(8000) NULL, 
+	[NO_TIPO_CREDITO] varchar(8000) NULL
+);

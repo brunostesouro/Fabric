@@ -1,0 +1,69 @@
+table 'ESCOLARIDADE (2)'
+	isHidden
+	excludeFromModelRefresh
+	lineageTag: a73c6ce7-b5c6-4d1b-a16a-cc9fe1d7ac26
+
+	column ESCOLARIDADE
+		dataType: string
+		isHidden
+		lineageTag: 4424b688-3c8b-4f40-939f-76e4156684d9
+		summarizeBy: none
+		sourceColumn: ESCOLARIDADE
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column ESCOLARIDADE_ESP
+		dataType: string
+		isHidden
+		lineageTag: e1d85991-f0e5-4614-a280-cd391376fa6b
+		summarizeBy: none
+		sourceColumn: ESCOLARIDADE_ESP
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column ESCOLARIDADE_ING
+		dataType: string
+		isHidden
+		lineageTag: a7a62932-e649-49ad-ab35-56dcdf6db51e
+		summarizeBy: none
+		sourceColumn: ESCOLARIDADE_ING
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column INDICE
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: fc47b67b-4550-4c57-85d4-b5971427f10a
+		summarizeBy: sum
+		sourceColumn: INDICE
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'ESCOLARIDADE (2)-8c31a962-339a-44d6-bc02-aecc33b4902a' = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents("\\cruzeiro\Dados_ANALITICOS\DADOS-DAS-AREAS\COINC\CUSTOS Tabela_Tradução Portal.xlsx"), null, true),
+				    ESCOLARIDADE_Sheet = Fonte{[Item="ESCOLARIDADE",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(ESCOLARIDADE_Sheet, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"ESCOLARIDADE", type text}, {"ESCOLARIDADE_ESP", type text}, {"ESCOLARIDADE_ING", type text}, {"INDICE", Int64.Type}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+

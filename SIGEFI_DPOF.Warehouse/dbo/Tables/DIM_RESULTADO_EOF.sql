@@ -1,0 +1,5 @@
+CREATE TABLE [dbo].[DIM_RESULTADO_EOF] (
+
+	[ID_RESULTADO_EOF] decimal(38,6) NULL, 
+	[NO_RESULTADO_EOF] varchar(8000) NULL
+);

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "teste_abs_relatorio"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "89d06bed-3cb0-8aa8-43d6-6ddf801a3a79"
+  }
+}

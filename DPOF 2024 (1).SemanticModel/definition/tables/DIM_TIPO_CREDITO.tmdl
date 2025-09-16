@@ -1,0 +1,37 @@
+table DIM_TIPO_CREDITO
+	lineageTag: 1340a7af-aa94-42d4-9753-dee5c2a93df9
+
+	column ID_TIPO_CREDITO
+		dataType: string
+		lineageTag: c4b658ad-e765-47d2-a3ef-85b297064dfb
+		summarizeBy: none
+		sourceColumn: ID_TIPO_CREDITO
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_TIPO_CREDITO
+		dataType: string
+		lineageTag: 45617f26-9bb5-41d9-879b-7e94b057639a
+		summarizeBy: none
+		sourceColumn: NO_TIPO_CREDITO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipo credito' = DIM_TIPO_CREDITO[ID_TIPO_CREDITO] &" - "& DIM_TIPO_CREDITO[NO_TIPO_CREDITO]
+		lineageTag: 31bd32e4-3acb-4b79-b95f-220ec7bcc218
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_TIPO_CREDITO-7479f2bd-a43b-49be-be5c-d67922e9ff5b = m
+		mode: import
+		source =
+				let
+				    Fonte = Oracle.Database("cluster3-scan/dwprod", [HierarchicalNavigation=true]),
+				    DEV_SIGEFI2 = Fonte{[Schema="DEV_SIGEFI2"]}[Data],
+				    DIM_TIPO_CREDITO1 = DEV_SIGEFI2{[Name="DIM_TIPO_CREDITO"]}[Data]
+				in
+				    DIM_TIPO_CREDITO1
+
+	annotation PBI_ResultType = Table
+

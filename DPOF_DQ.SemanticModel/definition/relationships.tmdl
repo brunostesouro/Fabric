@@ -1,0 +1,143 @@
+relationship f7600c3e-b19a-f3b1-6817-c74f31a6519b
+	fromColumn: FATO_EXEC_DESP_SALDO.GND
+	toColumn: DIM_GRUPO_DESPESA.ID_GRUPO_DESPESA
+
+relationship 5dee8843-b5b9-4639-4c8d-840bccb2ce3b
+	fromColumn: FATO_EXEC_DESP_SALDO.ID_RESULTADO_EOF
+	toColumn: DIM_RESULTADO_EOF.ID_RESULTADO_EOF
+
+relationship a921d97d-352d-0ad1-9453-2da304336a14
+	fromColumn: FATO_EXEC_DESP_SALDO.ID_ACAO_ORCAMENTARIA
+	toColumn: DIM_ACAO_ORCAMENTARIA.ID_ACAO_ORCAMENTARIA
+
+relationship e3309347-08ee-7e11-22ba-c5f75dd0f2f6
+	fromColumn: FATO_EXEC_DESP_SALDO.ID_TIPO_CREDITO
+	toColumn: DIM_TIPO_CREDITO.ID_TIPO_CREDITO
+
+relationship f3e5ffb3-8d77-87fb-640a-f5044347c479
+	fromColumn: FATO_EXEC_DESP_SALDO.ID_TIPO_EXECUCAO_DESPESA
+	toColumn: DIM_TIPO_EXECUCAO_DESPESA.ID_TIPO_EXECUCAO_DESPESA
+
+relationship 01c17393-24a6-9617-e344-9bafd7a84975
+	fromColumn: FATO_EXEC_DESP_SALDO.ID_UNIDADE_ORCAMENTARIA
+	toColumn: DIM_UNIDADE_ORCAMENTARIA.ID_UNIDADE_ORCAMENTARIA
+
+relationship 41b7f1fb-31f6-4ae7-f1b1-e634e72b0a8e
+	fromColumn: FATO_EXEC_DESP_SALDO.IS_ANEXO_DECRETO_DESP
+	toColumn: DIM_ANEXO_DECRETO_DESP.IS_ANEXO_DECRETO_DESP
+
+relationship 1baa41e9-1571-6a58-348d-ab4dee5f23f8
+	isActive: false
+	fromColumn: FATO_EXEC_DESP_SALDO.CO_FONTE_RECURSO
+	toColumn: DIM_FONTE_RECURSO.CO_FONTE_RECURSO
+
+relationship aab89e58-ea73-d9fc-cf42-23a1fb1b4985
+	fromColumn: FATO_LIMITES.DT_ATO
+	toColumn: DIM_CALENDARIO.DT_CALENDARIO
+
+relationship 4bf02424-9649-5ed9-3a91-257a776b8f42
+	fromColumn: FATO_EXEC_DESP_SALDO.ID_ORGAO_DECRETO_SK
+	toColumn: DIM_ORGAO_DECRETO.ID_ORGAO_DECRETO_SK
+
+relationship 5b09dd23-9e86-ce13-cffb-c1299617d64d
+	fromColumn: FATO_LIMITES.ID_ANEXO_DECRETO_SK
+	toColumn: DIM_ANEXO_DECRETO.ID_ANEXO_DECRETO_SK
+
+relationship da9229ba-edbc-cff9-9734-8fd9972aa9de
+	fromColumn: FATO_LIMITES_PAGEFET.ID_ORGAO_DECRETO_SK
+	toColumn: DIM_ORGAO_DECRETO.ID_ORGAO_DECRETO_SK
+
+relationship aaae3ab3-4c5f-cf0b-0357-0bd64cf96a0a
+	fromColumn: FATO_EXEC_DESP_MOV.ID_ORGAO_DECRETO_SK
+	toColumn: DIM_ORGAO_DECRETO.ID_ORGAO_DECRETO_SK
+
+relationship 49643c81-0d41-8ed2-e368-b779dbdeb404
+	fromColumn: FATO_EXEC_DESP_MOV.CO_ORGAO_MAXIMO_UO
+	toColumn: DIM_ORGAO_MAXIMO_UO.CO_ORGAO_MAXIMO_UO
+
+relationship bfcbbbd6-1420-4f36-52db-62398725a5ac
+	fromColumn: FATO_EXEC_DESP_MOV.ID_MARCA_CLASSIFICACAO_SK
+	toColumn: DIM_MARCA_CLASSIFICACAO.ID_MARCA_CLASSIFICACAO_SK
+
+relationship aa1245cf-6459-5a77-f0ca-dd9adb841280
+	fromColumn: FATO_EXEC_DESP_SALDO.ID_UNIDADE_GESTORA
+	toColumn: DIM_UNIDADE_GESTORA.ID_UNIDADE_GESTORA
+
+relationship 6cfee43a-45fb-75b4-f666-458d7d9d4874
+	fromColumn: FATO_EXEC_DESP_SALDO.CO_ORGAO_MAXIMO_UO
+	toColumn: DIM_ORGAO_MAXIMO_UO.CO_ORGAO_MAXIMO_UO
+
+relationship 62149b6f-6ec7-ebb6-f7c8-75a19aa2a016
+	fromColumn: FATO_EXEC_DESP_MOV.CO_FONTE_RECURSO
+	toColumn: DIM_FONTE_RECURSO.CO_FONTE_RECURSO
+
+relationship da8fe5be-76d8-8d09-afbe-3cb2d801d532
+	fromColumn: FATO_EXEC_DESP_MOV.ID_ACAO_ORCAMENTARIA
+	toColumn: DIM_ACAO_ORCAMENTARIA.ID_ACAO_ORCAMENTARIA
+
+relationship 8994c8f1-a844-5cdf-b68e-4261f2b8a7b4
+	fromColumn: FATO_EXEC_DESP_MOV.ID_TIPO_CREDITO
+	toColumn: DIM_TIPO_CREDITO.ID_TIPO_CREDITO
+
+relationship 96e9c069-0c11-dc84-d1d7-0a2ed82d1f56
+	fromColumn: FATO_EXEC_DESP_MOV.ID_TIPO_EXECUCAO_DESPESA
+	toColumn: DIM_TIPO_EXECUCAO_DESPESA.ID_TIPO_EXECUCAO_DESPESA
+
+relationship 724f8014-f741-1a24-3da2-1731f8087385
+	fromColumn: FATO_EXEC_DESP_MOV.ID_UNIDADE_ORCAMENTARIA
+	toColumn: DIM_UNIDADE_ORCAMENTARIA.ID_UNIDADE_ORCAMENTARIA
+
+relationship d8677a74-1c90-4f85-b8d8-4584362755c8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Aux - Mês'.Data
+	toColumn: LocalDateTable_f0a3a544-a2e7-46f8-a1e2-eab2b055e6c7.Date
+
+relationship 8c9515c1-8298-4eff-b18f-fdc892d32dac
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Aux - Mês'.'Data 2023'
+	toColumn: LocalDateTable_4d0d4d4c-80ca-44ad-82e9-78ac16d3871a.Date
+
+relationship fd70db6d-7665-7de2-2a0f-38c33d12219f
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'Aux - orgaos'.ID_ORGAO_DECRETO_SK
+	toColumn: DIM_ORGAO_DECRETO.ID_ORGAO_DECRETO_SK
+
+relationship 19a37e47-3971-3314-94b1-4c1586885a71
+	fromColumn: 'Limites provisórios'.'Orgãos Código'
+	toColumn: 'Aux - orgaos'.CO_ORGAO_DECRETO
+
+relationship ad6b734c-a9cf-77b5-b61f-955202a141a4
+	fromColumn: DIM_ANEXO_DECRETO.NO_FORMATADO
+	toColumn: 'Aux - Limites'.'Anexo Genef'
+
+relationship 12810414-ecd4-cdcc-ee51-2c00dd93ee36
+	fromColumn: 'Limites provisórios'.Anexo
+	toColumn: 'Aux - Limites'.'Anexo Gepof'
+
+relationship 88732b93-4842-5601-59c6-91b453de58ea
+	fromColumn: 'Limites provisórios'.Mes
+	toColumn: 'Aux - Mês'.IN_PERIODO
+
+relationship 1fb0309a-8f75-0676-865b-5db8861a3742
+	fromColumn: FATO_LIMITES.IN_PERIODO
+	toColumn: 'Aux - Mês'.IN_PERIODO
+
+relationship bbf5d5ba-b814-22b4-ef89-ad03d9e1a4db
+	fromColumn: FATO_LIMITES_PAGEFET.IN_PERIODO
+	toColumn: 'Aux - Mês'.IN_PERIODO
+
+relationship a99512b9-682f-c214-4eb5-5315861ad4f3
+	fromColumn: FATO_LIMITES_PAGEFET.ID_ANEXO_DECRETO_SK
+	toColumn: DIM_ANEXO_DECRETO.ID_ANEXO_DECRETO_SK
+
+relationship 954fd0e6-0baa-c1c3-6190-1ab88975051c
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: DIM_ANEXO_DECRETO_DESP.ID_ANEXO_DECRETO_SK
+	toColumn: DIM_ANEXO_DECRETO.ID_ANEXO_DECRETO_SK
+
+relationship 5636fbe6-9811-8f67-0651-0a10674d0f4a
+	fromColumn: FATO_LIMITES.ID_ORGAO_DECRETO_SK
+	toColumn: DIM_ORGAO_DECRETO.ID_ORGAO_DECRETO_SK
+

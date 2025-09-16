@@ -1,0 +1,45 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["DIM_ACAO_ORCAMENTARIA","DIM_ANEXO_DECRETO","DIM_ANEXO_DECRETO_DESP","DIM_CALENDARIO","DIM_FONTE_RECURSO","DIM_GRUPO_DESPESA","DIM_GRUPO_FONTE","DIM_MARCA_CLASSIFICACAO","DIM_ORGAO_DECRETO","DIM_ORGAO_MAXIMO_UO","DIM_RESULTADO_EOF","DIM_TIPO_CREDITO","DIM_TIPO_EXECUCAO_DESPESA","DIM_UNIDADE_GESTORA","DIM_UNIDADE_ORCAMENTARIA","FATO_EXEC_DESP_MOV","FATO_EXEC_DESP_SALDO","FATO_LIMITES","FATO_LIMITES_PAGEFET","Aux - orgaos","Aux - Limites","Limites provisórios","Aux - Mês","Data de atualização","Medidas"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.142.928.0 (25.04)+de52df9f0bb74ad93a80d89c52d63fe6d07e0e1b
+
+ref table DIM_ACAO_ORCAMENTARIA
+ref table DIM_ANEXO_DECRETO
+ref table DIM_ANEXO_DECRETO_DESP
+ref table DIM_CALENDARIO
+ref table DIM_FONTE_RECURSO
+ref table DIM_GRUPO_DESPESA
+ref table DIM_GRUPO_FONTE
+ref table DIM_MARCA_CLASSIFICACAO
+ref table DIM_ORGAO_DECRETO
+ref table DIM_ORGAO_MAXIMO_UO
+ref table DIM_RESULTADO_EOF
+ref table DIM_TIPO_CREDITO
+ref table DIM_TIPO_EXECUCAO_DESPESA
+ref table DIM_UNIDADE_GESTORA
+ref table DIM_UNIDADE_ORCAMENTARIA
+ref table FATO_EXEC_DESP_MOV
+ref table FATO_EXEC_DESP_SALDO
+ref table FATO_LIMITES
+ref table FATO_LIMITES_PAGEFET
+ref table 'Aux - orgaos'
+ref table 'Aux - Limites'
+ref table 'Limites provisórios'
+ref table 'Aux - Mês'
+ref table DateTableTemplate_b28915c5-80a1-4401-a8df-eb1f88c08449
+ref table LocalDateTable_f0a3a544-a2e7-46f8-a1e2-eab2b055e6c7
+ref table LocalDateTable_4d0d4d4c-80ca-44ad-82e9-78ac16d3871a
+ref table 'Data de atualização'
+ref table Medidas
+
+ref cultureInfo pt-BR
+

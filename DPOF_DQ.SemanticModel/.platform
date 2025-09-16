@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "DPOF_DQ"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0457eb5a-56ab-b2b3-4af4-dec385bf3e54"
+  }
+}

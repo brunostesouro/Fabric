@@ -1,0 +1,133 @@
+table DIM_ANEXO_DECRETO
+	lineageTag: 340e60dc-f4e4-470c-9d53-c3230b53c7d5
+
+	column ID_ANEXO_DECRETO_SK
+		dataType: double
+		isNullable: false
+		sourceProviderType: Decimal(38, 0)
+		lineageTag: 23d539ca-3f2f-4c5a-8996-dca9fc693304
+		summarizeBy: none
+		sourceColumn: ID_ANEXO_DECRETO_SK
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NO_ANEXO_DECRETO
+		dataType: string
+		isNullable: false
+		sourceProviderType: Varchar2
+		lineageTag: 0d6443bf-d51b-4ac9-9f2c-0e07d89eedae
+		summarizeBy: none
+		sourceColumn: NO_ANEXO_DECRETO
+
+		annotation SummarizationSetBy = Automatic
+
+	column NR_ORDEM_ANEXO
+		dataType: string
+		isNullable: false
+		sourceProviderType: Varchar2
+		lineageTag: 3e1d5cb7-9a4f-4967-a8f6-04707279c4fe
+		summarizeBy: none
+		sourceColumn: NR_ORDEM_ANEXO
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_FORMATADO
+		dataType: string
+		sourceProviderType: Varchar2
+		lineageTag: c438d555-97e4-46e8-8610-7338acc6f22c
+		summarizeBy: none
+		sourceColumn: NO_FORMATADO
+
+		annotation SummarizationSetBy = Automatic
+
+	column DS_ANEXO_DECRETO
+		dataType: string
+		isNullable: false
+		sourceProviderType: Varchar2
+		lineageTag: 65725096-b9c7-4ba1-a36c-3d139c941ca0
+		summarizeBy: none
+		sourceColumn: DS_ANEXO_DECRETO
+
+		annotation SummarizationSetBy = Automatic
+
+	column IN_TIPO_ANEXO
+		dataType: double
+		sourceProviderType: Int16
+		lineageTag: 2706b749-16c4-488d-baa3-178a0b5d7701
+		summarizeBy: sum
+		sourceColumn: IN_TIPO_ANEXO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AN_EXERCICIO
+		dataType: double
+		isNullable: false
+		sourceProviderType: Int16
+		lineageTag: 1a95fb96-7725-4c59-9722-e82566ad614f
+		summarizeBy: sum
+		sourceColumn: AN_EXERCICIO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IN_TIPO_LIMITE
+		dataType: string
+		isNullable: false
+		sourceProviderType: Varchar2
+		lineageTag: 4109a3c6-7454-4737-aeb3-806deaf43b0e
+		summarizeBy: none
+		sourceColumn: IN_TIPO_LIMITE
+
+		annotation SummarizationSetBy = Automatic
+
+	column SN_AFETA_LIMITE
+		dataType: double
+		isNullable: false
+		sourceProviderType: Int16
+		lineageTag: d3a98b0f-9d94-44fd-90a5-5aefcfe1ea71
+		summarizeBy: sum
+		sourceColumn: SN_AFETA_LIMITE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ID_MARCA_CLASSIFICACAO_DESP_SK
+		dataType: double
+		sourceProviderType: Decimal(38, 0)
+		lineageTag: 147cd636-d546-4f9b-8557-4a3bfec12823
+		summarizeBy: sum
+		sourceColumn: ID_MARCA_CLASSIFICACAO_DESP_SK
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ID_MARCA_CLASS_PAGTO_EFET_SK
+		dataType: double
+		sourceProviderType: Decimal(38, 0)
+		lineageTag: 0f012b62-85aa-45c3-b4bb-61368dca30f1
+		summarizeBy: sum
+		sourceColumn: ID_MARCA_CLASS_PAGTO_EFET_SK
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition DIM_ANEXO_DECRETO = m
+		mode: directQuery
+		source =
+				let
+				    Fonte = Oracle.Database("exastncl03-tlm0m-scan.prosubnet.vcndados.oraclevcn.com/DWPROD.prosubnet.vcndados.oraclevcn.com", [HierarchicalNavigation=true]),
+				    DEV_SIGEFI = Fonte{[Schema="DEV_SIGEFI"]}[Data],
+				    DIM_ANEXO_DECRETO1 = DEV_SIGEFI{[Name="DIM_ANEXO_DECRETO"]}[Data]
+				in
+				    DIM_ANEXO_DECRETO1
+
+	annotation PBI_ResultType = Table
+

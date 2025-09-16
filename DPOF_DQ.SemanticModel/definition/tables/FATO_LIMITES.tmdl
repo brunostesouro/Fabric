@@ -1,0 +1,179 @@
+table FATO_LIMITES
+	lineageTag: 5afd72a3-65ed-46cc-b05b-29e6f64b546f
+
+	column IN_PERIODO
+		dataType: string
+		sourceProviderType: Int16
+		lineageTag: 09a68978-c972-404a-8510-82b951f05be4
+		summarizeBy: none
+		sourceColumn: IN_PERIODO
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column VA_VALOR
+		dataType: double
+		sourceProviderType: Decimal(38, 17)
+		lineageTag: ee28209d-502f-4fb8-a00a-f16c7ae46432
+		summarizeBy: sum
+		sourceColumn: VA_VALOR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VA_ANTERIOR
+		dataType: double
+		sourceProviderType: Decimal(38, 127)
+		lineageTag: 26ac1bec-bafe-4245-90fe-60c6ca856f15
+		summarizeBy: sum
+		sourceColumn: VA_ANTERIOR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VA_VARIACAO
+		dataType: double
+		sourceProviderType: Decimal(38, 127)
+		lineageTag: 91bc837f-00fa-4a50-8b46-d4139723e86c
+		summarizeBy: sum
+		sourceColumn: VA_VARIACAO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VA_DESPESA_PAGA
+		dataType: double
+		sourceProviderType: Decimal(17, 2)
+		lineageTag: 0f03ad05-c4ee-4c37-9d98-f27cffe0c18c
+		summarizeBy: sum
+		sourceColumn: VA_DESPESA_PAGA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VA_RESTOS_PAGAR
+		dataType: double
+		sourceProviderType: Decimal(17, 2)
+		lineageTag: 54d0f5b8-522a-43bd-8135-a6a8583893bc
+		summarizeBy: sum
+		sourceColumn: VA_RESTOS_PAGAR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VA_PAGAMENTO_EFET_ORG_DEC
+		dataType: double
+		sourceProviderType: Decimal(17, 2)
+		lineageTag: 9b07fcbd-96b4-4c90-97a7-aa8c12cc78c9
+		summarizeBy: sum
+		sourceColumn: VA_PAGAMENTO_EFET_ORG_DEC
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VA_TRANSFERENCIA_EXTERIOR
+		dataType: double
+		sourceProviderType: Decimal(17, 2)
+		lineageTag: 911a361e-5c57-4864-87e3-6878dafa1b80
+		summarizeBy: sum
+		sourceColumn: VA_TRANSFERENCIA_EXTERIOR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DT_ATO
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: Date
+		lineageTag: 2312dab0-102b-41df-89cf-cbb39247e8ec
+		summarizeBy: none
+		sourceColumn: DT_ATO
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_LIMITE_EMPENHO_PAGTO_SK
+		dataType: double
+		sourceProviderType: Decimal(38, 0)
+		lineageTag: ce0b767c-8859-4554-9334-aed8680570ed
+		summarizeBy: sum
+		sourceColumn: ID_LIMITE_EMPENHO_PAGTO_SK
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ID_LIMITE_EMPENHO_PAGTO_VAL_SK
+		dataType: double
+		sourceProviderType: Decimal(38, 0)
+		lineageTag: 58e699db-bc3c-46a6-8696-8800bbc61c4f
+		summarizeBy: sum
+		sourceColumn: ID_LIMITE_EMPENHO_PAGTO_VAL_SK
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ID_ORGAO_DECRETO_SK
+		dataType: string
+		sourceProviderType: Decimal(38, 0)
+		lineageTag: ce54f52c-e795-421d-9656-ffbd19d0b01a
+		summarizeBy: none
+		sourceColumn: ID_ORGAO_DECRETO_SK
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_ANEXO_DECRETO_SK
+		dataType: double
+		sourceProviderType: Decimal(38, 0)
+		lineageTag: 6f0a7f08-b1c5-4a94-8f49-7935c0b63d8d
+		summarizeBy: none
+		sourceColumn: ID_ANEXO_DECRETO_SK
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ID_INSTRUMENTO_LEGAL_LIMITE_SK
+		dataType: double
+		sourceProviderType: Decimal(38, 0)
+		lineageTag: caa9777d-6b56-49ba-8ad4-0061eff9255a
+		summarizeBy: sum
+		sourceColumn: ID_INSTRUMENTO_LEGAL_LIMITE_SK
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SN_VIGENTE
+		dataType: string
+		sourceProviderType: Char
+		lineageTag: bab4725f-3bc5-48ad-b807-068ea48299f6
+		summarizeBy: none
+		sourceColumn: SN_VIGENTE
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FATO_LIMITES = m
+		mode: directQuery
+		source =
+				let
+				    Fonte = Oracle.Database("exastncl03-tlm0m-scan.prosubnet.vcndados.oraclevcn.com/DWPROD.prosubnet.vcndados.oraclevcn.com", [HierarchicalNavigation=true]),
+				    DEV_SIGEFI2 = Fonte{[Schema="DEV_SIGEFI2"]}[Data],
+				    FATO_LIMITES1 = DEV_SIGEFI2{[Name="FATO_LIMITES"]}[Data]
+				in
+				    FATO_LIMITES1
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

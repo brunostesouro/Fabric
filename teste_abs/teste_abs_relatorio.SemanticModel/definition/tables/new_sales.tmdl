@@ -1,0 +1,89 @@
+table new_sales
+	lineageTag: f9fb16c4-9c41-40f2-8897-ca7e01029464
+
+	column SalesOrderNumber
+		dataType: string
+		lineageTag: 373db246-e390-405d-aa70-99b96e82642c
+		summarizeBy: none
+		sourceColumn: SalesOrderNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesOrderLineNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: 90c7d255-144d-4fcf-ac31-a83ee5b567cf
+		summarizeBy: sum
+		sourceColumn: SalesOrderLineNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6a0f940e-f388-446d-ab6d-d71d10a88806
+		summarizeBy: none
+		sourceColumn: OrderDate
+
+		variation Variation
+			isDefault
+			relationship: c59307cd-7211-459d-9c34-4936876f24fb
+			defaultHierarchy: LocalDateTable_28cbef8b-dcae-4753-a8c1-ec4a6b4dc981.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CustomerName
+		dataType: string
+		lineageTag: 59fbda21-111a-475f-837c-c41317886340
+		summarizeBy: none
+		sourceColumn: CustomerName
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmailAddress
+		dataType: string
+		lineageTag: d13df6b8-40c5-41f9-b6a4-49606f9f45b4
+		summarizeBy: none
+		sourceColumn: EmailAddress
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: f4a5b45f-3ce9-474e-a671-47ee4f41d070
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: ab42d239-219f-4e05-9a18-a875d6380912
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitPrice
+		dataType: int64
+		formatString: 0
+		lineageTag: 48fef1f5-45d2-4132-b1a2-0b3cd30e52c5
+		summarizeBy: sum
+		sourceColumn: UnitPrice
+
+		annotation SummarizationSetBy = Automatic
+
+	partition new_sales = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("kajwnnpeyloehphi6ab536fdyq-peiqnfesqf7e5ib7gkw7jl5goa.datawarehouse.fabric.microsoft.com", "teste_abs"),
+				    dbo_new_sales = Fonte{[Schema="dbo",Item="new_sales"]}[Data]
+				in
+				    dbo_new_sales
+
+	annotation PBI_ResultType = Table
+

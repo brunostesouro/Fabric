@@ -1,0 +1,138 @@
+table DIM_CALENDARIO
+	lineageTag: 1efa316a-62ff-42dc-b2c9-057317d83556
+
+	column DT_CALENDARIO
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: Date
+		lineageTag: 2912d702-98af-4142-b6b1-bcbe40a3e982
+		summarizeBy: none
+		sourceColumn: DT_CALENDARIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column DIA_MES
+		dataType: string
+		sourceProviderType: Varchar2
+		lineageTag: c9bd361b-136d-4e0d-86f4-8c7e4ef64913
+		summarizeBy: none
+		sourceColumn: DIA_MES
+
+		annotation SummarizationSetBy = Automatic
+
+	column MES_ANO
+		dataType: string
+		sourceProviderType: Varchar2
+		lineageTag: 5a9e3166-4ef1-4dbf-be68-2eb0e7ebd690
+		summarizeBy: none
+		sourceColumn: MES_ANO
+
+		annotation SummarizationSetBy = Automatic
+
+	column DIA
+		dataType: double
+		sourceProviderType: Decimal(38, 127)
+		lineageTag: 8c0ee91d-5de3-42bf-a3e4-2b35dc1283c6
+		summarizeBy: sum
+		sourceColumn: DIA
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MES
+		dataType: double
+		sourceProviderType: Decimal(38, 127)
+		lineageTag: f5787821-08de-44ce-b365-b295beac240a
+		summarizeBy: sum
+		sourceColumn: MES
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ANO
+		dataType: double
+		sourceProviderType: Decimal(38, 127)
+		lineageTag: 2b56ecac-df4d-43fc-868f-203a914696b4
+		summarizeBy: sum
+		sourceColumn: ANO
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NO_MES
+		dataType: string
+		sourceProviderType: Varchar2
+		lineageTag: 276ed5a9-77ff-4d87-92f5-4d0bb1c5de0a
+		summarizeBy: none
+		sourceColumn: NO_MES
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_MES_ANO_ABV
+		dataType: string
+		sourceProviderType: Varchar2
+		lineageTag: 242cf973-1cdc-42b6-898b-b14699163d65
+		summarizeBy: none
+		sourceColumn: NO_MES_ANO_ABV
+
+		annotation SummarizationSetBy = Automatic
+
+	column SN_FIM_SEMANA
+		dataType: string
+		sourceProviderType: Char
+		lineageTag: 35380548-fd6b-48f4-a9f4-dfc7595978a9
+		summarizeBy: none
+		sourceColumn: SN_FIM_SEMANA
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_DECENDIO
+		dataType: string
+		sourceProviderType: Varchar2
+		lineageTag: 2be7ed71-ba61-4da7-94f1-1286c49276b7
+		summarizeBy: none
+		sourceColumn: NO_DECENDIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column VA_DECENDIO
+		dataType: double
+		sourceProviderType: Decimal(38, 127)
+		lineageTag: c28e1126-8df7-4c20-a7ce-ab6af17fa8d4
+		summarizeBy: none
+		sourceColumn: VA_DECENDIO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NO_FERIADO
+		dataType: string
+		sourceProviderType: Varchar2
+		lineageTag: 0107239a-c463-43a5-b385-f702f7b490de
+		summarizeBy: none
+		sourceColumn: NO_FERIADO
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mês = DIM_CALENDARIO[MES] & " - " & DIM_CALENDARIO[NO_MES]
+		lineageTag: f76bb2e7-ff67-4fa1-a55b-5fc4d5daeaea
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_CALENDARIO = m
+		mode: directQuery
+		source =
+				let
+				    Fonte = Oracle.Database("exastncl03-tlm0m-scan.prosubnet.vcndados.oraclevcn.com/DWPROD.prosubnet.vcndados.oraclevcn.com", [HierarchicalNavigation=true]),
+				    DEV_SIGEFI = Fonte{[Schema="DEV_SIGEFI"]}[Data],
+				    DIM_CALENDARIO1 = DEV_SIGEFI{[Name="DIM_CALENDARIO"]}[Data]
+				in
+				    DIM_CALENDARIO1
+
+	annotation PBI_ResultType = Table
+

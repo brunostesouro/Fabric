@@ -1,0 +1,52 @@
+table 'Aux - Limites'
+	lineageTag: 86681f8b-8531-4b6a-988e-c61ca77a2060
+
+	measure 'Empoçamento %' = 1 - [Exec. Financ. %]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 59d2bda5-3fcd-4e64-9809-54ea1f3ba0cc
+
+	measure 'esconder linha em branco' = [LP anual]+[Pagto Acum]
+		lineageTag: ee801adc-95e5-4c05-b386-6ea982629335
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Esconder Linha em Branco 2' = [Pagto Acum]+[LP anual]
+		lineageTag: 63291331-220d-41cf-b8c4-b87621445a89
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Execução Financeira Anual %' = [Pagto Acum]/[LP anual]
+		lineageTag: cca43d12-1280-4ef1-a27e-d480ca0745b8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Anexo Genef'
+		dataType: string
+		lineageTag: 1312dede-51d6-4bbe-b7f5-bf42b600566e
+		summarizeBy: none
+		sourceColumn: Anexo Genef
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Anexo Gepof'
+		dataType: string
+		lineageTag: 982b3469-4993-4582-9c3b-94619911c9a7
+		summarizeBy: none
+		sourceColumn: Anexo Gepof
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Aux - Limites' = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents("\\cruzeiro.stn.intra\Dados_ANALITICOS\DADOS-DAS-AREAS\COFIN\DPOF\Aux Limites.xlsx"), null, true),
+				    Sheet1_Sheet = Fonte{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true])
+				in
+				    #"Cabeçalhos Promovidos"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

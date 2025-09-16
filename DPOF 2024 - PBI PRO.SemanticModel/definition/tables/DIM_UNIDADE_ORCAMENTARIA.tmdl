@@ -1,0 +1,35 @@
+table DIM_UNIDADE_ORCAMENTARIA
+	lineageTag: 858655c7-93db-46ff-8386-8bab589f8d41
+
+	column ID_UNIDADE_ORCAMENTARIA
+		dataType: string
+		lineageTag: a09cf791-eff0-4265-bb39-37af6a1b72c5
+		summarizeBy: none
+		sourceColumn: ID_UNIDADE_ORCAMENTARIA
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_UNIDADE_ORCAMENTARIA
+		dataType: string
+		lineageTag: f474a198-9635-4262-81af-fad39412e5b8
+		summarizeBy: none
+		sourceColumn: NO_UNIDADE_ORCAMENTARIA
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unid Orçam' = DIM_UNIDADE_ORCAMENTARIA[ID_UNIDADE_ORCAMENTARIA] & " - " & DIM_UNIDADE_ORCAMENTARIA[NO_UNIDADE_ORCAMENTARIA]
+		lineageTag: be66f1d2-ad5a-4432-bd9a-45d66dc3dc72
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_UNIDADE_ORCAMENTARIA = m
+		mode: import
+		source =
+				let
+				    Fonte = Oracle.Database("exastncl03-tlm0m-scan.prosubnet.vcndados.oraclevcn.com/DWPROD.prosubnet.vcndados.oraclevcn.com", [HierarchicalNavigation=true]),
+				    DEV_SIGEFI2 = Fonte{[Schema="DEV_SIGEFI2"]}[Data],
+				    DIM_UNIDADE_ORCAMENTARIA1 = DEV_SIGEFI2{[Name="DIM_UNIDADE_ORCAMENTARIA"]}[Data]
+				in
+				    DIM_UNIDADE_ORCAMENTARIA1
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "MirroredDatabase",
+    "displayName": "teste_OCI"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d6543494-1692-8838-4abc-705e0d57cc16"
+  }
+}

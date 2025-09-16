@@ -1,0 +1,87 @@
+table DIM_FONTE_RECURSO
+	lineageTag: 4bf34558-d7e2-4039-b0bb-c6572a72b587
+
+	column CO_GRUPO_FONTE_RECURSO_DECRETO
+		dataType: string
+		lineageTag: ce65be3a-5c71-4ee1-a9ab-f0e26477e22e
+		summarizeBy: none
+		sourceColumn: CO_GRUPO_FONTE_RECURSO_DECRETO
+
+		annotation SummarizationSetBy = Automatic
+
+	column SN_FONTE_VINCULADA
+		dataType: double
+		lineageTag: f4d7d096-a5cd-47a2-b86c-1111901b15d2
+		summarizeBy: sum
+		sourceColumn: SN_FONTE_VINCULADA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SN_ABERTURA_FONTE
+		dataType: double
+		lineageTag: 4656f0c8-d57f-49e4-884a-f455b34c2253
+		summarizeBy: sum
+		sourceColumn: SN_ABERTURA_FONTE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TX_OBSERVACAO_RELATORIO
+		dataType: string
+		lineageTag: 1d0b3e4a-9a2a-4c45-ba67-010a2a1527f4
+		summarizeBy: none
+		sourceColumn: TX_OBSERVACAO_RELATORIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO_FONTE_RECURSO
+		dataType: string
+		lineageTag: 1148c90b-980b-4cd1-8bbd-600daaf60752
+		summarizeBy: none
+		sourceColumn: CO_FONTE_RECURSO
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_FONTE_RECURSO
+		dataType: string
+		lineageTag: 30409272-8c20-4022-9cdc-504b3f39049b
+		summarizeBy: none
+		sourceColumn: NO_FONTE_RECURSO
+
+		annotation SummarizationSetBy = Automatic
+
+	column DT_CRIACAO
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d9cba6e3-b314-4715-8cba-d4fdb23d363f
+		summarizeBy: none
+		sourceColumn: DT_CRIACAO
+
+		variation Variation
+			isDefault
+			relationship: 39033ccd-055f-47d1-9355-6f39f444cd72
+			defaultHierarchy: LocalDateTable_2b4d3828-79ca-40cb-a426-af337b056438.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fonte = DIM_FONTE_RECURSO[CO_FONTE_RECURSO] &" - "& DIM_FONTE_RECURSO[NO_FONTE_RECURSO]
+		lineageTag: 29ee7202-49eb-485d-b09b-9de7d8b01f50
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_FONTE_RECURSO-f72aaa10-5cc9-426c-9692-9418e784c5b4 = m
+		mode: import
+		source =
+				let
+				    Fonte = Oracle.Database("cluster3-scan/dwprod", [HierarchicalNavigation=true]),
+				    DEV_SIGEFI2 = Fonte{[Schema="DEV_SIGEFI2"]}[Data],
+				    DIM_FONTE_RECURSO1 = DEV_SIGEFI2{[Name="DIM_FONTE_RECURSO"]}[Data]
+				in
+				    DIM_FONTE_RECURSO1
+
+	annotation PBI_ResultType = Table
+

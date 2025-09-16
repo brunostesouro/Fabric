@@ -1,0 +1,100 @@
+table DIM_FONTE_RECURSO
+	lineageTag: f2a479c0-68d0-4f8b-9b65-138de59f1431
+
+	column CO_GRUPO_FONTE_RECURSO_DECRETO
+		dataType: string
+		sourceProviderType: Varchar2
+		lineageTag: 36ca39de-082d-4fb4-adee-bd0a2ced5c25
+		summarizeBy: none
+		sourceColumn: CO_GRUPO_FONTE_RECURSO_DECRETO
+
+		annotation SummarizationSetBy = Automatic
+
+	column SN_FONTE_VINCULADA
+		dataType: double
+		isNullable: false
+		sourceProviderType: Int16
+		lineageTag: bd72db33-10ee-40ea-b149-63288cd4f909
+		summarizeBy: sum
+		sourceColumn: SN_FONTE_VINCULADA
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SN_ABERTURA_FONTE
+		dataType: double
+		isNullable: false
+		sourceProviderType: Int16
+		lineageTag: 61afa257-e46c-417d-b498-2cd36a2ad5be
+		summarizeBy: sum
+		sourceColumn: SN_ABERTURA_FONTE
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TX_OBSERVACAO_RELATORIO
+		dataType: string
+		sourceProviderType: Varchar2
+		lineageTag: e4da44e6-b2f7-401b-a7ec-cdf15c283140
+		summarizeBy: none
+		sourceColumn: TX_OBSERVACAO_RELATORIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO_FONTE_RECURSO
+		dataType: string
+		isNullable: false
+		sourceProviderType: Varchar2
+		lineageTag: ed989032-49d1-4b96-9d0e-f79409b28980
+		summarizeBy: none
+		sourceColumn: CO_FONTE_RECURSO
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_FONTE_RECURSO
+		dataType: string
+		isNullable: false
+		sourceProviderType: Varchar2
+		lineageTag: 141c5d24-666d-4670-a43e-4a8844f414c4
+		summarizeBy: none
+		sourceColumn: NO_FONTE_RECURSO
+
+		annotation SummarizationSetBy = Automatic
+
+	column DT_CRIACAO
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: Date
+		lineageTag: 1e2a3c1b-ed4b-473a-a93e-e68ca0fc4590
+		summarizeBy: none
+		sourceColumn: DT_CRIACAO
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fonte = DIM_FONTE_RECURSO[CO_FONTE_RECURSO] &" - "& DIM_FONTE_RECURSO[NO_FONTE_RECURSO]
+		lineageTag: a2caef24-eee1-4885-87e0-f187ad0cb399
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipo de Fonte' = SWITCH(DIM_FONTE_RECURSO[CO_GRUPO_FONTE_RECURSO_DECRETO],"01","Fte Tesouro","02","Fte Própria")
+		lineageTag: a439a8a3-b762-4b70-a00c-4d6082f9d83f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_FONTE_RECURSO = m
+		mode: directQuery
+		source =
+				let
+				    Fonte = Oracle.Database("exastncl03-tlm0m-scan.prosubnet.vcndados.oraclevcn.com/DWPROD.prosubnet.vcndados.oraclevcn.com", [HierarchicalNavigation=true]),
+				    DEV_SIGEFI = Fonte{[Schema="DEV_SIGEFI"]}[Data],
+				    DIM_FONTE_RECURSO1 = DEV_SIGEFI{[Name="DIM_FONTE_RECURSO"]}[Data]
+				in
+				    DIM_FONTE_RECURSO1
+
+	annotation PBI_ResultType = Table
+

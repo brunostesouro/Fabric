@@ -1,0 +1,5 @@
+CREATE TABLE [dbo].[DIM_GRUPO_DESPESA] (
+
+	[ID_GRUPO_DESPESA] decimal(38,6) NULL, 
+	[NO_GRUPO_DESPESA] varchar(8000) NULL
+);

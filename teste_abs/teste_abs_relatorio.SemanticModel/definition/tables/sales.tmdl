@@ -1,0 +1,102 @@
+table sales
+	lineageTag: 4f51a1d0-c4f8-4bf4-bbce-8d1705cce700
+
+	measure Medida = COUNT(sales[UnitPrice])
+		formatString: 0
+		lineageTag: 2002fe52-c83d-4c14-af76-ec375a600696
+
+	column SalesOrderNumber
+		dataType: string
+		lineageTag: 86968033-2a6c-4471-9c00-b3d979ed95df
+		summarizeBy: none
+		sourceColumn: SalesOrderNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesOrderLineNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: 52c38c3c-b5ec-4bb1-b3a1-d174cc610305
+		summarizeBy: sum
+		sourceColumn: SalesOrderLineNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 70d6c248-537f-44ab-9509-1528e932065f
+		summarizeBy: none
+		sourceColumn: OrderDate
+
+		variation Variation
+			isDefault
+			relationship: 18fb90fe-a315-4099-9c6a-d3a61ffa866c
+			defaultHierarchy: LocalDateTable_ab2e9c35-8057-41ef-8a4c-1f20cdac2a1e.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CustomerName
+		dataType: string
+		lineageTag: ef71e752-147a-4c2d-ad8a-b72d7b313d80
+		summarizeBy: none
+		sourceColumn: CustomerName
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmailAddress
+		dataType: string
+		lineageTag: 68616c3e-66ac-4407-9505-a4d59f60d1b6
+		summarizeBy: none
+		sourceColumn: EmailAddress
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: 7a7e2b27-ddef-412c-8f66-7e8f16d54742
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: d4090b0a-d7f2-4b07-b58c-0fe31ea1ceb9
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitPrice
+		dataType: int64
+		formatString: 0
+		lineageTag: 0c885513-37c9-4bc9-9744-222f2074db21
+		summarizeBy: sum
+		sourceColumn: UnitPrice
+
+		annotation SummarizationSetBy = Automatic
+
+	column TaxAmount
+		dataType: int64
+		formatString: 0
+		lineageTag: 0086c891-ccaa-4b8a-b12d-0946d6dcf846
+		summarizeBy: sum
+		sourceColumn: TaxAmount
+
+		annotation SummarizationSetBy = Automatic
+
+	partition sales = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("kajwnnpeyloehphi6ab536fdyq-peiqnfesqf7e5ib7gkw7jl5goa.datawarehouse.fabric.microsoft.com", "teste_abs"),
+				    dbo_sales = Fonte{[Schema="dbo",Item="sales"]}[Data]
+				in
+				    dbo_sales
+
+	annotation PBI_ResultType = Table
+

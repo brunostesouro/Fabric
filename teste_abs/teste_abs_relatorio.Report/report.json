@@ -1,0 +1,69 @@
+{
+  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.63\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU10",
+            "path": "BaseThemes/CY24SU10.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Página 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "847a93880ec12c53759e",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"4149a8cd02548e60d00a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":540.790273556231,\"y\":91.42857142857143,\"z\":1,\"width\":697.3860182370821,\"height\":628.3282674772037,\"tabOrder\":1}}],\"singleVisual\":{\"visualType\":\"treemap\",\"projections\":{\"Values\":[{\"queryRef\":\"Sum(sales.UnitPrice)\"}],\"Group\":[{\"queryRef\":\"sales.Item\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"sales\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"UnitPrice\"}},\"Function\":0},\"Name\":\"Sum(sales.UnitPrice)\",\"NativeReferenceName\":\"Soma de UnitPrice\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Item\"},\"Name\":\"sales.Item\",\"NativeReferenceName\":\"Item\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 628.33,
+          "width": 697.39,
+          "x": 540.79,
+          "y": 91.43,
+          "z": 1.00
+        },
+        {
+          "config": "{\"name\":\"57562683c4cc038a9603\",\"layouts\":[{\"id\":0,\"position\":{\"x\":128.21361940298505,\"y\":5.820895522388042,\"width\":300,\"height\":300,\"z\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"sales.CustomerName\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"sales\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"CustomerName\"},\"Name\":\"sales.CustomerName\",\"NativeReferenceName\":\"CustomerName\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 300.00,
+          "width": 300.00,
+          "x": 128.21,
+          "y": 5.82,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"7e9aee6335d7760001be\",\"layouts\":[{\"id\":0,\"position\":{\"x\":110.88145896656536,\"y\":305.41033434650456,\"z\":2,\"width\":299.5744680851064,\"height\":414.34650455927056}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"sales.OrderDate.Variation.Hierarquia de datas.Ano\",\"active\":true},{\"queryRef\":\"sales.OrderDate.Variation.Hierarquia de datas.Trimestre\"},{\"queryRef\":\"sales.OrderDate.Variation.Hierarquia de datas.Mês\"},{\"queryRef\":\"sales.OrderDate.Variation.Hierarquia de datas.Dia\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"sales\",\"Type\":0}],\"Select\":[{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Name\":\"Variation\",\"Property\":\"OrderDate\"}},\"Hierarchy\":\"Hierarquia de datas\"}},\"Level\":\"Ano\"},\"Name\":\"sales.OrderDate.Variation.Hierarquia de datas.Ano\",\"NativeReferenceName\":\"OrderDate Ano\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Name\":\"Variation\",\"Property\":\"OrderDate\"}},\"Hierarchy\":\"Hierarquia de datas\"}},\"Level\":\"Trimestre\"},\"Name\":\"sales.OrderDate.Variation.Hierarquia de datas.Trimestre\",\"NativeReferenceName\":\"OrderDate Trimestre\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Name\":\"Variation\",\"Property\":\"OrderDate\"}},\"Hierarchy\":\"Hierarquia de datas\"}},\"Level\":\"Mês\"},\"Name\":\"sales.OrderDate.Variation.Hierarquia de datas.Mês\",\"NativeReferenceName\":\"OrderDate Mês\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Name\":\"Variation\",\"Property\":\"OrderDate\"}},\"Hierarchy\":\"Hierarquia de datas\"}},\"Level\":\"Dia\"},\"Name\":\"sales.OrderDate.Variation.Hierarquia de datas.Dia\",\"NativeReferenceName\":\"OrderDate Dia\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 414.35,
+          "width": 299.57,
+          "x": 110.88,
+          "y": 305.41,
+          "z": 2.00
+        },
+        {
+          "config": "{\"name\":\"caaa0ac7090bcb724d09\",\"layouts\":[{\"id\":0,\"position\":{\"x\":472.7051671732523,\"y\":0,\"z\":3,\"width\":739.209726443769,\"height\":91.42857142857143}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"sales.Medida\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"sales\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Medida\"},\"Name\":\"sales.Medida\",\"NativeReferenceName\":\"Medida\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Medida\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"labelDisplayUnits\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 91.43,
+          "width": 739.21,
+          "x": 472.71,
+          "y": 0.00,
+          "z": 3.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

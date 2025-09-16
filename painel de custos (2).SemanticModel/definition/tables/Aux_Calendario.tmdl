@@ -1,0 +1,89 @@
+table Aux_Calendario
+	lineageTag: 2c9c6b29-bc7d-4cfb-9e78-7172bd41fadd
+
+	column Date
+		formatString: General Date
+		lineageTag: 35ce3815-52b2-4312-95b9-f04a899b1ad5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: f02b0e32-a422-4e9c-8d76-37866b269c47
+			defaultHierarchy: LocalDateTable_8bd6b244-12e5-468d-85aa-4fd8eb120699.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ano
+		formatString: 0
+		lineageTag: ffc3f3b0-150d-4fa4-8426-3129276725f2
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Ano]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mês
+		formatString: 0
+		lineageTag: 0a76ee4c-e8d6-45ba-860c-b1a6e04c6485
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Mês]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MêsNome
+		lineageTag: 2c59466d-ad96-4243-8d88-cda64f043a52
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MêsNome]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column DiaSemana
+		formatString: 0
+		lineageTag: 561763cf-0895-4e1c-9433-7a7c46a78fae
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [DiaSemana]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaMes
+		formatString: 0
+		lineageTag: be3b775a-c19c-421d-8110-23e3dd98dfcc
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [DiaMes]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Semestre
+		lineageTag: 94e6424d-4b00-4a41-9ab2-f304600ebee6
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Semestre]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	partition Aux_Calendario-bd6b0aca-12ca-42bc-8aef-646f3ac0cf51 = calculated
+		mode: import
+		source = ```
+				
+				    var v_calendario = CALENDARAUTO()
+				    return
+				    ADDCOLUMNS(v_calendario,"Ano",YEAR([DATE]),
+				        "Mês", MONTH([Date]),
+				        "MêsNome",FORMAT([Date],"MMMM"),
+				        --"MêsAno",FORMAT([Date]"MMMM") & "/" & FORMAT(YEAR([Date]),"YY"),
+				        "DiaSemana",WEEKDAY([Date],1),
+				        "DiaMes",DAY([Date]),
+				        "Semestre","Sem" & ROUNDUP(MONTH([Date])/6,0))
+				
+				```
+

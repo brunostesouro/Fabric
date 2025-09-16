@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "painel de custos (2)"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "8677beeb-0a16-919f-40bc-b373a20e5e5d"
+  }
+}

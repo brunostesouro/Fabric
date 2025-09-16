@@ -1,0 +1,41 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBIDesktopVersion = 2.136.3279.0 (24.09)
+
+annotation PBI_QueryOrder = ["FATO_EXEC_DESP_SALDO_FECHA_MES","FATO_LIMITES","DIM_ORGAO_DECRETO","DIM_ACAO_ORCAMENTARIA","DIM_ANEXO_DECRETO","DIM_ANEXO_DECRETO_DESP","DIM_FONTE_RECURSO","DIM_GRUPO_DESPESA","DIM_RESULTADO_EOF","DIM_TIPO_CREDITO","DIM_TIPO_EXECUCAO_DESPESA","FATO_EXEC_DESP_SALDO","Medidas","Data de atualização","DIM_CALENDARIO","Aux - Mês","DIM_UNIDADE_ORCAMENTARIA","FATO_LIMITES_PAGEFET"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+ref table FATO_EXEC_DESP_SALDO_FECHA_MES
+ref table DateTableTemplate_97767255-10da-451a-8631-3d917b73891b
+ref table FATO_LIMITES
+ref table DIM_ORGAO_DECRETO
+ref table LocalDateTable_f684fb79-fe96-4c86-951c-595a6409d29e
+ref table DIM_ACAO_ORCAMENTARIA
+ref table DIM_ANEXO_DECRETO
+ref table DIM_ANEXO_DECRETO_DESP
+ref table DIM_FONTE_RECURSO
+ref table LocalDateTable_2b4d3828-79ca-40cb-a426-af337b056438
+ref table DIM_GRUPO_DESPESA
+ref table DIM_RESULTADO_EOF
+ref table DIM_TIPO_CREDITO
+ref table DIM_TIPO_EXECUCAO_DESPESA
+ref table FATO_EXEC_DESP_SALDO
+ref table Medidas
+ref table 'Data de atualização'
+ref table DIM_CALENDARIO
+ref table LocalDateTable_f4ddc95c-2173-485d-9a0e-e17e3bbb1501
+ref table 'Aux - Mês'
+ref table LocalDateTable_e4227bcd-46fe-48e9-b6c7-3aa842c86615
+ref table LocalDateTable_ba269539-dbc4-424b-b6f3-98756dc3d75b
+ref table DIM_UNIDADE_ORCAMENTARIA
+ref table FATO_LIMITES_PAGEFET
+
+ref cultureInfo pt-BR
+

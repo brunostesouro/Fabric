@@ -1,0 +1,5 @@
+CREATE TABLE [dbo].[DIM_ORGAO_MAXIMO_UO] (
+
+	[CO_ORGAO_MAXIMO_UO] varchar(8000) NULL, 
+	[NO_ORGAO_UO] varchar(8000) NULL
+);

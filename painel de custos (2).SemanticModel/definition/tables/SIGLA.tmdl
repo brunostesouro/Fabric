@@ -1,0 +1,56 @@
+table SIGLA
+	lineageTag: e8d2dae9-031c-4d4d-b118-ca24bfdeee9f
+
+	column CO_SIORG
+		dataType: string
+		lineageTag: d1fe49a5-358a-4268-8ffb-5258f7265d32
+		summarizeBy: none
+		sourceColumn: CO_SIORG
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column DS_SIORG
+		dataType: string
+		lineageTag: 8528854a-e698-4813-8d22-e02051b3eef6
+		summarizeBy: none
+		sourceColumn: DS_SIORG
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column SG_SIORG
+		dataType: string
+		lineageTag: 7da8e4cb-88a2-4032-89c8-7c39b4ea3db8
+		summarizeBy: none
+		sourceColumn: SG_SIORG
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column NIVEL_SIORG
+		dataType: string
+		lineageTag: 356a4a28-39a9-4900-a987-c0cb0282fb23
+		summarizeBy: none
+		sourceColumn: NIVEL_SIORG
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	partition SIGLA-37cd1765-0705-4e38-8e6e-19a8db9472a9 = m
+		mode: import
+		source =
+				let
+				    Fonte = Oracle.Database("exastncl03-tlm0m-scan.prosubnet.vcndados.oraclevcn.com/DWPROD.prosubnet.vcndados.oraclevcn.com", [HierarchicalNavigation=true]),
+				    PRD_CUSTOS = Fonte{[Schema="PRD_CUSTOS"]}[Data],
+				    SIGLA1 = PRD_CUSTOS{[Name="SIGLA"]}[Data],
+				    #"Duplicatas Removidas" = Table.Distinct(SIGLA1, {"CO_SIORG"})
+				in
+				    #"Duplicatas Removidas"
+
+	annotation PBI_ResultType = Table
+

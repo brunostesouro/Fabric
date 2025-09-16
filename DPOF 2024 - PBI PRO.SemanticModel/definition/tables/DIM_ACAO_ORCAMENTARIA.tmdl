@@ -1,0 +1,37 @@
+table DIM_ACAO_ORCAMENTARIA
+	lineageTag: 0d08642b-85be-48f4-94bf-ed7832b4036f
+
+	column ID_ACAO_ORCAMENTARIA
+		dataType: string
+		lineageTag: cb68e861-9f97-4e40-8219-fa70e91f069e
+		summarizeBy: none
+		sourceColumn: ID_ACAO_ORCAMENTARIA
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_ACAO_ORCAMENTARIA
+		dataType: string
+		lineageTag: a8e0f938-d246-489f-b7d6-7dfda812f8a4
+		summarizeBy: none
+		sourceColumn: NO_ACAO_ORCAMENTARIA
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ação = DIM_ACAO_ORCAMENTARIA[ID_ACAO_ORCAMENTARIA] &" - "&DIM_ACAO_ORCAMENTARIA[NO_ACAO_ORCAMENTARIA]
+		lineageTag: a9204712-856b-4e99-b0af-b00fee324904
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_ACAO_ORCAMENTARIA-f52d41e0-16ec-4d6d-b19b-e9acb089600d = m
+		mode: import
+		source =
+				let
+				    Fonte = Oracle.Database("exastncl03-tlm0m-scan.prosubnet.vcndados.oraclevcn.com/DWPROD.prosubnet.vcndados.oraclevcn.com", [HierarchicalNavigation=true]),
+				    DEV_SIGEFI2 = Fonte{[Schema="DEV_SIGEFI2"]}[Data],
+				    DIM_ACAO_ORCAMENTARIA1 = DEV_SIGEFI2{[Name="DIM_ACAO_ORCAMENTARIA"]}[Data]
+				in
+				    DIM_ACAO_ORCAMENTARIA1
+
+	annotation PBI_ResultType = Table
+

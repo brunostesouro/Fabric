@@ -1,0 +1,242 @@
+table Medidas
+	lineageTag: 3866abb3-ffff-4337-b5d5-9778d8454c18
+
+	measure 'LP até o mês' = CALCULATE(SUM(FATO_LIMITES[VA_VALOR]), filter(all('Aux - Mês'[Mês_1]),'Aux - Mês'[Mês_1]<=max('Aux - Mês'[Mês_1])))
+		formatString: #,0.00
+		lineageTag: a536b7c0-fb30-45dc-8e43-a504865b31f5
+
+	measure 'Pagto Efetivo Acum' = CALCULATE(SUM(FATO_LIMITES_PAGEFET[VA_PAGAMENTO_EFET_ORG_DEC]), filter(all('Aux - Mês'[Mês_1]),'Aux - Mês'[Mês_1]<=max('Aux - Mês'[Mês_1])))
+		formatString: #,0
+		lineageTag: d3b82fa1-1235-4525-a79b-b8c3f23a5805
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Empoçamento ($)' = ```
+			[LP até o mês]-[Pagto Efetivo Acum] 
+			```
+		formatString: #,0.00
+		lineageTag: 1c5f09ec-8c54-4f9d-886e-c75ff9321eb5
+
+	measure 'Pagto Efetivo Médio (até mês anterior)' = ```
+			[Pagamento Efetivo Acum mês fech]/ 
+			(CALCULATE(count('Aux - Mês'[Mês_1]),
+			filter(all('Aux - Mês'),
+			'Aux - Mês'[Data] < max('Aux - Mês'[Data])))-1)
+			```
+		formatString: 0.0
+		lineageTag: c2e6c35f-bef8-4767-81ca-ae6b10219be0
+
+	measure 'Empoçamento (meses)' = [Empoçamento ($)] / [Pagto Efetivo Médio (até mês anterior)]
+		formatString: 0.0
+		lineageTag: 1a43c144-0c64-44e1-9d1d-71721ed2a940
+
+	measure 'LP anual' =
+			calculate(sum(FATO_LIMITES[VA_VALOR]),
+			filter(all('Aux - Mês'),
+			'Aux - Mês'[Data]))
+		lineageTag: c6899660-32ee-45aa-8d8b-318f5db33991
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'IS com empoç (meses)' = ([LP anual] - [Pagto Efetivo Acum]) / [Pagto Efetivo Médio (até mês anterior)]
+		formatString: 0.0
+		lineageTag: 3d419ffa-6ffa-4496-9fe8-29c7ed6dd359
+
+	measure 'Dotação Atual.' = [Dot não obrig] + [Dot obrig]
+		lineageTag: be36e0ee-036d-499f-aedb-2c48f101144e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'RAP inscr líq canc' = [Rap inscr não obrig] + [Rap inscr obrig]
+		lineageTag: c4cfbc9c-0bb7-4f21-9971-eb087eee688f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Pagto Pot (RAP + Dot)' = [Dotação Atual.] +   [RAP inscr líq canc]
+		lineageTag: 3860fe0d-05bd-4fc6-b82c-1133fe297aa6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ref LP 12 avos' = ```
+			([LP anual] / 12 ) * 
+			(CALCULATE(count('Aux - Mês'[Mês_1]),
+			filter(all('Aux - Mês'),
+			'Aux - Mês'[Mês_1]<max('Aux - Mês'[Mês_1])))-0)
+			```
+		lineageTag: 2eb44d55-92bd-49a3-90c0-86298eab2f7e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Exec. Financ. %' =
+			calculate( [Pagto Efetivo Acum]/[LP até o mês],
+			filter(all('Aux - Mês'),
+			'Aux - Mês'[Mês_1]<=max('Aux - Mês'[Mês_1])))
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 5861ac7e-ffce-4565-b91e-2eb46672ec3f
+
+	measure 'Empoçamento estimado anual' = [LP anual] - [Pagto Efetivo Médio (até mês anterior)] * 12
+		lineageTag: 79366b85-3dd8-4c25-bef4-343a67f0e3e5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Dot obrig' = calculate(sum('FATO_EXEC_DESP_SALDO'[VA_SALDO_ITEM_INFORMACAO]), 'FATO_EXEC_DESP_SALDO'[IN_TIPO_SALDO] = "Atual", FATO_EXEC_DESP_SALDO[ID_TIPO_EXECUCAO_DESPESA] = "83", FATO_EXEC_DESP_SALDO[ID_RESULTADO_EOF] = "1", FATO_EXEC_DESP_SALDO[SN_IND_OBRIG_CONT_FLUXO] = "sim",filter(all('Aux - Mês'[Mês_1]),'Aux - Mês'[Mês_1]<=max('Aux - Mês'[Mês_1])))
+		lineageTag: f3c52556-2f3c-4c47-82da-7120bc2ddc8c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Dot não obrig' = calculate(sum('FATO_EXEC_DESP_SALDO'[VA_SALDO_ITEM_INFORMACAO]), 'FATO_EXEC_DESP_SALDO'[IN_TIPO_SALDO] = "Atual", FATO_EXEC_DESP_SALDO[ID_TIPO_EXECUCAO_DESPESA] = "83", FATO_EXEC_DESP_SALDO[ID_RESULTADO_EOF] <> "1", filter(all('Aux - Mês'[Mês_1]),'Aux - Mês'[Mês_1]<=max('Aux - Mês'[Mês_1])))
+		lineageTag: d4067f20-9987-43b9-9a93-04edbf9237cc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Rap inscr obrig' = calculate(sum('FATO_EXEC_DESP_SALDO'[VA_SALDO_ITEM_INFORMACAO]),'FATO_EXEC_DESP_SALDO'[IN_TIPO_SALDO] = "Atual", FATO_EXEC_DESP_SALDO[ID_TIPO_EXECUCAO_DESPESA] ="603", FATO_EXEC_DESP_SALDO[ID_RESULTADO_EOF] = "1", FATO_EXEC_DESP_SALDO[SN_IND_OBRIG_CONT_FLUXO] = "sim", filter(all('Aux - Mês'[Mês_1]),'Aux - Mês'[Mês_1]<=max('Aux - Mês'[Mês_1])))
+		lineageTag: 78faae0a-d2c0-486c-b2d7-baabab4b77f8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Rap inscr não obrig' = calculate(sum('FATO_EXEC_DESP_SALDO'[VA_SALDO_ITEM_INFORMACAO]),'FATO_EXEC_DESP_SALDO'[IN_TIPO_SALDO] = "Atual", FATO_EXEC_DESP_SALDO[ID_TIPO_EXECUCAO_DESPESA] ="603",  FATO_EXEC_DESP_SALDO[ID_RESULTADO_EOF] <> "1", filter(all('Aux - Mês'[Mês_1]),'Aux - Mês'[Mês_1]<=max('Aux - Mês'[Mês_1])))
+		lineageTag: b80b65b5-e96c-4a41-aa85-53489d05978a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Despesa paga não obrig' = calculate(sum(FATO_EXEC_DESP_SALDO[VA_SALDO_ITEM_INFORMACAO]),'FATO_EXEC_DESP_SALDO'[IN_TIPO_SALDO] = "Atual", FATO_EXEC_DESP_SALDO[ID_TIPO_EXECUCAO_DESPESA] = "303", FATO_EXEC_DESP_SALDO[ID_RESULTADO_EOF] <> "1", filter(all('Aux - Mês'[Mês_1]),'Aux - Mês'[Mês_1]<=max('Aux - Mês'[Mês_1])))
+		lineageTag: 725ae1c5-3dfd-454c-86e1-dc4663f8fa08
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Desp paga obrig' = calculate(sum('FATO_EXEC_DESP_SALDO'[VA_SALDO_ITEM_INFORMACAO]), 'FATO_EXEC_DESP_SALDO'[IN_TIPO_SALDO] = "Atual", FATO_EXEC_DESP_SALDO[ID_TIPO_EXECUCAO_DESPESA] = "303", FATO_EXEC_DESP_SALDO[ID_RESULTADO_EOF] = "1", FATO_EXEC_DESP_SALDO[SN_IND_OBRIG_CONT_FLUXO] = "sim",filter(all('Aux - Mês'[Mês_1]),'Aux - Mês'[Mês_1]<=max('Aux - Mês'[Mês_1])))
+		lineageTag: e20df35a-f96d-4f36-9b66-b39a8a0409df
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Rap pago não obrig' = calculate(sum('FATO_EXEC_DESP_SALDO'[VA_SALDO_ITEM_INFORMACAO]),FATO_EXEC_DESP_SALDO[ID_TIPO_EXECUCAO_DESPESA] ="604", 'FATO_EXEC_DESP_SALDO'[IN_TIPO_SALDO] = "Atual", FATO_EXEC_DESP_SALDO[ID_RESULTADO_EOF] <> "1", filter(all('Aux - Mês'[Mês_1]),'Aux - Mês'[Mês_1]<=max('Aux - Mês'[Mês_1])))
+		lineageTag: 0b4c875a-4baa-48c0-9148-ee35b742ac0b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Rap pago obrig' = calculate(sum('FATO_EXEC_DESP_SALDO'[VA_SALDO_ITEM_INFORMACAO]),FATO_EXEC_DESP_SALDO[ID_TIPO_EXECUCAO_DESPESA] ="604", 'FATO_EXEC_DESP_SALDO'[IN_TIPO_SALDO] = "Atual", FATO_EXEC_DESP_SALDO[ID_RESULTADO_EOF] = "1", FATO_EXEC_DESP_SALDO[SN_IND_OBRIG_CONT_FLUXO] = "sim", filter(all('Aux - Mês'[Mês_1]),'Aux - Mês'[Mês_1]<=max('Aux - Mês'[Mês_1])))
+		lineageTag: 85734250-de0f-432c-9985-69d8761cdcbd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Despesas pagas' = [Desp paga obrig] + [Despesa paga não obrig]
+		lineageTag: 410249ee-de34-4635-8d11-a7b4e178effc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'RAP pagos' = [Rap pago não obrig] + [Rap pago obrig]
+		lineageTag: be23ba30-73e5-4278-ab32-e90d4dc5eff6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Pagto Total Acum (RAP e exerc)' = [Despesas pagas] + [RAP pagos]
+		lineageTag: 583e8682-41e6-4767-9be8-c9c44499f80f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Pagto Total Médio (até mês anterior)' = ```
+			[Pagto Total Acum (RAP e exerc) (mes fech)] / 
+			(CALCULATE(count('Aux - Mês'[Mês_1]),
+			filter(all('Aux - Mês'),
+			'Aux - Mês'[Data] < max('Aux - Mês'[Data])))-1)
+			```
+		lineageTag: 477062d7-bdf0-46bd-a7fe-103694acca4c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Empoçam Orç (Dot At - Pagto Total Acum)' = [Dotação Atual.] - [Pagto Total Acum (RAP e exerc)]
+		lineageTag: bcefc5a6-e724-4dfe-8f5d-ce7663cd8e81
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Pagto Total Estim Exrc' = [Pagto Total Médio (até mês anterior)] * 12
+		lineageTag: a2742b40-0856-43ec-93fa-d4cbefed4e20
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Empoçam Orç Est Ex (Dot At - Pagto Total Estim Exrc)' = [Dotação Atual.] - [Pagto Total Estim Exrc]
+		lineageTag: 1c983324-231a-4794-ad7f-23b84ceaf065
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ref LP 18 avos' = ```
+			([LP anual] / 18 ) * 
+			(CALCULATE(count('Aux - Mês'[Mês_1]),
+			filter(all('Aux - Mês'),
+			'Aux - Mês'[Mês_1]<max('Aux - Mês'[Mês_1])))-0)
+			```
+		lineageTag: 34864e99-f5ff-4504-a837-231eedfc0b3e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Pressão do RAP' =
+			calculate([RAP inscr líq canc]/[Dotação Atual.],
+			filter(all('Aux - Mês'[Mês_1]),'Aux - Mês'[Mês_1]<=max('Aux - Mês'[Mês_1])))
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: d2462f7e-4b5b-492e-9ef6-e66a60bbce7a
+
+	measure 'Pagamento Efetivo Acum mês fech' = CALCULATE(SUM(FATO_LIMITES_PAGEFET[VA_PAGAMENTO_EFET_ORG_DEC]),filter(all('Aux - Mês'[Mês_1]),'Aux - Mês'[Mês_1]<max('Aux - Mês'[Mês_1])))
+		lineageTag: 662f6b44-87c8-468f-a27c-ad3ec6026f07
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Desp paga obrig (mes fech)' = calculate(sum('FATO_EXEC_DESP_SALDO'[VA_SALDO_ITEM_INFORMACAO]), 'FATO_EXEC_DESP_SALDO'[IN_TIPO_SALDO] = "ultimo mes fechado", FATO_EXEC_DESP_SALDO[ID_TIPO_EXECUCAO_DESPESA] = "303", FATO_EXEC_DESP_SALDO[ID_RESULTADO_EOF] = "1", FATO_EXEC_DESP_SALDO[SN_IND_OBRIG_CONT_FLUXO] = "sim",filter(all('Aux - Mês'[Mês_1]),'Aux - Mês'[Mês_1]<=max('Aux - Mês'[Mês_1])))
+		lineageTag: a7fce3a2-93c6-44fb-8a60-80627d74b340
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Despesa paga não obrig (mes fech)' = calculate(sum(FATO_EXEC_DESP_SALDO[VA_SALDO_ITEM_INFORMACAO]),'FATO_EXEC_DESP_SALDO'[IN_TIPO_SALDO] = "ultimo mes fechado", FATO_EXEC_DESP_SALDO[ID_TIPO_EXECUCAO_DESPESA] = "303", FATO_EXEC_DESP_SALDO[ID_RESULTADO_EOF] <> "1", filter(all('Aux - Mês'[Mês_1]),'Aux - Mês'[Mês_1]<=max('Aux - Mês'[Mês_1])))
+		lineageTag: 647e7413-d206-49ed-9abe-d4963af54c00
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Despesas pagas (mes fechado)' = [Desp paga obrig (mes fech)] + [Despesa paga não obrig (mes fech)]
+		lineageTag: 20f8b047-55fd-4634-9fe1-bac057ec70bb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Rap pago obrig (mes fech)' = calculate(sum('FATO_EXEC_DESP_SALDO'[VA_SALDO_ITEM_INFORMACAO]),FATO_EXEC_DESP_SALDO[ID_TIPO_EXECUCAO_DESPESA] in {"465", "462"}, 'FATO_EXEC_DESP_SALDO'[IN_TIPO_SALDO] = "ultimo mes fechado", FATO_EXEC_DESP_SALDO[ID_RESULTADO_EOF] = "1", FATO_EXEC_DESP_SALDO[SN_IND_OBRIG_CONT_FLUXO] = "sim" )
+		lineageTag: ce1760ab-7faa-4aed-bcda-46a246df350d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Rap pago não obrig (mes fech)' = calculate(sum('FATO_EXEC_DESP_SALDO'[VA_SALDO_ITEM_INFORMACAO]),FATO_EXEC_DESP_SALDO[ID_TIPO_EXECUCAO_DESPESA] in {"465", "462"}, 'FATO_EXEC_DESP_SALDO'[IN_TIPO_SALDO] = "ultimo mes fechado", FATO_EXEC_DESP_SALDO[ID_RESULTADO_EOF] <> "1")
+		lineageTag: cca29f94-63a2-4094-87bc-bdbe70101454
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'RAP pagos (mes fech)' = [Rap pago não obrig (mes fech)] + [Rap pago obrig (mes fech)]
+		lineageTag: a08540ce-5a84-498f-aa23-702809ce9c88
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Pagto Total Acum (RAP e exerc) (mes fech)' = [Despesas pagas (mes fechado)] + [RAP pagos (mes fech)]
+		lineageTag: 1e74ec14-06ba-4366-b292-2a93dac0cb29
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Pagto Efetivo Mensal' = calculate(sum(FATO_LIMITES_PAGEFET[VA_PAGAMENTO_EFET_ORG_DEC]), filter(all('Aux - Mês'[Mês_1]),'Aux - Mês'[Mês_1]=max('Aux - Mês'[Mês_1])))
+		formatString: #,0
+		lineageTag: 724ae034-003b-446e-90f0-908e14bae70b
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column 'Coluna 1'
+		dataType: string
+		lineageTag: 44f425c1-20af-4af9-8503-839b7892a994
+		summarizeBy: none
+		sourceColumn: Coluna 1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Medidas = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Coluna 1", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+

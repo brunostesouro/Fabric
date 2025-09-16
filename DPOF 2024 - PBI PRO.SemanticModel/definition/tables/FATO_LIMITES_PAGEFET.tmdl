@@ -1,0 +1,114 @@
+table FATO_LIMITES_PAGEFET
+	lineageTag: cc085f77-2472-4b00-a53c-be297a9e1e19
+
+	column ID_PAGAMENTO_EFET_ORG_DEC_SK
+		dataType: double
+		lineageTag: 5f9f7892-973a-44bc-92af-79e33e6fdc14
+		summarizeBy: sum
+		sourceColumn: ID_PAGAMENTO_EFET_ORG_DEC_SK
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AN_PAGAMENTO_EFETIVO
+		dataType: double
+		lineageTag: a5424dd7-fc5a-48bb-b4e1-ce45ead4904d
+		summarizeBy: sum
+		sourceColumn: AN_PAGAMENTO_EFETIVO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IN_PERIODO
+		dataType: double
+		lineageTag: 0c5dc3b6-47b0-42b2-a6dd-75f96e2db006
+		summarizeBy: none
+		sourceColumn: IN_PERIODO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ID_ORGAO_DECRETO_SK
+		dataType: double
+		lineageTag: c0e571d7-2813-4633-9d10-99358675a450
+		summarizeBy: none
+		sourceColumn: ID_ORGAO_DECRETO_SK
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ID_ANEXO_DECRETO_SK
+		dataType: double
+		lineageTag: 16bee60d-6fba-4054-abc4-33babe3c97f6
+		summarizeBy: none
+		sourceColumn: ID_ANEXO_DECRETO_SK
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VA_DESPESA_PAGA
+		dataType: double
+		lineageTag: c5512d60-66f7-46f3-a2c0-090dd49b0754
+		summarizeBy: sum
+		sourceColumn: VA_DESPESA_PAGA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VA_RESTOS_PAGAR
+		dataType: double
+		lineageTag: d25ef05e-79e1-4fa9-9e47-db893532eda5
+		summarizeBy: sum
+		sourceColumn: VA_RESTOS_PAGAR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VA_PAGAMENTO_EFET_ORG_DEC
+		dataType: double
+		lineageTag: 0e2d5cea-7906-498e-9409-c4defa6e5b5b
+		summarizeBy: sum
+		sourceColumn: VA_PAGAMENTO_EFET_ORG_DEC
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VA_TRANSFERENCIA_EXTERIOR
+		dataType: double
+		lineageTag: 8e7c00c5-735f-48b1-9426-10d0fb8338fa
+		summarizeBy: sum
+		sourceColumn: VA_TRANSFERENCIA_EXTERIOR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VA_LIMITE_SAQUE
+		dataType: double
+		lineageTag: 9785451f-89c8-4fad-99f2-662693048a20
+		summarizeBy: sum
+		sourceColumn: VA_LIMITE_SAQUE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition FATO_LIMITES_PAGEFET = m
+		mode: import
+		source =
+				let
+				    Fonte = Oracle.Database("exastncl03-tlm0m-scan.prosubnet.vcndados.oraclevcn.com/DWPROD.prosubnet.vcndados.oraclevcn.com", [HierarchicalNavigation=true]),
+				    DEV_SIGEFI = Fonte{[Schema="DEV_SIGEFI"]}[Data],
+				    FATO_LIMITES_PAGEFET1 = DEV_SIGEFI{[Name="FATO_LIMITES_PAGEFET"]}[Data],
+				    #"Colunas Renomeadas" = Table.RenameColumns(FATO_LIMITES_PAGEFET1,{{"ME_PAGAMENTO_EFETIVO", "IN_PERIODO"}})
+				in
+				    #"Colunas Renomeadas"
+

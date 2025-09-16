@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "painel de custos (2)"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "17c209c6-df4c-bef1-4f95-14f13b89fc3e"
+  }
+}

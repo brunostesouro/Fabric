@@ -1,0 +1,832 @@
+cultureInfo pt-BR
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "natureza_custo.natureza_de_custo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "NATUREZA_CUSTO",
+			          "ConceptualProperty": "NATUREZA_DE_CUSTO"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Natureza de Custo": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "natureza_custo.natureza_de_custo_ing": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "NATUREZA_CUSTO",
+			          "ConceptualProperty": "NATUREZA_DE_CUSTO_ING"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Type of Cost": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "natureza_custo.item_de_custo_ing": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "NATUREZA_CUSTO",
+			          "ConceptualProperty": "ITEM_DE_CUSTO_ING"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Cost Item": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "natureza_custo.item_de_custo_esp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "NATUREZA_CUSTO",
+			          "ConceptualProperty": "ITEM_DE_CUSTO_Esp"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Elementos del Costo": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Elemento de Costo": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Elementos de Costo": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "custos_completo.item_custo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "CUSTOS_COMPLETO",
+			          "ConceptualProperty": "ITEM_CUSTO"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Item de Custo": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "custos_completo.órgão": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "CUSTOS_COMPLETO",
+			          "ConceptualProperty": "Órgão"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Organização": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Organization": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Organización": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Agency": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Órgano": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas.variacaocustodinamica": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "#Medidas",
+			          "ConceptualProperty": "VariacaoCustoDinamica"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Variação Percentual": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas.custoanoanterior": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "#Medidas",
+			          "ConceptualProperty": "custoAnoAnterior"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Custo do Ano Anterior": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas.custoanoselecionado": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "#Medidas",
+			          "ConceptualProperty": "custoAnoSelecionado"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Custo do Ano Selecionado": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas.variacaocustodinamica_ing": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "#Medidas",
+			          "ConceptualProperty": "VariacaoCustoDinamica Ing"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Percent Variation": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas.referencia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "#Medidas",
+			          "ConceptualProperty": "Referencia"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Benchmark": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Referencia": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas.diferença_cap_para_menor_cap": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "#Medidas",
+			          "ConceptualProperty": "Diferença CAP para menor CAP"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "CAP difference for lower CAP": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Diferencia entre CIP y CIP más bajo": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas.custos_cap_per_capita_ing": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "#Medidas",
+			          "ConceptualProperty": "CUSTOS CAP PER CAPITA Ing"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "CAP COSTS PER CAPITA": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas.custos_cap_ing": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "#Medidas",
+			          "ConceptualProperty": "Custos CAP Ing"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "CAP Costs": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas.força_de_trabalho_mais_recente": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "#Medidas",
+			          "ConceptualProperty": "Força de Trabalho mais recente"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Latest Workforce": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Fuerza Laboral más reciente": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Força de Trabalho": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Workforce": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Fuerza Laboral": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas.custo_total_sem_cap_ing": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "#Medidas",
+			          "ConceptualProperty": "Custo Total SEM CAP Ing"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Total Costs WITHOUT CAP": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas.custos_cap_per_capita_esp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "#Medidas",
+			          "ConceptualProperty": "CUSTOS CAP PER CAPITA Esp"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "COSTOS CIP PER CÁPITA": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas.custos_cap_esp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "#Medidas",
+			          "ConceptualProperty": "Custos CAP Esp"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Costos CIP": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas.custo_total_sem_cap_esp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "#Medidas",
+			          "ConceptualProperty": "Custo Total SEM CAP Esp"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Costo Total SIN CIP": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "area_atuacao.area_atuacao": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "AREA_ATUACAO",
+			          "ConceptualProperty": "AREA_ATUACAO"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Área de Atuação": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "area_atuacao.area_atuacao_ing": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "AREA_ATUACAO",
+			          "ConceptualProperty": "AREA_ATUACAO_ING"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Area of Activity": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "area_atuacao.area_atuacao_esp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "AREA_ATUACAO",
+			          "ConceptualProperty": "AREA_ATUACAO_ESP"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Área de Actividad": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "atributos_pessoal.nome_faixa_etaria_s_anos": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "ATRIBUTOS_PESSOAL",
+			          "ConceptualProperty": "NOME_FAIXA_ETARIA_S/ANOS"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Faixa Etária": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Age Group": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Grupo de Edad": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "escolaridade.escolaridade": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "ESCOLARIDADE",
+			          "ConceptualProperty": "ESCOLARIDADE"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Escolaridade": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "escolaridade.escolaridade_ing": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "ESCOLARIDADE",
+			          "ConceptualProperty": "ESCOLARIDADE_ING"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Educational Level": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "escolaridade.escolaridade_esp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "ESCOLARIDADE",
+			          "ConceptualProperty": "ESCOLARIDADE_ESP"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Nivel Educativo": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "sigla.sg_siorg": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "SIGLA",
+			          "ConceptualProperty": "SG_SIORG"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Sigla": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Acronym": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas.custo_em_euro_teste": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "#Medidas",
+			          "ConceptualProperty": "Custo em euro_teste"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Costo": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas.variacaocustodinamica_esp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "#Medidas",
+			          "ConceptualProperty": "VariacaoCustoDinamica_esp"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Variación Porcentual": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas.custo_pessoal_em_dolar": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "#Medidas",
+			          "ConceptualProperty": "Custo Pessoal em Dolar"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Cost": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Cost of Active-Duty Public Servants": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medidas.custo_pessoal_em_euro": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "#Medidas",
+			          "ConceptualProperty": "Custo Pessoal em Euro"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Costo": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Costo de Personal Activo": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

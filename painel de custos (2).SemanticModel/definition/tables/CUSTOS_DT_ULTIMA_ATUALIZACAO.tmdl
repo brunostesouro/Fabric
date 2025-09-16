@@ -1,0 +1,43 @@
+table CUSTOS_DT_ULTIMA_ATUALIZACAO
+	lineageTag: 8682ef4d-3b56-4e61-8d8c-85361b091e1b
+
+	column DT_ULTIMA_ATUALIZACAO
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 5dfc9338-9272-4a37-ae49-38e996e4d1ec
+		summarizeBy: none
+		sourceColumn: DT_ULTIMA_ATUALIZACAO
+
+		variation Variation
+			isDefault
+			relationship: 31ecaccb-e171-41ef-a13c-a1ba47c641dc
+			defaultHierarchy: LocalDateTable_77e3242e-eb60-448a-82c4-91b872fa2b3d.'Hierarquia de datas'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Mes_Ano = FORMAT(CUSTOS_DT_ULTIMA_ATUALIZACAO[DT_ULTIMA_ATUALIZACAO], "MMM/YYYY")
+		lineageTag: 9f45fa6d-7dde-4546-a1d3-a1c1ec06ee56
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	partition CUSTOS_DT_ULTIMA_ATUALIZACAO-4fc8158a-8aa7-46ae-9365-8c4872811baf = m
+		mode: import
+		source =
+				let
+				    Fonte = Oracle.Database("exastncl03-tlm0m-scan.prosubnet.vcndados.oraclevcn.com/DWPROD.prosubnet.vcndados.oraclevcn.com", [HierarchicalNavigation=true]),
+				    DEV_CUSTOS = Fonte{[Schema="PRD_CUSTOS"]}[Data],
+				    CUSTOS_DT_ULTIMA_ATUALIZACAO1 = DEV_CUSTOS{[Name="CUSTOS_DT_ULTIMA_ATUALIZACAO"]}[Data]
+				in
+				    CUSTOS_DT_ULTIMA_ATUALIZACAO1
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,73 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "fato_exec_desp_mov",
+        "type": "Copy",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "source": {
+            "type": "OracleSource",
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "annotations": [],
+              "type": "OracleTable",
+              "schema": [],
+              "typeProperties": {
+                "schema": "DEV_SIGEFI",
+                "table": "FATO_EXEC_DESP_MOV"
+              },
+              "externalReferences": {
+                "connection": "0d7161f8-750e-4a31-a147-68fc143f8375"
+              }
+            }
+          },
+          "sink": {
+            "type": "DataWarehouseSink",
+            "allowCopyCommand": true,
+            "copyCommandSettings": {},
+            "tableOption": "autoCreate",
+            "datasetSettings": {
+              "annotations": [],
+              "linkedService": {
+                "name": "SIGEFI_DPOF",
+                "properties": {
+                  "annotations": [],
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "endpoint": "kajwnnpeyloehphi6ab536fdyq-peiqnfesqf7e5ib7gkw7jl5goa.datawarehouse.fabric.microsoft.com",
+                    "artifactId": "ca9abfd5-a0fe-4e6b-a34f-3df02e037310",
+                    "workspaceId": "94061179-8192-4e7e-a03f-32adf4afa670"
+                  }
+                }
+              },
+              "type": "DataWarehouseTable",
+              "schema": [],
+              "typeProperties": {
+                "schema": "DEV_SIGEFI",
+                "table": "fato_exec_desp_mov"
+              }
+            }
+          },
+          "enableStaging": true,
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          }
+        }
+      }
+    ]
+  }
+}
